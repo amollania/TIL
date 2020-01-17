@@ -1,8 +1,7 @@
 Number multi-number sum input processing
 ====
 
-```
-python
+```python
 date_num = input('sum result' ).split()
 i = 0
 for num in date_num:

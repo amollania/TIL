@@ -1,8 +1,7 @@
 Number multi-number sum input processing
 ====
 
-```
-java
+```java
 class Second{
     public static void main(String[] args){
         int sum = 0;

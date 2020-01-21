@@ -18,5 +18,13 @@ class Main{
             System.out.println(x+"は"+y+"より小さい");
             System.out.println("合計は"+(x+y)+"です。");
         }
+
+
+
+        //比較式要約 Result = A
+        int score = 95;
+		char grade = (score> 90) ? 'A' : 'B';
+		
+		System.out.println(grade);
     }
 }

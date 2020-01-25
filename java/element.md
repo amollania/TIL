@@ -65,3 +65,42 @@ System.out.println(6+2!=5); // true
 演算子が＆一つの場合最初段落と後の段落をすべて実行してTrue, Falseを比較する。
 演算子が＆＆二つの場合最初の段落がFalseの場合後の段落は実行しない。
 
+
+論理演算子 if文
+----
+```java
+int number = 12;
+    
+// numberが20より小さいとき、どちらでもないときの条件分岐を追加してください
+if (number < 10) {
+    System.out.println("10より小さい");
+}
+else if (number < 20) {
+    System.out.println("10以上、20より小さい");
+}
+else {
+    System.out.println("20以上");
+}
+```
+
+論理演算子 switch文
+----
+```java
+int number = 12;
+    
+// switch文を用いて、numberを3で割った余りで条件分岐をしてください
+switch(number % 3){
+    case 0:
+        System.out.println("3で割り切れます");
+        break;
+    case 1:
+        System.out.println("3で割ると1余ります");
+        break;
+    case 2:
+        System.out.println("3で割ると2余ります");
+        break;
+    default:
+        System.out.println("吉です")
+}
+```
+

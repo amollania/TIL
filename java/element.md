@@ -83,6 +83,7 @@ else {
 }
 ```
 
+
 論理演算子 switch文
 ----
 ```java
@@ -104,3 +105,19 @@ switch(number % 3){
 }
 ```
 
+
+繰り返し処理
+----
+```java
+int number = 1;
+
+// while文を用いて、numberが0より大きい場合に繰り返す、繰り返し処理を作ってください
+while (10 > number) {
+    System.out.println(number);
+    number ++ ;
+}
+```
+
+
+for文
+----

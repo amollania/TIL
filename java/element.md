@@ -106,7 +106,7 @@ switch(number % 3){
 ```
 
 
-繰り返し処理
+繰り返し処理 while文
 ----
 ```java
 int number = 1;
@@ -116,8 +116,27 @@ while (10 > number) {
     System.out.println(number);
     number ++ ;
 }
+
+//iが5の倍数のとき、繰り返し処理を終了してください
+int i = 1;
+    while (i < 10) {
+      // iが5の倍数のとき、繰り返し処理を終了してください
+      if (i % 5 == 0 ){
+        break;
+      }
+      
+      System.out.println(i);
+      i++;
 ```
 
 
-for文
+繰り返し処理 for文
 ----
+```java
+// for文を用いて、繰り返し処理をつくってください
+for(int i=1; i <= 20; i++){
+    System.out.println(i+"回目のループです");
+}
+```
+
+

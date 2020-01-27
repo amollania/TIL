@@ -124,9 +124,9 @@ int i = 1;
       if (i % 5 == 0 ){
         break;
       }
-      
       System.out.println(i);
       i++;
+    }
 ```
 
 
@@ -136,7 +136,23 @@ int i = 1;
 // for文を用いて、繰り返し処理をつくってください
 for(int i=1; i <= 20; i++){
     System.out.println(i+"回目のループです");
+    if (i % 3 == 0){
+        continue;
+    }
 }
+
 ```
 
+配列を使ってみよう
+----
+```java
+    // 変数namesに、配列を代入してください
+    String names[] = {"サメ", "カゴメ", "ウサギ"};
+    
+    // インデックス番号が0の要素を出力してください
+    System.out.println(names[0]);
+    
+    // インデックス番号が2の要素を出力してください
+    System.out.println(names[2]);
+```
 

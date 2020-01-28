@@ -86,7 +86,6 @@ class Main{
 }
 ```
 
-
 Python
 ----
 Python is not switch
@@ -109,7 +108,6 @@ elif num is 6:
 else:
     print('Appeared number 0')
 ```
-
 
 JAVA
 ----
@@ -144,3 +142,58 @@ class Main{
 Python
 ----
 Python is not switch
+
+
+For, While文を構成する
+=====
+2020-01-28
+Make Multiplication Table use to 'FOR' and 'WHILE'
+
+Java
+----
+```java
+class Main{
+    public static void main(String[] args){
+        for(int m=2; m<=9; m++){
+            System.out.println("***"+m+"st***");
+            for(int n=1; n<=9; n++){
+                System.out.println(m+"x"+n+"="+(m*n));
+            }
+        }
+}
+```
+```java
+class Main{
+    public static void main(String[] args){
+    int i = 2;
+    while(i<=9) {
+        System.out.println("***"+i+"st***");
+        int j = 1;
+        while(j<=9) {
+            System.out.println(i+"x"+j+"="+(i*j));
+            j++;
+        }
+        i++;
+    }
+}
+```
+
+
+Python
+----
+```python
+for m in range(2, 10):
+    print("***"+str(m)+"st***")
+    for n in range(2, 10):
+        print(str(m)+"x"+str(n)+"="+str((m*n)))
+```
+```python
+i = 2
+while i <= 9:
+    print("***"+str(i)+"st***")
+    j = 1
+    while j <= 9:
+        print(str(i)+"x"+str(j)+"="+str((i*j)))
+        j+=1
+    i+=1
+```

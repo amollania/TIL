@@ -198,7 +198,8 @@ while i <= 9:
 ```
 
 
-while문 종료 break를 사용하여 Make 주사위
+breakを使用してwhile文を終了するサイコロ転がし
+
 Java
 ----
 ```java
@@ -230,6 +231,7 @@ while True:
 
 
 Outter While TEXT exit
+
 Java
 ----
 ```java
@@ -250,6 +252,7 @@ class Main{
 
 
 Outputs even numbers only from 1 to 10
+
 Java
 ----
 ```java

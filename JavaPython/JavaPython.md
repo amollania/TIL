@@ -178,7 +178,6 @@ class Main{
 }
 ```
 
-
 Python
 ----
 ```python
@@ -197,3 +196,82 @@ while i <= 9:
         j+=1
     i+=1
 ```
+
+
+while문 종료 break를 사용하여 Make 주사위
+Java
+----
+```java
+class Main{
+    public static void main(String[] args){
+        while(true) {
+            int num = (int)(Math.random()*6)+1;
+            System.out.println(num);
+            if(num == 6) {
+                break;
+            }
+        }
+        System.out.println("Program exit");
+    }
+}
+```
+
+Python
+----
+```python
+from random import *
+
+while True:
+    num = randint(1,8)
+    print(num)
+    if num == 6:
+        break
+```
+
+
+Outter While TEXT exit
+Java
+----
+```java
+class Main{
+    public static void main(String[] args){
+        Qutter:for(char upper='A'; upper<='Z'; upper++) {
+                for(char lower='a'; lower<='z'; lower++) {
+                    System.out.println(upper + "-" + lower);
+                    if(lower=='g') {
+                        break Qutter;
+                    }
+                }
+            }
+        System.out.println("Program Exit");
+    }
+}
+```
+
+
+Outputs even numbers only from 1 to 10
+Java
+----
+```java
+class Main{
+    public static void main(String[] args){
+        for(int i=1; i<=10; i++) {
+                if(i%2 != 0) {
+                    continue;
+                }
+                System.out.println(i);
+            }
+    }
+}
+```
+
+Python
+----
+```python
+for i in range(1 ,11):
+    if i%2 != 0:
+        continue
+    print(i)
+```
+
+

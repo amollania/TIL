@@ -1,5 +1,4 @@
 -- SQL Function
---
 -- 숫자함수
 -- ABS 매개변수로 숫자를 받아 절대값 반환
 SELECT
@@ -131,7 +130,6 @@ FROM DUAL;
 
 
 -- LTRIM
---
 SELECT
     LTRIM('ABCDEFGBBQ', 'ABC'),
     LTRIM('가나다라', '가'),
@@ -286,6 +284,7 @@ FROM DUAL;
 -- --------
 -- ########
 
+-- 날짜 함수
 SELECT
     TO_CHAR(SYSDATE, 'YYYY-MM-DD')
 FROM DUAL;
@@ -306,7 +305,237 @@ SELECT
     TO_DATE('20140101 13:44:55', 'YYYY-MM-DD HH24:MI:SS')
 FROM DUAL;
 
+
+--EXAMPLE 01 입사 데이터에서 입사일자와 요일 출력
+SELECT
+    UPPER(EMP_NAME),
+    TO_CHAR(HIRE_DATE,'YYYY.MM.DD'),
+    TO_CHAR(HIRE_DATE, 'DAY')
+FROM EMPLOYEES;
+--or
+SELECT
+    UPPER(EMP_NAME) AS "NAME",
+    TO_CHAR(HIRE_DATE,'YYYY.MM.DD') AS "HIRE DAY",
+    CASE
+        WHEN TO_CHAR(HIRE_DATE, 'D') = 1 THEN '일요일'
+        WHEN TO_CHAR(HIRE_DATE, 'D') = 2 THEN '월요일'
+        WHEN TO_CHAR(HIRE_DATE, 'D') = 3 THEN '화요일'
+        WHEN TO_CHAR(HIRE_DATE, 'D') = 4 THEN '수요일'
+        WHEN TO_CHAR(HIRE_DATE, 'D') = 5 THEN '목요일'
+        WHEN TO_CHAR(HIRE_DATE, 'D') = 6 THEN '금요일'
+    ELSE '토요일'
+    END AS HIRE_DAY
+FROM EMPLOYEES;
+
+
+--EXAMPLE 02
 SELECT
     round((SYSDATE - MEM_MEMORIALDAY)/365),
     SYSDATE - MEM_MEMORIALDAY
 FROM MEMBER;
+
+
+--EXAMPLE 03 주민번호를 추출하여 뒷자리를 *로 숨기기
+SELECT
+    MEM_NAME,
+    MEM_REGNO1 || '-' || RPAD(SUBSTRB(MEM_REGNO2,0,1),7, '*')
+FROM
+    MEMBER;
+    
+SELECT
+    MEM_NAME,
+    MEM_REGNO1 || '-' || SUBSTR(MEM_REGNO2, 0, 1) || '******'
+FROM
+    MEMBER;
+
+
+
+--NULL관련 함수
+--NVL
+--NVL(exp1, exp2) exp1이 NULL일 때 exp2 반환
+SELECT
+    NVL(MANGER_ID, EMPLOYEE_ID)
+FROM
+    EMPLOYEES
+WHERE
+    MANAGER_ID IS NULL;
+-- 결과는 오류
+
+SELECT
+    SALARY * NVL(COMMISSION_PCT, 0)
+FROM
+    EMPLOYEES;
+
+
+-- NVL2
+-- NVL2(exp1, exp2, exp3) exp1이 NULL이 아니면 ep2 반환, NULL이면 exp3 반환
+SELECT
+    EMPLOYEE_ID AS ID,
+    NVL2(COMMISSION_PCT, SALARY + (SALARY * COMMISSION_PCT), SALARY) AS SALARY2
+FROM
+    EMPLOYEES;
+
+-- NULLIF
+-- NULLIF(exp1, exp2) exp1 과 exp2를 비교해 같으면 NULL, 같지 않으면 exp1을 반환
+SELECT
+    EMPLOYEE_ID,
+    TO_CHAR(START_DATE, 'YYYY') AS START_YEAR,
+    TO_CHAR(END_DATE, 'YYYY') AS END_YEAR,
+    NULLIF(TO_CHAR(END_DATE, 'YYYY'), TO_CHAR(START_DATE, 'YYYY')) AS NULLIF_YEAR
+FROM JOB_HISTORY;
+
+
+--기타 함수
+--GEARTEST
+-- 매개변수로 들어오는표현식에서 가장 큰 값을 반환
+--LEAST 매개변수로 들어오는 표현식에서 가장 작은 값을 반환
+SELECT
+    GREATEST(1, 2, 3, 2, 3, 6),
+    LEAST(1, 2, 3, 2, 4, 6, -3, -10)
+FROM DUAL;
+
+SELECT
+    GREATEST('이순신', '강갑찬', '세종대왕'),
+    LEAST('이순신', '강갑찬', '세종대왕')
+FROM DUAL;
+
+SELECT
+    GREATEST('이순신', '이성계', '강태공', '왕건', '강갑찬', '세종대왕'),
+    LEAST('이순신', '이성계', '강갑찬', '강태공', '세종대왕')
+FROM DUAL;
+
+-- DECODE
+-- DECODE(EXP, Search1, Result1, Search1, Result2, ... , default)
+-- exp와 search1을 비교해 두 값이 같으면 result1, 아니면 다음 인수를 계속 비교하고 최종적으로 같은 값일 경우 default값 반환
+-- * DISTINCT는 중복제거
+SELECT
+    DISTINCT PROD_ID,
+    DECODE(CHANNEL_ID,
+        3, 'Direct',
+        9, 'Direct',
+        5, 'Indirect',
+        4, 'Indirect',
+        'Others') as Decodes
+FROM SALES;
+
+
+-- EXAMPLE
+SELECT
+    CUST_NAME,
+    CUST_YEAR_OF_BIRTH,
+    DECODE(SUBSTRB((TO_CHAR(SYSDATE, 'YYYY') - CUST_YEAR_OF_BIRTH), 1, 1),
+        1, '10대',
+        2, '20대',
+        3, '30대',
+        4, '40대',
+        5, '50대',
+        '60대 이상'
+    )     
+FROM
+    CUSTOMERS;
+-- or
+SELECT
+    CUST_NAME,
+    CUST_YEAR_OF_BIRTH,
+    DECODE(TRUNC(((TO_CHAR(SYSDATE, 'YYYY')- CUST_YEAR_OF_BIRTH)+ 1) / 10),
+        1, '10대',
+        2, '20대',
+        3, '30대',
+        4, '40대',
+        5, '50대',
+        '60대 이상'
+    ) 
+FROM
+    CUSTOMERS;
+
+
+-- 기본 집계 함수
+-- count
+SELECT
+    COUNT(*)
+FROM EMPLOYEES;
+
+SELECT
+    COUNT(*)
+FROM SALES;
+
+SELECT
+    COUNT(DEPARTMENT_ID) AS "DEPARTMENT_ID 개수",
+    COUNT(ALL DEPARTMENT_ID) AS "중복 포함",
+    COUNT(DISTINCT DEPARTMENT_ID) AS "중복 자료 제거"
+FROM EMPLOYEES;
+
+
+-- max 최고값, min 최소값
+-- sum 합, avg 평균
+SELECT
+    SUM(salary) AS SUM,
+    SUM(DISTINCT salary) AS "SUM Dis",
+    AVG(salary) AS "AVG",
+    MAX(salary) AS "MAX",
+    MIN(salary) AS "MIN"
+FROM EMPLOYEES;
+
+-- EXAMPLE
+SELECT
+    COUNT(*),
+    MAX(SALARY),
+    MIN(SALARY)
+FROM
+    EMPLOYEES
+WHERE DEPARTMENT_ID =50;
+
+
+-- VARIANCE : 분산
+-- STDOEV : 표준편차
+SELECT
+    VARIANCE(salary) as "VAR",
+    STDDEV(salary) as "STD"
+FROM
+    employees;
+
+
+-- GROUP BY와 HAVING 절
+-- 부서별 총급여를 조회
+SELECT
+    DEPARTMENT_ID,
+    SUM(salary) AS "SUM" --그룹 표현식에서 사용한 것은 기술
+FROM
+    employees
+WHERE
+    department_id IS NOT NULL
+    GROUP BY department_id
+    HAVING SUM(SALARY) > 50000
+    ORDER BY department_id ASC;
+
+-- 실행순서
+-- 1. FROM 절에서 테이블의 목록을 가져온다.
+-- 2. WHERE 절에서 검색 조건에 불일치 하는 행 제외
+-- 3. GROUP BY 절에서 명시된 행의 값을 그룹화
+-- 4. HAVING 절이 GROUP BY 절의 결과 행 중 검색 조건에 불일치 하는 행 제외
+-- 5. SELECT 절에서 명시된 열을 정리
+-- 6. ORDER BY 절에서 열을 기준으로 출력할 대상을 정렬 후 출력
+
+
+-- EXAMPLE 1
+-- 2013년의 기간별, 지역별 총 대출 잔액을 조회
+SELECT
+    period AS "기간",
+    region AS "지역",
+    SUM(loan_jan_amt) AS "총 잔액"
+FROM
+    kor_loan_status
+WHERE
+    period LIKE '2013%'
+GROUP BY
+    period,
+    region;
+
+-- EXAMPLE 2
+SELECT
+    PROD_CATEGORY AS "Cartegory",
+    COUNT(PROD_CATEGORY) AS "Count"
+FROM
+    PRODUCTS
+GROUP BY
+    PROD_CATEGORY;

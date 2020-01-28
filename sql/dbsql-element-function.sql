@@ -532,6 +532,21 @@ GROUP BY
     region;
 
 -- EXAMPLE 2
+-- 경북 지역의 연도별 총 대출 잔액 조회
+SELECT
+    SUBSTR(period, 0, 4) AS "기간",
+    region AS "지역",
+    SUM(loan_jan_amt) AS "총 잔액"
+FROM
+    kor_loan_status
+WHERE
+    REGION = '경북'
+GROUP BY
+    SUBSTR(period, 0, 4),
+    region
+ORDER BY SUBSTR(period, 0, 4) DESC;
+
+-- EXAMPLE 3
 SELECT
     PROD_CATEGORY AS "Cartegory",
     COUNT(PROD_CATEGORY) AS "Count"
@@ -539,3 +554,35 @@ FROM
     PRODUCTS
 GROUP BY
     PROD_CATEGORY;
+
+
+-- EXAMPLE 4
+SELECT
+    LAST_DAY(SYSDATE)- SYSDATE AS "남은 일수"
+FROM
+    DUAL;
+
+
+-- EXAMPLE 5
+SELECT
+    TO_CHAR(HIRE_DATE, 'YYYY'),
+    SUM(salary) AS "sum"
+FROM
+    employees
+WHERE
+    HIRE_DATE IS NOT NULL
+GROUP BY TO_CHAR(HIRE_DATE, 'YYYY')
+ORDER BY  TO_CHAR(HIRE_DATE, 'YYYY') ASC;
+
+
+-- EXAMPLE 6
+SELECT
+    department_id AS "부서",
+    ROUND(STDDEV(salary), 2) AS "편차",
+    SUM(salary) AS "합",
+    COUNT(*) AS "사원수"
+FROM
+    employees
+GROUP BY department_id
+HAVING STDDEV(salary) > 2
+ORDER BY STDDEV(salary) ASC;

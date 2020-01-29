@@ -586,3 +586,78 @@ FROM
 GROUP BY department_id
 HAVING STDDEV(salary) > 2
 ORDER BY STDDEV(salary) ASC;
+
+
+-- 합계 표현
+-- ROLLUP(exp1, exp2, exp3 ...)
+-- exp로 명시한 표현식을 기준으로집계한 결과, 즉 추가적인 집계 정보를 보여준다.
+-- SELECT 리스트에서 집계 함수를 제외한 컬럼 등의 표현식이 올 수 있다.
+-- 명시한 표현식 수의 순서(오른쪽에서 왼쪽 순으로)에 따라 레벨 별로 집계한 결과가 반환
+-- 표현식 개수가 n개면 n+1레벨까지, 하위 레벨에서 상위 레벨 순으로 데이터가 집계된다.
+-- EXAMPLE 1
+SELECT
+    PERIOD,
+    GUBUN,
+    SUM(loan_jan_amt) AS totl_jan
+FROM
+    KOR_LOAN_STATUS
+WHERE
+    period LIKE '2013%'
+GROUP BY period, ROLLUP(gubun);
+
+-- EXAMPLE 2
+SELECT
+    prod_category,
+    SUM(prod_min_price)
+FROM
+    products
+GROUP BY ROLLUP(prod_category)
+ORDER BY prod_category ASC;
+
+-- EXAMPLE 3
+SELECT
+    prod_category,
+    prod_name,
+    count(prod_id),
+    sum(prod_min_price)
+FROM
+    products
+GROUP BY prod_category,  ROLLUP(prod_category, prod_name);
+
+-- EXAMPLE 4
+SELECT
+    TO_CHAR(BUY_DATE, 'YYYY-MM'),
+    SUM(DECODE(TO_CHAR(BUY_DATE, 'D'), '1', buy_qty, 0)) AS 일요일,
+    SUM(DECODE(TO_CHAR(BUY_DATE, 'D'), '2', buy_qty, 0)) AS 월요일,
+    SUM(DECODE(TO_CHAR(BUY_DATE, 'D'), '3', buy_qty, 0)) AS 화요일,
+    SUM(DECODE(TO_CHAR(BUY_DATE, 'D'), '4', buy_qty, 0)) AS 수요일,
+    SUM(DECODE(TO_CHAR(BUY_DATE, 'D'), '5', buy_qty, 0)) AS 목요일,
+    SUM(DECODE(TO_CHAR(BUY_DATE, 'D'), '6', buy_qty, 0)) AS 금요일,
+    SUM(DECODE(TO_CHAR(BUY_DATE, 'D'), '7', buy_qty, 0)) AS 토요일
+FROM
+    buyprod
+GROUP BY ROLLUP(TO_CHAR(buy_date, 'YYYY-MM'))
+ORDER BY 1;
+
+-- EXAMPLE 5
+SELECT
+    department_id,
+    SUM(DECODE(TO_CHAR(hire_date, 'MM'), '1', 1, 0)) AS "1월",
+    SUM(DECODE(TO_CHAR(hire_date, 'MM'), '2', 1, 0)) AS "2월",
+    SUM(DECODE(TO_CHAR(hire_date, 'MM'), '3', 1, 0)) AS "3월",
+    SUM(DECODE(TO_CHAR(hire_date, 'MM'), '4', 1, 0)) AS "4월",
+    SUM(DECODE(TO_CHAR(hire_date, 'MM'), '5', 1, 0)) AS "5월",
+    SUM(DECODE(TO_CHAR(hire_date, 'MM'), '6', 1, 0)) AS "6월",
+    SUM(DECODE(TO_CHAR(hire_date, 'MM'), '7', 1, 0)) AS "7월",
+    SUM(DECODE(TO_CHAR(hire_date, 'MM'), '8', 1, 0)) AS "8월",
+    SUM(DECODE(TO_CHAR(hire_date, 'MM'), '9', 1, 0)) AS "9월",
+    SUM(DECODE(TO_CHAR(hire_date, 'MM'), '10', 1, 0)) AS "10월",
+    SUM(DECODE(TO_CHAR(hire_date, 'MM'), '11', 1, 0)) AS "11월",
+    SUM(DECODE(TO_CHAR(hire_date, 'MM'), '12', 1, 0)) AS "12월",
+    COUNT(*),
+    SUM(salary)
+FROM
+    employees
+WHERE department_id IS NOT NULL
+GROUP BY ROLLUP( department_id)
+ORDER BY 1 ASC;

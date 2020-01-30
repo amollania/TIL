@@ -12,35 +12,22 @@ public static void main(String[] args) {
     Scanner scan = new Scanner(System.in);
     Random random = new Random();
     int soo = scan.nextInt();
-
-    //int soo = random.nextInt(3) + 1;
     int hee = random.nextInt(3) + 1;
 
     String strg = "";
     String strg2 = "";
 
+    // Change Numer from String
     switch(soo) {
-    case 1:
-        strg = "가위";
-        break;
-    case 2:
-        strg = "바위";
-        break;
-    default:
-        strg = "보";
-        break;
+    case 1:strg = "가위";break;
+    case 2:strg = "바위";break;
+    default:	strg = "보";break;
     }
 
     switch(hee) {
-    case 1:
-        strg2 = "가위";
-        break;
-    case 2:
-        strg2 = "바위";
-        break;
-    default:
-        strg2 = "보";
-        break;
+    case 1:strg2 = "가위";break;
+    case 2:strg2 = "바위";break;
+    default:	strg2 = "보";	break;
     }
 
 

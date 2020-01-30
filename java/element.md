@@ -155,4 +155,3 @@ for(int i=1; i <= 20; i++){
     // インデックス番号が2の要素を出力してください
     System.out.println(names[2]);
 ```
-

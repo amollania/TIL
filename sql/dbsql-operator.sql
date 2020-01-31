@@ -1,31 +1,6 @@
--- 집합 연산자
-
-CREATE TABLE exp_goods_asia (
-       country VARCHAR2(10),
-       seq     NUMBER,
-       goods   VARCHAR2(80));
-INSERT INTO exp_goods_asia VALUES ('한국', 1, '원유제외 석유류');
-INSERT INTO exp_goods_asia VALUES ('한국', 2, '자동차');
-INSERT INTO exp_goods_asia VALUES ('한국', 3, '전자집적회로');
-INSERT INTO exp_goods_asia VALUES ('한국', 4, '선박');
-INSERT INTO exp_goods_asia VALUES ('한국', 5, 'LCD');
-INSERT INTO exp_goods_asia VALUES ('한국', 6, '자동차부품');
-INSERT INTO exp_goods_asia VALUES ('한국', 7, '휴대전화');
-INSERT INTO exp_goods_asia VALUES ('한국', 8, '환식탄화수소');
-INSERT INTO exp_goods_asia VALUES ('한국', 9, '무선송신기 디스플레이 부속품');
-INSERT INTO exp_goods_asia VALUES ('한국', 10,'철 또는 비합금강');
-INSERT INTO exp_goods_asia VALUES ('일본', 1, '자동차');
-INSERT INTO exp_goods_asia VALUES ('일본', 2, '자동차부품');
-INSERT INTO exp_goods_asia VALUES ('일본', 3, '전자집적회로');
-INSERT INTO exp_goods_asia VALUES ('일본', 4, '선박');
-INSERT INTO exp_goods_asia VALUES ('일본', 5, '반도체웨이퍼');
-INSERT INTO exp_goods_asia VALUES ('일본', 6, '화물차');
-INSERT INTO exp_goods_asia VALUES ('일본', 7, '원유제외 석유류');
-INSERT INTO exp_goods_asia VALUES ('일본', 8, '건설기계');
-INSERT INTO exp_goods_asia VALUES ('일본', 9, '다이오드, 트랜지스터');
-INSERT INTO exp_goods_asia VALUES ('일본', 10, '기계류');
-
-
+/*
+집합 연산자
+*/
 --UNION
 SELECT goods
 FROM exp_goods_asia
@@ -63,11 +38,8 @@ FROM kor_loan_status
 WHERE period LIKE '2013%'
 GROUP BY period;
 
-
 --UNION ALL
-
 -- INTERSRT
-
 
 -- GROUPING SETS
 SELECT
@@ -393,13 +365,11 @@ AND
 -- EXAMPLE 1
 SELECT
     *
-FROM
-    (
-    SELECT
-        a.*,
-        rownum as rum
-    FROM
-            (
+FROM(
+        SELECT
+                a.*,
+                rownum as rum
+        FROM(
             SELECT
                 교수.교수이름,
                 교수.전공,
@@ -441,5 +411,114 @@ FROM
             e.job_id = j.job_id
         ) a
 WHERE
-    TO_CHAR(a.HIRE_DATE, 'YYYY') = '2002'
-;
+    TO_CHAR(a.HIRE_DATE, 'YYYY') = '2002';
+
+/*
+ANSI 내부조인
+FROM 절에 INNER JOIN 구문을 쓴다.
+JOIN 조건은 ON 절에 명시
+JOIN 조건 외의 조건은 WHERE 절에 명시
+*/
+SELECT
+        a.employee_id,
+        a.emp_name,
+        b.department_id,
+        b.department_name
+FROM
+        employees a INNER JOIN
+        departments b ON (a.department_id = b.department_id)
+WHERE
+        a.hire_date >= TO_DATE('2003-01-01', 'YYYY-MM-DD');
+
+-- ANSI 구문 예시
+SELECT
+        m.mem_name,
+        l.lprod_gu,
+        p.prod_name,
+        c.cart_qty
+FROM
+        member m
+        INNER JOIN cart c ON(m.mem_id = c.cart_member)
+        INNER JOIN prod p ON(c.cart_prod = p.prod_id)
+        INNER JOIN lprod l ON(p.prod_lgu = l.lprod_gu)
+        WHERE
+m.mem_id ='g001';
+
+/*
+ANSI 외부조인
+앞서 나온 '외부조인(OUTER JOIN)' 대신 사용 가능한 구절
+LEFT OUTER JOIN
+LEFT JOIN
+RIGHT OUTER JOIN
+RIGHT JOIN
+*/
+-- 오른쪽 테이블에 JOIN시킬 컬럼값이 없을 경우
+SELECT
+        a.employee_id,
+        a.emp_name,
+        b.job_id,
+        b.department_id
+FROM
+        employees a
+LEFT OUTER JOIN
+        job_history b ON (
+                a.employee_id = b.employee_id AND
+                a.department_id = b.department_id
+        );
+
+SELECT
+        a.employee_id,
+        a.emp_name,
+        b.job_id,
+        b.department_id
+FROM
+        employees a,
+        job_history b
+WHERE
+        a.employee_id = b.employee_id(+) AND
+        a.department_id = b.department_id(+);
+
+-- EXAMPLE
+SELECT
+        a.department_id,
+        a.department_name
+FROM
+        departments a,
+        employees b
+WHERE
+        a.department_id = b.department_id AND
+        b.salary > 3000
+ORDER BY a.department_name;
+
+-- 오류남 수정할 것
+SELECT
+        a.department_id,
+        a.department_name
+FROM
+        department_id a LEFT OUTER JOIN
+        employee b ON(
+                a.department_id = b.department_id )
+WHERE b.salary > 3000
+ORDER BY a.department_name;
+
+
+/*
+FULL OUTER JOIN
+*/
+CREATE TABLE HONG_A (EMP_ID NUMBER);
+CREATE TABLE HONG_B (EMP_ID NUMBER);
+
+INSERT INTO HONG_A VALUES(10);
+INSERT INTO HONG_A VALUES(10);
+INSERT INTO HONG_A VALUES(10);
+INSERT INTO HONG_B VALUES(10);
+INSERT INTO HONG_B VALUES(10);
+INSERT INTO HONG_B VALUES(10);
+
+COMMIT;
+
+SELECT a.emp_id, b.emp_id
+FROM hong_a a
+FULL OUTER JOIN hong_b b
+ON (a.emp_id = b.emp_id);
+

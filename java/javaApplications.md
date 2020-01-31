@@ -85,6 +85,7 @@ public static void main(String[] args) {
 ----
 ```java
 import java.util.Scanner;
+
 public static void main(String[] args) {
 Scanner scan = new Scanner(System.in);
 System.out.println("연도는?");
@@ -144,6 +145,7 @@ scan.close();
 ```java
 import java.util.Scanner;
 import java.util.Random;
+
 public static void main(String[] args) {
     Scanner scan = new Scanner(System.in);
 
@@ -178,9 +180,53 @@ public static void main(String[] args) {
 }
 ```
 
+위 코드를 조금 개선하여 업로드
+```java
+import java.util.Scanner;
+
+Scanner scan = new Scanner(System.in);
+int year = 0;
+int month = 0;
+int day = 0;
+int totalDays = 0;
+
+while(true) {
+    System.out.println("연도는?");
+    year = scan.nextInt();
+    System.out.println("월은?");
+    month = scan.nextInt();
+    System.out.println("일은?");
+    day = scan.nextInt();
+    if (year>=1900 && year<=2100 && month > 0 && month <= 12 && day > 0 && day <= 31){
+        break;
+    }
+    System.out.println("연도, 월, 일 셋 중 잘 못 입력하셨어요. 다시 입력하도록 하세욧!");
+}
+
+totalDays += (year-1900) * 365;
+for(int i=1900; i<=year; i++) {
+    if((year % 4 ==0 && year % 100 != 0 || year % 400 == 0) && (month==1)) {
+        totalDays += 1;
+    }
+}
+totalDays += (year - 1900) / 4;
+
+int months[] = {day,31,28,31,30,31,30,31,31,30,31,30};
+for(int i=0; i<month; i++) {
+    totalDays += months[i];
+}
+String days[] = {"일", "월", "화", "수", "목", "금", "토"};
+
+System.out.println(days[totalDays%7]+"요일 입니다.");
+scan.close();
+```
+
+
 피보나치 수열
 ----
 ```java
+import java.util.Scanner;
+
 public static void main(String[] args) {
 
     Scanner scan = new Scanner(System.in);
@@ -194,6 +240,7 @@ public static void main(String[] args) {
     while (user < 3) {
         System.out.print("숫자 3이상 입력해라.");
         user = scan.nextInt();
+    }
 
     int count = 0;
     int n = 0;

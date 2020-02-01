@@ -1,13 +1,13 @@
-자바 어플리케이션
+Javaのアプリケーション
 ====
-자바 수업 도중에 배운 것을 응용하여 만들어 본 어플리케이션 모음
+Javaの塾の授業中に学んだことを応用して作成しました。
 
-가위 바위 보
+じゃんけんぽん
 ----
 ```java
 public static void main(String[] args) {
-    System.out.println("영희가 당신에게 도전장을 내밀었다.");
-    System.out.println("1.가위_ 2.바위_ 3이상_ 보");
+    System.out.println("ヨンヒはあなたに挑戦状を差し出した。");
+    System.out.println("1は_じゃん_ 2は_けん_ 3以上は_ぽん_");
 
     Scanner scan = new Scanner(System.in);
     Random random = new Random();
@@ -19,30 +19,30 @@ public static void main(String[] args) {
 
     // Change Numer from String
     switch(soo) {
-    case 1:strg = "가위";break;
-    case 2:strg = "바위";break;
-    default:strg = "보";break;
+    case 1:strg = "じゃん";break;
+    case 2:strg = "けん";break;
+    default:strg = "ぽん";break;
     }
 
     switch(hee) {
-    case 1:strg2 = "가위";break;
-    case 2:strg2 = "바위";break;
-    default:strg2 = "보";break;
+    case 1:strg2 = "じゃん";break;
+    case 2:strg2 = "けん";break;
+    default:strg2 = "ぽん";break;
     }
 
 
     if(soo==1&&hee==1 || soo==2&&hee==2 || soo==3&&hee==3){
-        System.out.println("철수"+strg);
-        System.out.println("영희"+strg2);
-        System.out.println("게임에서 비겼습니다.");
+        System.out.println("山本"+strg);
+        System.out.println("ヨンヒ"+strg2);
+        System.out.println("ゲームで引き分けた。");
     }else if(soo==1&&hee==3 || soo==2&&hee==1 || soo==3&&hee==2){
-        System.out.println("철수"+strg);
-        System.out.println("영희"+strg2);
-        System.out.println("게임에서 승리");
+        System.out.println("山本"+strg);
+        System.out.println("ヨンヒ"+strg2);
+        System.out.println("ゲームで勝利");
     }else {
-        System.out.println("철수"+strg);
-        System.out.println("영희"+strg2);
-        System.out.println("게임에서 패배했습니다.");
+        System.out.println("山本"+strg);
+        System.out.println("ヨンヒ"+strg2);
+        System.out.println("ゲームからまけた！");
     };
 
     scan.close();

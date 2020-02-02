@@ -65,4 +65,19 @@ public static void main(String[] args) {
 }
 ```
 
-
+For문을 이용해서 1부터 100까지의 정수 중에서 3의 배수의 총합을 구하는 코드를 작성해보세요.
+3의 배수의 합: 1683
+```java
+public static void main(String[] args) {   
+        int natrual = 10;
+        for(int x=0; x<=natrual; x++){
+            int y=0;
+                for(y=0; y<=natrual; y++){
+                    if((4*x)+(5*y)==60){
+                        System.out.print("("+x+", "+y+")");
+                    }
+            }
+        }
+        // System.out.print(count);
+    }
+```

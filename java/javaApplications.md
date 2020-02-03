@@ -261,3 +261,66 @@ public static void main(String[] args) {
     scan.close();
 }
 ```
+
+
+참조 타입을 활용한 점수 입력과 출력
+----
+```java
+public class main {
+    public static void main(String[] args) {
+
+        Scanner scan = new Scanner(System.in);
+
+        int student = 0;
+        // 리스트 생성
+        int[] array = null;
+
+        // 최고 점수, 합계, 평균점수
+        int max = 0;
+        int sum = 0;
+        double avg = 0;
+
+        while(true){
+            System.out.println("--------------------");
+            System.out.println("1.학생수 | 2.점수입력 | 3.점수리스트 | 4.분석 | 5.종료");
+            System.out.println("--------------------");
+            System.out.print("선택>");
+            int num = scan.nextInt();
+
+            switch(num) {
+            case 1:
+                System.out.print("학생수");
+                student = scan.nextInt();
+                break;
+            case 2:
+                array = new int[student];
+                for(int i=0; i<array.length;i++) {
+                    System.out.print("scores[" +i+"]>");
+                    array[i] = scan.nextInt();
+                }
+                break;
+            case 3:
+                for(int i=0; i<array.length; i++) {
+                    System.out.println("scores[" +array[i]+"]");
+                }
+                break;
+            case 4:
+                for(int i=0; i<array.length; i++) {
+                    if(max<array[i]) {
+                        max = array[i];
+                    }
+                    sum = sum + array[i];
+                }
+                avg = sum/student;
+                System.out.println("최고 점수 : "+max);
+                System.out.println("평균 점수 : "+avg);
+                break;
+            default:
+                System.out.println("프로그램 종료");
+                System.exit(0);
+                break;
+            }
+        }
+    }
+}
+```

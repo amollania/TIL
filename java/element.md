@@ -148,11 +148,25 @@ for(int i=1; i <= 20; i++){
 ```java
     // 変数namesに、配列を代入してください
     String names[] = {"サメ", "カゴメ", "ウサギ"};
-    
+
     // インデックス番号が0の要素を出力してください
     System.out.println(names[0]);
-    
+
     // インデックス番号が2の要素を出力してください
     System.out.println(names[2]);
+```
+
+향상된 for문
+```java
+public static void main(String[] args) {
+
+    String res[] = {"d", "b", "c", "f"};
+    int num[] = {1, 2, 3, 5};
+    int sum = 0;
+
+    for(String nums : res) {
+        System.out.println(nums);
+    }
+}
 ```
 

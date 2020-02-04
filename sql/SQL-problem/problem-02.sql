@@ -3,7 +3,7 @@
   총 예약 건수, 예약 취소건수를 출력하시오 
   매출월, 총매출, 전용상품외매출, 전용상품판매율, 총예약건, 예약완료건, 예약취소건, 예약취소율을 하시오 
 -----------------------------------------------------------------------------------------------------------
-매출월  총매출     전용상품외매출   전용상품매출  전용상품판매율  총예약건  예약완료건  예약취소건    예약취소율
+매출월  총매출   전용외매출   전용매출  전용판매율  총예약건  예약완료건  예약취소건    예약취소율
 201706	613000	  469000	      144000	   23.5%	      13	    11	       2	        15.4%
 201707	1744000	  1336000	      408000	   23.4%	      41	    35	       6	        14.6%
 201708	1622000	  1286000	      336000	   20.7%	      45	    39	       6	        13.3%
@@ -58,3 +58,28 @@
 종로구	110100	1
 영등포구	150100	1
 ----------------------------------------------------------
+
+
+--1
+SELECT
+        TO_CHAR(TO_DATE(r.reserv_date), 'YYYYMM') AS "매출월",
+        SUM(o.sales) AS "총 매출",
+        SUM(DECODE(o.item_id, 'M0001', 0, sales)) AS "전용상품외매출",
+        SUM(DECODE(o.item_id, 'M0001', sales, 0)) AS "전용상품 매출",
+        ROUND(SUM(DECODE(o.item_id, 'M0001', sales, 0)) / SUM(o.sales), 3)*100||'%' AS "전용상품판매율",
+        SUM(DECODE(r.cancel, 'Y', 0, 1)),
+        SUM(DECODE(r.cancel, 'N', 1,  0))
+        
+FROM
+        item i,
+        order_info o,
+        reservation r
+WHERE
+        i.item_id = o.item_id AND
+        o.reserv_no = r.reserv_no
+
+GROUP BY TO_CHAR(TO_DATE(r.reserv_date), 'YYYYMM')
+ORDER BY TO_CHAR(TO_DATE(r.reserv_date), 'YYYYMM') ASC
+
+;
+

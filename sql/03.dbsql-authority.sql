@@ -9,7 +9,7 @@
 */
 
 /*
---CONNECT
+-- CONNECT
 사용자가 데이터베이스에 접속하여 세션을 생성하거나 테이블 또는 뷰와 같은 객체를 생성할 수 있는 권한을 그룹화한 롤.
 */
 
@@ -19,7 +19,7 @@
 */
 
 /*
---DBA
+-- DBA
 시스템 자원의 무제한적인 사용이나 시스템 관리에 필요한 모든 권한 그리고 DBA권한을 다른 사용자에게 부여할 수 있는 강력한 권한을 보유한 롤이다.
 또한 모든 사용자의 CONNECT, RESOURCE, DBA권한을포함한 어떠한 권한을 부여하거나 철회할 수 있다.
 */
@@ -28,3 +28,21 @@
 GRANT CONNECT, RESOURCE TO 계정;
 GRANT CONNECT, DBA, RESOURCE TO 계정;
 
+
+/*
+-- VIEW
+데이터 VIEW 만들기
+실제 데이터는 뷰를 구성하는 테이블에 담겨있지만 마치 테이블 처럼 사용할 수 있다.
+자주 사용하는 SQL문을 매번 작성할 필요 없이 뷰를 만들어 사용할 수 있으며 데이터 보안 측면에서도 유리하다.
+(칼럼과 데이터만 공개 ㅗ디므로 원천 테이블을 감출 수 있다.)
+*/
+SELECT
+        a.employee_id,
+        a.emp_name,
+        a.department_id,
+        b.department_name
+FROM
+        employees a,
+        departments b
+WHERE
+        a.department_id = b.department_id;

@@ -49,7 +49,7 @@ public static void main(String[] args) {
 }
 ```
 
-윤년 알아보기
+うるう年はこちら
 ----
 ```java
 import java.util.Scanner;
@@ -81,7 +81,7 @@ public static void main(String[] args) {
 }
 ```
 
-요일 출력 프로그램
+曜日出力プログラム
 ----
 ```java
 import java.util.Scanner;
@@ -140,7 +140,7 @@ scan.close();
 }
 ```
 
-숫자 맞추기 게임
+数字合わせゲーム
 ----
 ```java
 import java.util.Scanner;
@@ -149,15 +149,15 @@ import java.util.Random;
 public static void main(String[] args) {
     Scanner scan = new Scanner(System.in);
 
-    // 컴퓨터 숫자 생성
+    // コンピュータの数を作成
     Random random = new Random();
     int computer = random.nextInt(100)+1;
 
-    // 사용자 숫자 생성
+    // ユーザー数の作成
     System.out.println("1부터 100 사이의 정수 중 하나를 입력하세요.");
     int user = scan.nextInt();
 
-    // 사용 횟수 카운트
+    // 使用回数のカウント
     int count = 0;
 
     while (user != computer) {
@@ -169,18 +169,18 @@ public static void main(String[] args) {
             System.out.println("더 작은 수를 입력하세요.");
             count += 1;
         }
-        // 숫자 재입력하기
+        // 数字の再入力する
         user = scan.nextInt();
         count += 1;
     }
 
     System.out.println("총 시도 횟수는 "+count + "번 입니다.");
-    // 프로그램 종료
+    // プログラムの終了
     scan.close();
 }
 ```
 
-위 코드를 조금 개선하여 업로드
+上記のコードを少し改善してアップロード
 ```java
 import java.util.Scanner;
 
@@ -222,7 +222,7 @@ scan.close();
 ```
 
 
-피보나치 수열
+フィボナッチ数列
 ----
 ```java
 import java.util.Scanner;
@@ -257,13 +257,13 @@ public static void main(String[] args) {
         count += 1;
     }
 
-    // 프로그램 종료
+    // プログラムの終了
     scan.close();
 }
 ```
 
 
-참조 타입을 활용한 점수 입력과 출력
+参照型を活用したスコアの入力と出力
 ----
 ```java
 public class main {

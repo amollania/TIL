@@ -218,6 +218,7 @@ WHILE 조건
         처리문;
     END LOOP;
 
+
 /*
 FOR문
 인덱스 초깃값에서 시작해 최종값까지 루프를 돌며 1씩 증가시키는데,
@@ -231,12 +232,55 @@ LOOP
     처리문;
 END LOOP;
 
+-- EXAMPLE
+DECLARE
+    vn_base_num NUMBER := 3;
+BEGIN
+    -- FOR i IN REVERSE 1..9, REVERSE는 순서를 거꾸로
+    FOR i IN REVERSE 1..9
+    LOOP
+        DBMS_OUTPUT.PUT_LINE (vn_base_num || '+' || i || '= ' || vn_base_num * i);
+    END LOOP;
+END;
+
+-- 구구단을 이용한 FOR문
+BEGIN
+    FOR j IN  2..9 LOOP
+        DBMS_OUTPUT.PUT_LINE (  j || '단' );
+        -- FOR i IN REVERSE 1..9
+        FOR i IN 1..9
+        LOOP
+            DBMS_OUTPUT.PUT_LINE ( j || ' * ' || i || '= ' || j * i);
+        END LOOP;
+    END LOOP;
+END;
+
+-- 짝수, 홀수 구분
+BEGIN
+    FOR i IN 1..20 LOOP
+        IF MOD(i, 2) = 0 THEN
+             DBMS_OUTPUT.PUT_LINE ( i || '홀수' );
+        ELSE
+            DBMS_OUTPUT.PUT_LINE ( i || '짝수');
+        END IF;
+    END LOOP;
+END;
+
 /*
 CONTINUE문
 FOR나 WHILE 같은 반복문은 아니지만, 반복문 내에서 특정 조건에 부합할 때
 처리 로직을 건너뛰고 상단의 루프 조건으로 건너가 루프를 계속 수행할 때 사용한다.
 EXIT는 루프를 완전히 빠져 나오는데 반해, CONTINUE는 제어 범위가 조건절로 넘어간다.
 */
+DECLARE
+    vn_base_num NUMBER := 3;
+BEGIN
+    FOR i IN 1..9 LOOP
+        CONTINUE WHEN i=5; -- 이 구문에서 정지하게 된다.
+        DBMS_OUTPUT.PUT_LINE (vn_base_num || '+' || i || '=' || vn_base_num * i);
+        END LOOP;
+END;
+
 
 /*
 GOTO문

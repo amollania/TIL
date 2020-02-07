@@ -99,4 +99,39 @@ FROM
         WHERE
 m.mem_id ='g001';
 
-           
+
+-- JOIN에 대한 복습
+SELECT
+        c.customer_id AS "NO",
+        c.customer_name AS "고객ID",
+        c.email AS "EMAIL",
+        a. address_detail AS "주소"
+FROM
+        customer c,
+        address a
+WHERE
+        c.zip_code = a.zip_code(+) AND
+        c.customer_name LIKE '%고객5%'
+ORDER BY c.customer_name ASC;
+
+-- 위 구문에서 더 자세한 목록을 요구할 때
+SELECT
+        c.customer_id AS "고객ID",
+        c.customer_name AS "고객명",
+        (SELECT ADDRESS_DETAIL FROM address WHERE zip_code = c.zip_code) AS "주소",
+        r.reserv_no AS "예약번호",
+        r.cancel AS "취소여부",
+        (SELECT PRODUCT_NAME FROM item WHERE item_id = o.item_id) AS "제품 이름",
+        o.quantity AS "수량",
+        o.sales AS "금액"
+FROM
+        customer c,
+        reservation r,
+        order_info o,
+        item i
+WHERE
+        c.customer_id = r.customer_id(+) AND
+        R.reserv_no = o.reserv_no(+) AND
+        c.customer_id LIKE 'W1340914';
+
+

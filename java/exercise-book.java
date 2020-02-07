@@ -139,3 +139,45 @@ public static void main(String[] args) {
     System.out.println("avg : "+ avg);   
 }
 
+
+
+public class Account {
+	String owner;
+	String acountNo;
+	int balance;
+	
+	public void deposit(String accountNo) {
+		System.out.println(accountNo);
+	}
+	public void withdraw(String accountNo) {
+		System.out.println(accountNo);
+	}
+}
+
+
+public class SutdaCard {
+
+	// 카드의 숫자 1~10 사이의 정수
+	Random random = new Random();
+	public int num() {
+		int num = random.nextInt(10)+1;
+		return num;
+	}
+
+	// 광이면 True 아니면 False
+	public boolean isKwang(String Kwang) {
+		if (Kwang.equals("광")) {
+			return true;
+		}
+		return false;
+	};
+
+	// 숫자를 문자열로 반환한다.
+	public int info() {
+		if (Kwang.equals("광")) {
+			return num + "K";
+		}
+		return num;
+	}
+	
+}

@@ -3,61 +3,61 @@ Java Starting
 
 真偽値
 --------------
-'''java
+
 boolean bool = true; //ダブルクォーテーションはつけない
-'''
+
 
 比較演算子
 ---------------
-'''java
+
 6+2 ==5 // false
 6+2 !=5 //true
 6/3 ==2 //true
 6/3 !=2 //false
-'''
+
 
 真偽値を出力
 ----------
-'''java
+
 System.out.println(true);   // true
 System.out.println(false);  // false
 System.out.println(6+2==5); // false
 System.out.println(6+2!=5); // true
-'''
+
 
 比較演算子
 ---------
-'''java
+
 2>6     // false
 8/4 <5  // true
 4+2 >=6 // true
 2*5 <=9 // false
-'''
+
 
 
 真偽値
 --------------
-```java
+
 boolean bool = true; //ダブルクォーテーションはつけない
-```
+
 
 比較演算子
 ---------------
-```java
+
 6+2 ==5 // false
 6+2 !=5 //true
 6/3 ==2 //true
 6/3 !=2 //false
-```
+
 
 真偽値を出力
 ----------
-```java
+
 System.out.println(true);   // true
 System.out.println(false);  // false
 System.out.println(6+2==5); // false
 System.out.println(6+2!=5); // true
-```
+
 
 
 &演算子一つと二つの違い
@@ -68,7 +68,7 @@ System.out.println(6+2!=5); // true
 
 論理演算子 if文
 ----
-```java
+
 int number = 12;
     
 // numberが20より小さいとき、どちらでもないときの条件分岐を追加してください
@@ -81,12 +81,12 @@ else if (number < 20) {
 else {
     System.out.println("20以上");
 }
-```
+
 
 
 論理演算子 switch文
 ----
-```java
+
 int number = 12;
     
 // switch文を用いて、numberを3で割った余りで条件分岐をしてください
@@ -103,12 +103,12 @@ switch(number % 3){
     default:
         System.out.println("吉です")
 }
-```
+
 
 
 繰り返し処理 while文
 ----
-```java
+
 int number = 1;
 
 // while文を用いて、numberが0より大きい場合に繰り返す、繰り返し処理を作ってください
@@ -127,12 +127,12 @@ int i = 1;
       System.out.println(i);
       i++;
     }
-```
+
 
 
 繰り返し処理 for文
 ----
-```java
+
 // for文を用いて、繰り返し処理をつくってください
 for(int i=1; i <= 20; i++){
     System.out.println(i+"回目のループです");
@@ -141,11 +141,11 @@ for(int i=1; i <= 20; i++){
     }
 }
 
-```
+
 
 配列を使ってみよう
 ----
-```java
+
     // 変数namesに、配列を代入してください
     String names[] = {"サメ", "カゴメ", "ウサギ"};
 
@@ -154,10 +154,10 @@ for(int i=1; i <= 20; i++){
 
     // インデックス番号が2の要素を出力してください
     System.out.println(names[2]);
-```
+
 
 改良されたfor文
-```java
+
 public static void main(String[] args) {
 
     String res[] = {"d", "b", "c", "f"};
@@ -168,5 +168,5 @@ public static void main(String[] args) {
         System.out.println(nums);
     }
 }
-```
+
 

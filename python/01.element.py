@@ -86,3 +86,31 @@ brand="Daiso"
 # result
 'He later founded Daiso in 1977.'
 
+# 변수 이름으로 쓰기
+"He later founded {number} in {brand}.".format(number=1977, brand="Daiso")
+
+# 정렬
+"{0:<10}".format("python")
+"{0:<10}".format("python")
+"{0:^10}".format("python")
+# result
+'python    '
+'    python'
+'  python  '
+
+# 공백 채우기
+"{0:=^10}".format("python")
+"{0:!^10}".format("python")
+'==python=='
+'!!python!!'
+
+# 소수점 표현
+x = 3.241234
+"{0:0.4f}".format(x)
+# result
+'3.2412'
+
+
+
+# 리스트 자료형
+head = [1, 6, 5, 4, 3, 2]

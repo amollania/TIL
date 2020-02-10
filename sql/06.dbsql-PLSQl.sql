@@ -383,3 +383,196 @@ CREATE OR REPLACE PROCEDURE my_new_job_proc
 )
 -- 실행
 EXECUTE my_new_job_proc('sm_job1', 'sample job1');
+
+
+
+-- PL/SQL 사용자 정의 함수
+/*
+함수
+프로젝트 성격에 맞게 다양한 함수를 직접 구현하여 사용
+*/
+
+-- MOD 함수를 사용자 정의 함수로 구현
+CREATE OR REPLACE FUNCTION my_mod (num1 NUMBER, num2 NUMBER)
+    RETURN NUMBER -- 반환 데이터 타입은 NUMBER
+IS
+    vn_remainder NUMBER := 0;-- 반환할 나머니
+    vn_quotient NUMBER := 0;-- 몫
+BEGIN
+    vn_quotient := FLOOR(num1 / num2);
+    vn_remainder := num1 - (num2 * vn_quotient);
+    RETURN vn_remainder; -- 나머지를 반환
+END;
+
+/*
+함수사용
+함수는 반환값이 존재하며 SQL, PL/SQL 모두 사용가능 하다.
+*/
+SELECT my_mod(14, 3) reminder
+FROM DUAL;
+
+/*
+함수 삭제
+*/
+DROP FUNCTION my_mod;
+
+-- example 함수 만들기
+CREATE OR REPLACE FUNCTION my_cou(p_country_id NUMBER)
+    RETURN VARCHAR2 
+IS
+    vs_country_name COUNTRIES.COUNTRY_NAME%TYPE;
+BEGIN
+    SELECT country_name
+    INTO vs_country_name
+    FROM countries
+    WHERE country_id = p_country_id;
+    
+    RETURN vs_country_name;
+END
+
+-- example 만든 함수에서 결과값 없을 때 '결과값 없음' 출력
+CREATE OR REPLACE FUNCTION my_cou2(p_country_id NUMBER)
+    RETURN VARCHAR2 
+IS
+    vs_country_name COUNTRIES.COUNTRY_NAME%TYPE;
+    vn_count NUMBER := 0;
+BEGIN
+    SELECT COUNT(*)
+        INTO vn_count
+    FROM countries
+    WHERE country_id = p_country_id;
+    
+    IF vn_count = 0 THEN
+        vs_country_name := '결과값 없음';
+    ELSE
+        SELECT country_name
+            INTO vs_country_name
+        FROM countries
+        WHERE country_id = p_country_id;
+    END IF;
+    RETURN vs_country_name;
+END;
+
+-- example 유저 계정명 출력
+CREATE OR REPLACE FUNCTION fn_get_user
+    RETURN VARCHAR2 -- 반환 데이터 타입
+IS
+    vs_user_name VARCHAR2(80);
+BEGIN
+    SELECT USER
+    INTO vs_user_name
+    FROM DUAL;
+    
+    RETURN vs_user_name; -- 사용자 이름 변환
+END;
+-- 출력해보기
+SELECT fn_get_user(), fn_get_user
+FROM DUAL;
+
+
+
+-- 프로시저
+/*
+함수는 클라이언트에서 실행되며 리턴값이 필수이지만
+프로시저는 서버에서 실행되며 리턴값 없이 또는 여러개가 가능하다.
+
+매개변수 IN은 입력, OUT은 출력, IN OUT은 입력과 출력을 도잇에 한다는 의미,
+아무것도 입력하지 않으면 디폴트로 IN매개 변수임을 뜻한다.
+
+OUT 매개변수는 프로시저 내에서 로직 처리 후,
+해당 매개 변수에 값을 할당하여 프로시저 호출 부분에서 이 값을 참조할 수 있다.
+*/
+
+CREATE OR REPLACE PROCEDURE my_new_job_proc -- 프로시저 이름
+    (
+        p_job_id   IN  JOBS.JOB_ID%TYPE,
+        p_job_title IN  JOBS.JOB_TITLE%TYPE,
+        p_min_sal   IN  JOBS.MIN_SALARY%TYPE,
+        p_max_sal   IN  JOBS.MAX_SALARY%TYPE
+    ) -- 매개변수 정의
+IN
+BEGIN
+    INSERT INTO JOBS(job_id, job_title, min_salary, max_salary, create_date, update date)
+    VALUES (p_job_id, p_job_title, p_min_sal, p_max_sal, SYSDATE, SYSDATE);
+    COMMIT;
+END;
+-- 프로시저 실행
+-- SELECT 절에 사용
+EXEC my_new_job_proc ('sm_job2', 'smple job1', 1000, 5000);
+
+-- 프로시저 삭제
+DROP PROCEDURE my_new_job_proc
+
+
+/*
+OUT, IN OUT 매개변수 사용
+*/
+CREATE OR REPLACE PROCEDURE my_parmeter_test_proc (
+    p_var1 VARCHAR2, -- IN을 입력하지 않아도 디폴트로 IN이 입력
+    p_var2 OUT VARCHAR2,
+    p_var3 IN OUT VARCHAR2
+)
+IS
+
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('p_var1 value = ' || p_var1);
+    DBMS_OUTPUT.PUT_LINE('p_var2 value = ' || p_var2);
+    DBMS_OUTPUT.PUT_LINE('p_var3 value = ' || p_var3);
+    
+    p_var2 := 'B2';
+    p_var3 := 'C2';
+END;
+
+-- IN, OUT, IN OUT 뼌쑤 톄쓰트
+DECLARE
+    v_var1 VARCHAR(10) := 'A';
+    v_var2 VARCHAR(10) := 'B';
+    v_var3 VARCHAR(10) := 'C';
+BEGIN
+    my_parmeter_test_proc (v_var1, v_var2, v_var3);
+    DBMS_OUTPUT.PUT_LINE('v_var2 value = ' || v_var2);
+    DBMS_OUTPUT.PUT_LINE('v_var3 value = ' || v_var3);
+END;
+
+
+/*
+프로시저 리턴문
+*/
+CREATE OR REPLACE PROCEDURE my_new_job_proc 
+          ( p_job_id    IN  JOBS.JOB_ID%TYPE,
+            p_job_title IN  JOBS.JOB_TITLE%TYPE,
+            p_min_sal   IN  JOBS.MIN_SALARY%TYPE := 10,
+            p_max_sal   IN  JOBS.MAX_SALARY%TYPE := 100
+            --p_upd_date  OUT JOBS.UPDATE_DATE%TYPE  
+            )
+IS
+  vn_cnt NUMBER := 0;
+  vn_cur_date JOBS.UPDATE_DATE%TYPE := SYSDATE;
+BEGIN
+    -- 1000 보다 작으면 메시지 출력 후 빠져나간다
+    IF p_min_sal < 1000 THEN
+       DBMS_OUTPUT.PUT_LINE('최소 급여값은 1000 이상이어야 합니다');
+       RETURN;
+  END IF;
+    -- 동일한 job_id가 있는지 체크
+    SELECT COUNT(*)
+      INTO vn_cnt
+      FROM JOBS
+     WHERE job_id = p_job_id;
+    -- 없으면 INSERT 
+    IF vn_cnt = 0 THEN 
+       INSERT INTO JOBS ( job_id, job_title, min_salary, max_salary, create_date, update_date)
+                 VALUES ( p_job_id, p_job_title, p_min_sal, p_max_sal, vn_cur_date, vn_cur_date);            
+    ELSE -- 있으면 UPDATE
+       UPDATE JOBS
+          SET job_title   = p_job_title,
+              min_salary  = p_min_sal,
+              max_salary  = p_max_sal,
+              update_date = vn_cur_date
+        WHERE job_id = p_job_id;
+  END IF;  
+    COMMIT;
+END ;   
+
+-- 출력해보기
+EXEC my_new_job_proc ('SM_JOB1', 'Sample JOB1', 999, 6000);

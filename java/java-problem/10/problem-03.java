@@ -31,41 +31,6 @@ package javaclear;
 }
 
 
-public class Plane {
-	String manufacturer;
-	String model;
-	int maxNumberOfPassengers;
-	int count = 0;
-	
-	public String getManufacture(){
-		return manufacturer;
-	}
-	
-	public String getModel(){
-		return model;
-	}
-	
-	public int getMaxNumberOfPassengers(){
-		return maxNumberOfPassengers;
-	}
-	
-	public static void getNumberOfPlanes() {
-		int count = 0;
-		System.out.println(count);
-	}
-	
-	public Plane(String manufacturer, String model, int maxNumberOfPassengers) {
-		this.manufacturer = manufacturer;
-		this.model = model;
-		this.maxNumberOfPassengers = maxNumberOfPassengers;
-
-		count++;
-		
-	}
-	
-}
-
-
 /*
 필드에는 현재속도(speed) - double, 최대속력(MAX_SPEED) - double 초기값 200, 색상(color) - String이 있고, 모든 필드는 private으로 선언한다. 생성자에는 기본 생성자와, 자동차의 색상만 입력받는 생성자가 있다. 메소드는 상수를 제외한 필드에 getter와 setter를 만들고 getMaxSpeed() 메소드는 최대 속력값을 반환하는 정적 메소드를 만든다. speedUp(double speed) 메소드는 원하는 속도(speed)가 0보다 작거나 최대 속력을 넘으면 현재 속도를 유지하고 false값을 반환한다. 그렇지 않을 경우 원하는 속도(speed)로 현재 속도를 변경하고 true를 반환한다.
 */

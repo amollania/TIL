@@ -140,7 +140,7 @@ public static void main(String[] args) {
 }
 
 
-
+// 기타
 public class Account {
 	String owner;
 	String acountNo;
@@ -154,9 +154,7 @@ public class Account {
 	}
 }
 
-
 public class SutdaCard {
-
 	// 카드의 숫자 1~10 사이의 정수
 	Random random = new Random();
 	public int num() {
@@ -179,5 +177,6 @@ public class SutdaCard {
 		}
 		return num;
 	}
-	
 }
+
+

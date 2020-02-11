@@ -576,3 +576,4 @@ END ;
 
 -- 출력해보기
 EXEC my_new_job_proc ('SM_JOB1', 'Sample JOB1', 999, 6000);
+

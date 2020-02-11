@@ -33,3 +33,7 @@ BEGIN
         END IF;
         COMMIT;
 END;
+
+
+-- 출력하기
+EXEC my_new(30, '총무기획부', 'i');

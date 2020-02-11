@@ -7,7 +7,7 @@ from selenium import webdriver
 url = "http://naver.com/"
 
 # Extract Chrome Driver
-browser = webdriver.Chrome('chrome_driver_주소')
+browser = webdriver.Chrome('Chrome Address')
 
 # Wait 3 seconds
 browser.implicitly_wait(3)
@@ -20,4 +20,3 @@ browser.save_screenshot("Website.png")
 
 # Quit your browser
 browser.quit()
-```

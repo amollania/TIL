@@ -21,3 +21,14 @@ public class main{
 		System.out.println("현재 잔고: " + account.getBalance());
 	}
 }
+
+
+
+
+
+
+
+
+
+
+

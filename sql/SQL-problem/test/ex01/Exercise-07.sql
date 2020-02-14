@@ -1,0 +1,1 @@
+UPDATE item SET price = 7500 WHERE  item_id ='M0011';

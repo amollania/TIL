@@ -1,7 +1,9 @@
+package lecture07;
+
 public class Chatting {
     void startChat(String chatId){
-        String nickName = null;
-        nickName = chatId;
+
+        String nickName = chatId;
         Chat chat = new Chat(){
             @Override
             public void start() {

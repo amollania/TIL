@@ -1,4 +1,13 @@
 -- SQL COMMAND
+-- USER 만들기
+CREATE USER [user_name]
+IDENTIFIED BY [password] ;
+
+-- USER에게 권한 주기
+GRANT CONNECT TO [user_name] ;
+GRANT DBA TO [user_name] ;
+GRANT RESOURCE TO [user_name] ;
+
 -- CHECK : 確認をして例外の場合エーラーがでる。
 CREATE TABLE sample_table (
     num1    NUMBER

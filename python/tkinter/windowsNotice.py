@@ -1,12 +1,13 @@
-import tkinter
+from tkinter import *
+root = Tk()
 
-window=tkinter.Tk()
+lbl = Label(root, text="이름")
+lbl.grid(row=0, column=0)
 
-window.title("You in here")
-window.geometry("640x400+100+100")
-window.resizable(False, False)
+txt = Entry(root)
+txt.grid(row=0, column=1)
 
-label=tkinter.Label(window, text="Hello!!")
-label.pack()
+btn = Button(root, text="Ok", width=15)
+btn.grid(row=1, column=1)
 
-window.mainloop()
+root.mainloop()

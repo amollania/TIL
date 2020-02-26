@@ -260,3 +260,26 @@ FROM
     employees
 WHERE
     department_id IN (30, 90);
+
+
+/* Example */
+WITH basis AS ( SELECT WIDTH_BUCKET(TO_CHAR(SYSDATE, 'YYYY') - b.cust_year_of_birth, 10, 110, 10) AS old_seg,
+    TO_CHAR(SYSDATE, 'YYYY') - b.cust_year_of_birth AS olds,
+    s.amount_sold
+    FROM sales s,
+    customers b
+    WHERE s.sales_month = '200112'
+    AND s.cust_id = b.cust_id
+    ), real_date AS (
+        SELECT old_seg * 10 AS old_segment,
+        SUM(amount_sold ) AS old_seg_amt
+        FROM basis
+        GROUP BY old_seg ), t1 AS (SELECT level * 10 AS cnt_year FROM DUAL CONNECT BY LEVEL <=10)
+        SELECT t1.cnt_year || '대',
+        nvl(real_date.old_seg_amt, 0 )
+        FROM real_date.old_segment(+) -t1.cnt_year
+    ORDER BY t1.cnt_year;
+
+
+
+    

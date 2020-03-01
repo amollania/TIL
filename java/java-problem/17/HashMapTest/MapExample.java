@@ -17,5 +17,18 @@ public class MapExample {
 		int totalScore = 0; // High Score Total
 		
 		//Location
+		Set<Map.Entry<String,Integer>>entrySet = map.entrySet();
+		for(Map.Eentry<String,Integer>entry : entrySet){
+			if(entry.getValue()>maxScore){
+				name = entry.getKey();
+				maxScore = entry.getValue();
+			}
+			totalScore += entry.getValue();
+		}
+
+		int avgScore = totalScore / map.size();
+		System.out.println("avg : " + avgScore);
+		System.out.println("Max Score : " + maxScore);
+		System.out.prinltn("High Score : " + name);
 	}
 }

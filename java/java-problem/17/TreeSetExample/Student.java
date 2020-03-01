@@ -1,6 +1,6 @@
 package TreeSetExample;
 
-public class Student implements  {
+public class Student implements Comparable<Student> {
 	public String id;
 	public int score;
 	
@@ -12,5 +12,8 @@ public class Student implements  {
 	@Override
 	public int compareTo(Student o) {
 		//Code
+		if(score < o.score) return -1;
+		else if(score == o.score) return 0;
+		else return 1;
 	}
 }

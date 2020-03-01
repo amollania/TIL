@@ -9,7 +9,8 @@ public class BoardDao {
 		
 		list.add(new Board("Hong", "mang"));
 		list.add(new Board("Zong", "zang"));
+		list.add(new Boasrd("Mong", "Mei"));
 	
-		return null;
+		return list;
 	}
 }

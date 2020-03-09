@@ -1,26 +1,26 @@
 ----------  계정 생성 
 
-CREATE USER 생성유저명 IDENTIFIED BY 비밀번호 ;
+CREATE USER 생성유저명 IDENTIFIED BY 비밀번호;
 CREATE USER java IDENTIFIED BY oracle;
 
 ----------  계정 권한
 
 ◆ DBA의 시스템 권한
 
- CREATE USER	 사용자를 생성할 수 있는 권한
- DROP USER	 사용자를 삭제할 수 있는 권한
- DROP ANY TABLE	 모든 테이블을 삭제할 수 있는 권한
- QUERY REWRITE	 함수기반인덱스를 생성하기 위한 권한
- BACKUP ANY TABLE	 Export 유틸리티를 사용해서 임의의 테이블을 백업할 수 있는 권한
+CREATE USER	 사용자를 생성할 수 있는 권한
+DROP USER	 사용자를 삭제할 수 있는 권한
+DROP ANY TABLE	 모든 테이블을 삭제할 수 있는 권한
+QUERY REWRITE	 함수기반인덱스를 생성하기 위한 권한
+BACKUP ANY TABLE	 Export 유틸리티를 사용해서 임의의 테이블을 백업할 수 있는 권한
 
 
 ◆ 일반 사용자의 시스템 권한
 
- CREATE SESSION	 데이터베이스에 접속할 수 있는 권한
- CREATE TABLE	 테이블을 생성할 수 있는 권한
- CREATE SEQUENCE	 시퀀스를 생성할 수 있는 권한
- CREATE VIEW	 뷰를 생성할 수 있는 권한
- CREATE PROCEDURE	 프로시저, 함수, 패키지를 생성할 수 있는 권한
+CREATE SESSION	 데이터베이스에 접속할 수 있는 권한
+CREATE TABLE	테이블을 생성할 수 있는 권한
+CREATE SEQUENCE	시퀀스를 생성할 수 있는 권한
+CREATE VIEW	뷰를 생성할 수 있는 권한
+CREATE PROCEDURE	 프로시저, 함수, 패키지를 생성할 수 있는 권한
 
 
 ◆ 롤(Roll)
@@ -83,7 +83,7 @@ GRANT CONNECT,DBA, RESOURCE TO 계정명 ;
 
 ** DML은 ( Data Manipulation Language ) 데이터 조작어
 
-INSERT/UPDATE/DELETE/SELECT 
+INSERT/UPDATE/DELETE/SELECT
 
 
 * DDL은 ( Data Definition Language ) 데이터 정의어

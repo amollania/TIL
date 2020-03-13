@@ -1,19 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
     <script>
-        //스크립트에서 주석은 자바와 같음
-        alert("I'm JS");
+        // 스크립트에서 주석은 자바와 같음
         // 관례적으로 body 태그 앞에 두는 것을 권장
         // 인터프리터 방식(100%는 아님. 일부 자동으로 순서가 변경되기도 한다.)
         // 자스 버전은 ES5 기준
+        
+        // 변수 선언 및 변수 타입
+        // 자바스크립트에서는 오른쪽 값에 의해 변수 타입이 자동으로 정의됨.
+        "use strict" // 엄격 체크모드
+        var nx_aaa = 337; // Number
+        var nx_bbb = "Hello, I'm" // String
+        var nx_ccc = true; // Boolean
+        var nx_ddd = []; // Array
+        var nx_eee = {}; // JSON(JavaScript Object Notation)
+        var nx_fff = null; // Null
+        var nx_ggg = undefined; // Undefined
+        
+        alert(nx_bbb);
+        nx_ddd = "999"
+
+        /*
+            더하기에는 문자열 더하기와 숫자 더하기가 존재, 문자열 더하기가 우선
+            빼기, 곱하기, 나누기는 산술연산만 존재
+        */
+        var v_aa = 3;
+        var v_bb = "337";
+        alert(v_aa+v_bb);
+        alert(v_bb-v_aa);
+        alert(v_bb*v_aa);
+        alert(v_bb/v_aa);
+        
+        var v_cc = v_bb-0; // v_bb를 숫자로 변환하려면?
+        alert(typeof v_cc);
+        var v_cc = v_bb + "";
+        alert(typeof v_cc);
+
+        alert("aaa" - 3); // 결과는 NaN(Not a Number)
+
+        // 실제 자주 쓰이는 명령어 문자열 -> 정수
+        v_cc = "456party";
+        var v_dd = parseInt(v_cc);
+        alert(v_dd);
+
     </script>
-</head>
-<body>
-    
-</body>
-</html>
+

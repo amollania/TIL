@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+    // truthy(참과 같은), falsy(거짓과 같은)
+    var v_boolean = "Hong";
+    if (v_boolean) {
+        alert("\"Hong\" This is True, String");
+    }
+
+    var v_boolean1 = 123;
+    if (v_boolean1) {
+        alert("123 This is True, Number");
+    }
+
+    var v_boolean2 = -1;
+    if (v_boolean2) {
+        alert("-1 is True");
+    }
+
+    var v_boolean3 = 0;
+    if (v_boolean3) {
+        alert("0 is True");
+    } else {
+        alert("0 is False");
+    }
+
+    var v_boolean4 = [];
+    if (v_boolean4) {
+        alert("[] is True");
+    } else {
+        alert("[] is False");
+    }
+
+    var v_boolean5 = null;
+    if (v_boolean5) {
+        alert("null is True");
+    } else {
+        alert("null is False");
+    }
+
+    var v_boolean5 = undefined;
+    if (v_boolean5) {
+        alert("undefined is True");
+    } else {
+        alert("undefined is False");
+    }
+
+    v_boolean6 = undefined;
+    if (!v_boolean6) {
+        alert("undefined is False");
+    } else {
+        alert("undefined is True");
+    }
+
+
+</script>

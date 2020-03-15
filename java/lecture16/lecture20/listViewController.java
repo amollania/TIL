@@ -26,7 +26,7 @@ public class listViewController implements Initializable {
 	
 	@FXML TextField searchField;
 	private ObservableList<String> foodList;
-	private ObservableList<String> ResultList;
+	private ObservableList<String> resultList;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

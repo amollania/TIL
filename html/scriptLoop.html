@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Script Loop</title>
+
+    <script>
+        // 조건 반복문은 JAVA와 거의 동일
+        // >, <, =, >=, <=, !=, ==
+        // && (and 연산), || (or 연산)
+        // A || B : A, B 중에 1개만 참이어도 참
+        // A && B : A, B 둘다 참이어야 참
+        /*
+        if() {
+
+        } else if() {
+
+        } else {
+        
+        }
+        */
+
+        // switch 문은 firmware에서 아주 많이 사용한다 (경우의 수가 많음).
+        // 반복문 for, while
+        for (var i = 1; i <= 3; i++) {
+            alert(i);
+        }
+
+        var i = 1;
+        for (; i <= 3;) {  // 조건은 필수, 초기치와 증가치는 옵션
+            alert(i);
+            i++;
+        }
+
+        var i = 1;
+        while (i <= 3) {
+            alert(i);
+            i++;
+        }
+
+        // 반복문에서 꼭 기억할 키워드 continue(빼고 싶을 때)
+        // break(반복문에서 빠져나가고 싶을 때)
+        var i = 1;
+        for (; i <= 9;) {   // 조건은 필수, 초기치와 증감치는 옵션
+            if (i == 5) {
+                i = i + 2;
+                continue;   // 만나면 아래 코드를 실행하지 않음
+            }
+            alert(i);   // 홀수만 띄어보자
+            i = i + 2;
+            if(i == 9) break;   // 반복문 종료
+        }
+        alert("Exit");
+
+    </script>
+</head>
+
+<body>
+    Script
+</body>
+
+</html>

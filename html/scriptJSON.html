@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        // JSON(JavaScript Object Notation 자바스크립트 객체 표기법)
+        // 데이터포맷으로 많이 쓰이므로 매우 유용하다. (XML 대체)
+        // 설정 파일 포맷으로도 많이 쓰인다.
+        var v_json = {}; // 객체 선언
+        var v_test_json = {
+            "name": "Lee",
+            "age": 41,
+            "address": ["Gumi", "Deagu", "Seoul", { "address2": ["Sangsadongload", "Seogu"] }]
+        }; // key:value 형식으로 초기화
+
+        alert(/* */);
+        alert("test = " +
+            // address키에서 배열 4번째, address2키에서 배열 2번째
+            v_test_json.address[3].address2[1]
+        );
+
+        alert(v_test_json.name + " : " + v_test_json.age);
+        v_test_json.name = "Hong";
+        v_test_json.age = 25;
+
+        alert(v_test_json.name + " : " + v_test_json.age);
+        alert(v_test_json["name"]); // 배열식 접근 방법
+
+        // var v_json2 = {"name" : "Kim", "age" : 21};
+        // 객체를 추가하는 다른 방법
+        var v_json2 = {};
+        v_json2.name = "Kim";
+        v_json2.age = 21;
+    </script>
+</head>
+
+<body>
+    Script
+</body>
+
+</html>

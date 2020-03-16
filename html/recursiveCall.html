@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursive Call</title>
+
+    <script>
+        // 함수 안에서 자기 자신을 호출하는 일을 재귀호출이라고 칭한다.
+        // 1부터 특정 숫자까지 합을 더하는 간단한 함수
+        /*
+        var v_sum = 0;
+        function f_sum(v_endNum) {
+            for(var i=1; i<=v_endNum; i++) {
+                v_sum = v_sum + i;
+            }
+            return v_sum;
+        }
+        alert(f_sum(10));
+        */
+
+        // 위 함수를 재귀호출로 변환
+        function f_sum(v_endNum) {
+            if (v_endNum == 1) {return 1;} // 종료 조건
+            return v_endNum + f_sum(v_endNum -1);
+            /*
+                return 5 + f_sum(4)
+                return 5 + 4 + f_sum(3)
+                return 5 + 4 + 3 + f_sum(2)
+                return 5 + 4 + 3 + 2 + f_sum(1)
+                return 5 + 4 + 3 + 2 + 1
+            */
+        }
+        alert(f_sum(5));
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

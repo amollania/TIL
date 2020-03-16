@@ -74,4 +74,5 @@ Require all granted
 </Directory>
 ```
 
-$ 
+$ sudo service apache2 restart
+

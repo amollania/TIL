@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Variable Copy</title>
+    <script>
+        /*
+        // 원시 타입인 경우 값의 복사가 이루어진다. 최종적으로는 따로 놀고 있다.
+        var v_a = 469;  // Number Type
+        var v_b = v_a;
+        v_b = 569;  // Number Change
+        alert(v_a);
+        alert(v_b);
+        */
+
+        
+        // 값의 참조라고 한다. 값이 넘어간게 아니라 값이 존재하는 주소가 넘어간 케이스
+        var v_arrA = [1,2,3,4,5];
+        var v_arrB = v_arrA;
+        v_arrB[0] = "Hong";
+        alert(v_arrA);
+        
+        // Variable Change, 배열A인데 값 존재 주소를 공유하게 됨으로써 값이 바뀌어 있음
+        // 값을 별도로 할당시키기 위해서는 별도의 참조 리스트를 만들어야 한다.
+        var v_arrA = [1,2,3,4,5];
+        var v_arrB = [];
+        for(var i=0; i<v_arrA.length; i++) {
+            v_arrB[i] = v_arrA[i];
+        }
+        v_arrB[0] = "Hong";
+        alert(v_arrA);
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

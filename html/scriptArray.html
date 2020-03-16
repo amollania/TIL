@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // script 배열은 자바배열과 달리 고무줄이라서 마구 늘리고 줄이기가 가능하다.
+        // 배열은 index(0번부터)가 중요하며, length가 매우 유용하다.
+        // 배열 선언
+        var v_arr = [];
+        var v_arr1 = [1,2,3,4,5];
+        var v_arr2 = [7, "Hello", true, "Sleep", [34, 51, "Hong"]];
+        alert(
+            v_arr2[0] + "\n" +
+            v_arr2[1] + "\n" +
+            v_arr2[2]);
+        alert(
+            v_arr2[4][2] + "\n" +
+            v_arr2[4][3]);
+        alert(
+            "F : " + v_arr2[v_arr2.length] + "\n" +
+            "T : " + v_arr2[v_arr2.length-1]);
+        var v_arr3=[];
+        for(var i=0; i<=5; i++) {
+            // v_arr3[i] = i*i;
+            v_arr3[v_arr3.length] = i*i;
+        }
+        v_arr3[v_arr3.length] = "Final";
+        alert(v_arr3);
+
+        // test
+        var v_test = [3, 7, 11, 2, 10, 4, 9];
+
+        // 위 배열에서 최대값을 찾아내서 변수 v_max에 담으시오
+        var v_max = v_test[0];
+        for(var i=0; i<v_test.length; i++) {
+            if(v_test[i] > v_max) {
+                v_max = v_test[i];
+            }
+        }
+        alert("Max number is " + v_max);
+
+
+    </script>
+</head>
+<body>
+    Script
+</body>
+</html>

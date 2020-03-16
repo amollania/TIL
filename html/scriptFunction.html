@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Function</title>
+    <script>
+        // Function(함수)
+        // 반복되는 일은 함수로 만들어두면 유용하게 쓰인다.
+        // 함수선언
+        function f_out(p_saram) {
+            alert("Order me?" + " " + "Mr." + p_saram);
+        }
+
+        // 함수실행
+        f_out();    // Result : +undefined
+        f_out("Hong");  // Result : +Hong
+
+
+        // 함수와 return문
+        function f_add(v_num1, v_num2) {
+            return v_num1 + v_num2; // return문은 함수를 종료시킨다.
+        }
+        alert(f_add(11, 89));  // Result : 100
+        alert(f_add(f_add(50, 50), 50) + 50);
+
+
+        // 전역변수와 지역변수
+        // 함수 밖에서 선언된 변수는 전역 변수
+        // 함수 내에서 선언된 변수는 지역 변수
+        var v_local = "Global Variable";
+        var f_scope = function(v_num) {
+            if(1) {
+                var v_local = "Local Variable";
+            }
+            alert(v_local);
+        }
+        f_scope(); 
+        alert(v_local); // 지역변수가 지정될 경우, Uncaught ReferenceError:v_local is not defined
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elemental Type</title>
+</head>
+<body>
+    <center>
+    <!-- ID값은 페이지 내에서 고유한 값으로 지정해줘야 한다. -->
+    <img id="img1" src="./images/3.jpg" alt="" style="width:250px;height:250px;" onclick="alert('He is Chinese')"><br>
+    <img id="img2" src="./images/4.jpg" alt="" style="width:250px;height:250px;"><br>
+    <img id="img3" src="./images/8.jpeg" alt="" style="width:250px;height:250px;"><br>
+    <input type="button" value="Image Change" style="padding:20px;" onclick="f_click()">
+    </center>
+
+    <script>
+        // browser에서 자바스크립트 프로그램은 이벤트 위주이다.
+        // JavaScript에서 브라우저를 가리키는 키워드 Window
+        // HTML문서 전체를 가리키는 키워드 Document
+        var f_click = function() {
+            // console.log는 브라우저 업체가 제공해주는 디버깅 TOOL
+            console.log(document.getElementById("img1"));
+        }
+    </script>
+</body>
+</html>

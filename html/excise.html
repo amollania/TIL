@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        var v_a = 3;
+        var v_c = v_a++;    // 후치 연산
+        var v_c = ++v_a;    // 전치 연산
+        alert(v_c);
+        /*
+        후치 연산의 경우
+        var v_c = v_a;
+        v_a = v_a + 1;
+
+        전치 연산의 경우
+        var v_a = v_a + 1;
+        var v_c = v_a;
+        */
+
+        var v_num = 337;
+        var v_str = "337";
+
+        if(v_num == v_str) {
+            alert("True !");
+        }
+
+        // strict 비교라고 불린다. 자동형 변환이 일어나지 않는다.
+        if(v_num === v_str) {
+            alert("True !");
+        } else {
+            alert("False !");
+        }
+
+        var v_num1 = 333;
+        var v_num2 = 333;
+
+        if(v_num1 === v_num2) {
+            alert("True !");
+        }
+
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

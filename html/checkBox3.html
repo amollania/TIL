@@ -21,12 +21,17 @@
     <hr>
     <script>
         var v_ckboxs = document.getElementsByName("nm_skill");
-        var v_ckCnt = 0;
+        var v_ckCnt = 0;    // 초기값은 0
         // 다른 방법으로 구현
         function f_ck(p_this) {
-            if(p_this.checked) {v_ckCnt++}
-            else {v_ckCnt--};
-            alert("현재 체크된 갯수는 " + v_ckCnt)
+            if(!p_this.checked) {v_ckCnt--}
+            else {v_ckCnt++};
+            // 4번째가 되었을 때
+            if(v_ckCnt == 4) {
+                alert("3개만 해라!");
+                p_this.checked = false; // 마지막에 체크된 상자 해제
+                v_ckCnt -= 1; // 카운트 한개 감소
+            }
         }
     </script>
 </body>

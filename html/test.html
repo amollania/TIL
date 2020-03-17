@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS TEST</title>
+</head>
+<body>
+    <img id="id_img" src="images/1.jpeg" width="250" height="250" alt=""></br>
+    <input type="button" style="padding:25px;" value="Front" onclick="f_next()">
+    <input type="button" style="padding:25px;" value="Back" onclick="f_before()">
+
+    <script>
+        var v_imgList = ["images/1.jpeg", "images/2.jpg", "images/3.jpg", "images/4.jpg"];
+        var index = 0;
+        
+        // 줄여쓰기
+        var v_img = document.getElementById("id_img");
+        function f_next() {
+            //버튼을 누르면 이미지가 다음 이미지로 바뀐다.
+            index += 1;
+            v_img.src = v_imgList[index];
+            if (index >= v_imgList.length-1) {
+                index = -1;
+            }
+        }
+
+
+        function f_before() {
+            index -= 1;
+            if (index < 0) {
+                index = v_imgList.length-1;
+            }
+            v_img.src = v_imgList[index];
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Box Script</title>
+</head>
+<body>
+
+    Hobby <hr>
+    코딩<input name="nm_hobby" type="checkbox" value="코딩"><br>
+    수학<input name="nm_hobby" type="checkbox" value="수학"><br>
+    영어<input name="nm_hobby" type="checkbox" value="영어"><br>
+    국어<input name="nm_hobby" type="checkbox" value="국어"><br>
+    운동<input name="nm_hobby" type="checkbox" value="운동"><br>
+    용접<input name="nm_hobby" type="checkbox" value="용접"><br>
+    미술<input name="nm_hobby" type="checkbox" value="미술"><br>
+    쇼핑<input name="nm_hobby" type="checkbox" value="쇼핑"><br>
+    소매<input name="nm_hobby" type="checkbox" value="소매"><br>
+    도매<input name="nm_hobby" type="checkbox" value="도매"><br>
+    <hr>
+    <input type="text" style="padding:8px;">
+    <input type="button" value="Push Button" onclick="f_ckbox()" style="padding:8px;">
+    <input type="button" value="All Check" onclick="f_ckboxClear()" style="padding:8px;">
+    <input type="button" value="Uncheck" onclick="f_ckboxClear()" style="padding:8px;">
+
+    <script>
+        var v_ckboxs = document.getElementsByName("nm_hobby");
+        function f_ckbox() {
+            var v_cklist = 0;
+            
+            var v_resultStr = "당신이 체크한 값은 ";
+            for(var i=0; i<v_ckboxs.length; i++) {
+                if(v_ckboxs[i].checked) {
+                    v_cklist += 1;
+                    v_resultStr = v_resultStr + v_ckboxs[i].value + " ";
+                }
+            }
+            if (v_cklist > 3) {
+                alert("체크박스 3개가 넘습니다.");
+                for(var i=0; i<v_ckboxs.length; i++) {
+                    v_ckboxs[i].checked = false;
+                }
+            } else {
+                v_resultStr = v_resultStr + " 입니다.";
+                alert(v_resultStr);
+            }
+        }
+
+        var p_ckboxs = document.getElementsByName("nm_hobby");
+
+        function f_ckboxSelect() {
+            for(var i=0; i<p_ckboxs.length; i++){
+                p_ckboxs[i].checked = true;
+            }
+        }
+
+        function f_ckboxClear() {
+            for(var i=0; i<p_ckboxs.length; i++){
+                p_ckboxs[i].checked = false;
+            }
+        }
+
+
+    </script>
+
+</body>
+</html>

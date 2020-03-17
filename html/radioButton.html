@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radio Button</title>
+</head>
+<body>
+    남 <input id="id_rd1" name="nm_sb" type="radio" value="man"><br>
+    여 <input id="id_rd2" name="nm_sb" type="radio" value="female">
+
+    <p></p>
+    내국인 <input name="national" type="radio" value="korean"><br>
+    외국인 <input name="national" type="radio" value="foreign">
+
+    <p></p>
+    <input id="id_text" type="text">
+    <input type="button" value="Push Check" style="padding:20px;" onclick="f_check()">
+
+    <script>
+        var v_sbRadios = document.getElementsByName("nm_sb"); // 배열식으로 가져온다.
+        var v_nf = document.getElementsByName("national");
+
+        function f_check() {
+            for(var i=0; i<v_sbRadios.length; i++) {
+                if(v_sbRadios[i].checked) {
+                    var result = v_sbRadios[i].value;
+                }
+            }
+
+            for(var j=0; j<v_nf.length; j++) {
+                if(v_nf[j].checked) {
+                    var result2 = v_nf[j].value;
+                }
+            }
+            document.getElementById("id_text").value ="당신이 체크한 value는 " + result + "이며, " + result2 + "입니다.";
+
+        }
+
+    </script>
+
+</body>
+</html>

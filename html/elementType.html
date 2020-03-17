@@ -8,8 +8,12 @@
 <body>
     <center>
     <!-- ID값은 페이지 내에서 고유한 값으로 지정해줘야 한다. -->
-    <img id="img1" src="./images/3.jpg" alt="" style="width:250px;height:250px;" onclick="alert('He is Chinese')"><br>
-    <img id="img2" src="./images/4.jpg" alt="" style="width:250px;height:250px;"><br>
+    <img id="img1" src="./images/3.jpg" alt="" width=250 onclick="alert('He is Chinese')"><br>
+    <!-- <script> // 위 이미지 문단보다 앞설 경우, null을 리턴한다.
+        alert(document.getElementById("img1"));
+    </script> -->
+    
+    <img id="img2" src="./images/4.jpg" alt="" width=250 height=250><br>
     <img id="img3" src="./images/8.jpeg" alt="" style="width:250px;height:250px;"><br>
     <input type="button" value="Image Change" style="padding:20px;" onclick="f_click()">
     </center>
@@ -21,6 +25,12 @@
         var f_click = function() {
             // console.log는 브라우저 업체가 제공해주는 디버깅 TOOL
             console.log(document.getElementById("img1"));
+            // alert(document.getElementById("img1").src);
+            // alert(document.getElementById("img1").width);
+            // alert(document.getElementById("img1").height);
+            // alert(document.getElementById("img1").id);
+            setTimeout(function() {console.log('Works!');}, 3000);
+            document.getElementById("img1").width = 600;
         }
     </script>
 </body>

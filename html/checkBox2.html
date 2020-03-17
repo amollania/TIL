@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Checkbox</title>
+</head>
+<body>
+    당신이 보유한 스킬을 3개까지만 고르시오.<hr>
+    자바<input type="checkbox" name="nm_skill" value="java" onclick="f_ck(this)"><br>
+    자바스크립트<input type="checkbox" name="nm_skill" value="javascript" onclick="f_ck(this)"><br>
+    HTML<input type="checkbox" name="nm_skill" value="html" onclick="f_ck(this)"><br>
+    CSS<input type="checkbox" name="nm_skill" value="css" onclick="f_ck(this)"><br>
+    Python<input type="checkbox" name="nm_skill" value="python" onclick="f_ck(this)"><br>
+    Go<input type="checkbox" name="nm_skill" value="go" onclick="f_ck(this)"><br>
+    DB<input type="checkbox" name="nm_skill" value="db" onclick="f_ck(this)"><br>
+    C#<input type="checkbox" name="nm_skill" value="c#" onclick="f_ck(this)"><br>
+    C++<input type="checkbox" name="nm_skill" value="c++" onclick="f_ck(this)"><br>
+    Ruby<input type="checkbox" name="nm_skill" value="ruby" onclick="f_ck(this)"><br>
+    R<input type="checkbox" name="nm_skill" value="r" onclick="f_ck(this)"><br>
+    <hr>
+    <script>
+        var v_ckboxs=[];
+        function f_ck(p_this) {
+            var count=0;
+            v_ckboxs = document.getElementsByName("nm_skill");
+            for(var i=0; i < v_ckboxs.length; i++) {
+                if(v_ckboxs[i].checked) {
+                    count += 1;
+                    if(count ==4) {
+                        alert("3개 이상이다.");
+                        v_ckboxs[i].checked = false;
+                        count -= 1;
+                    }
+                }
+            }
+            console.log(count);
+            // 체크된 박스가 3개일때까지는 괜찮고 4번째 체크하면 3개까지만 가능하다고 메세지 듸우기
+            // 4번째 체크한 박스는 체크를 해제하도록
+            
+            // alert(p_this = false);
+            
+            // if (count > 3) {
+            //     alert("3개 넘었다.");
+            //     p_this
+            //     count=-1;
+            // }
+            
+        }
+    </script>
+</body>
+</html>

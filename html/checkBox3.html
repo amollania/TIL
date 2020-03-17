@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Checkbox</title>
+</head>
+<body>
+    당신이 보유한 스킬을 3개까지만 고르시오.<hr>
+    자바<input type="checkbox" name="nm_skill" value="java" onclick="f_ck(this)"><br>
+    자바스크립트<input type="checkbox" name="nm_skill" value="javascript" onclick="f_ck(this)"><br>
+    HTML<input type="checkbox" name="nm_skill" value="html" onclick="f_ck(this)"><br>
+    CSS<input type="checkbox" name="nm_skill" value="css" onclick="f_ck(this)"><br>
+    Python<input type="checkbox" name="nm_skill" value="python" onclick="f_ck(this)"><br>
+    Go<input type="checkbox" name="nm_skill" value="go" onclick="f_ck(this)"><br>
+    DB<input type="checkbox" name="nm_skill" value="db" onclick="f_ck(this)"><br>
+    C#<input type="checkbox" name="nm_skill" value="c#" onclick="f_ck(this)"><br>
+    C++<input type="checkbox" name="nm_skill" value="c++" onclick="f_ck(this)"><br>
+    Ruby<input type="checkbox" name="nm_skill" value="ruby" onclick="f_ck(this)"><br>
+    R<input type="checkbox" name="nm_skill" value="r" onclick="f_ck(this)"><br>
+    <hr>
+    <script>
+        var v_ckboxs = document.getElementsByName("nm_skill");
+        var v_ckCnt = 0;
+        // 다른 방법으로 구현
+        function f_ck(p_this) {
+            if(p_this.checked) {v_ckCnt++}
+            else {v_ckCnt--};
+            alert("현재 체크된 갯수는 " + v_ckCnt)
+        }
+    </script>
+</body>
+</html>

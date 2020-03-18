@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image z-index</title>
+    <style>
+        .img-list{
+            width:404px;
+            height:410px;
+            border: 5px solid rgb(219, 176, 190);
+            padding:15px;
+            margin-bottom:10px;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="img-list">
+        <img src="./images/3.jpg" width="200" height="200" alt="">
+        <img src="./images/4.jpg" width="200" height="200" alt="">
+        <img src="./images/5.jpg" width="200" height="200" alt="">
+        <img src="./images/6.jpg" width="200" height="200" alt="">
+    </div>
+
+    <div class="img-list">
+        <img src="./images/a1.jpg" width="200" height="200" alt="">
+        <img src="./images/a2.jpeg" width="200" height="200" alt="">
+        <img src="./images/a3.jpg" width="200" height="200" alt="">
+        <img src="./images/a4.jpg" width="200" height="200" alt="">
+    </div>
+
+    <div class="img-list">
+        <img src="./images/d1.jpg" width="200" height="200" alt="">
+        <img src="./images/d2.jpg" width="200" height="200" alt="">
+        <img src="./images/d3.jpeg" width="200" height="200" alt="">
+        <img src="./images/a1.jpg" width="200" height="200" alt="">
+    </div>
+
+    <input type="text" id="id_txt" value="" style="padding:10px; position: fixed; top:0px; right:0;">
+    <input type="button" value="Right !!" onclick="f_next()" style="padding:50px 200px;width:250px; position: fixed; top:50px; right:0;">
+    <input type="button" value="Left !!" onclick="f_before()" style="padding:50px 200px;width:250px; position: fixed; top: 200px; right:0;">
+    
+    <script>
+        var v_crrIndex = 0;
+        var v_divs = document.getElementsByClassName("img-list");
+        function f_zIndexInit() {
+            for(var i=0; i<v_divs.length; i++) {
+                v_divs[i].style.zIndex=100;
+            }
+        }
+
+        function f_next() {
+            v_crrIndex ++;
+            if(v_crrIndex==3) {
+                v_crrIndex = 0;
+            }
+            f_zIndexInit(); // 초기화
+            v_divs[v_crrIndex].style.zIndex = 999;
+            document.getElementById("id_txt").value = (v_crrIndex +1) + "/" + v_divs;
+        }
+
+        function f_before() {
+            v_crrIndex --;
+            if(v_crrIndex==-1) {
+                v_crrIndex = 2;
+            }
+            f_zIndexInit(); //초기화
+            v_divs[v_crrIndex].style.zIndex = 999;
+            document.getElementById("id_txt").value = (v_crrIndex +1) + "/" + v_divs;
+        }
+
+
+    </script>
+
+</body>
+</html>

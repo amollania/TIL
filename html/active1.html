@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-" class="cl_common">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Active</title>
+    <style>
+        .cl_common {
+            background: #a02b66;
+            width: 200px;
+            height: 80px;
+            color:#ddd;
+            font-size:20px;
+            padding:20px;
+            text-align: center;
+            position: absolute;
+            -webkit-text-emphasis: filled;
+        }
+        #id_lay1 {
+            left:10px;
+            top:10px;
+            background:#3d184e;
+            /* z-index는 default값 없이 무조건 큰 순자가 위로 올라오게 된다. */
+        }
+        #id_lay2 {
+            left:20px;
+            top:20px;
+            background:#16656b;
+        }
+        #id_lay3 {
+            left:30px;
+            top:30px;
+            background:#184e30;
+        }
+        #id_lay4 {
+            left:40px;
+            top:40px;
+            background:#645f19;
+        }
+        #id_lay5 {
+            left:50px;
+            top:50px;
+            background:#4e1c18;
+        }
+    </style>
+</head>
+<body>
+    <div id="id_lay1" class="cl_common" style="z-index:50;">Layer 01</div>
+    <div id="id_lay2" class="cl_common" style="z-index:40;">Layer 02</div>
+    <div id="id_lay3" class="cl_common" style="z-index:30;">Layer 03</div>
+    <div id="id_lay4" class="cl_common" style="z-index:20;">Layer 04</div>
+    <div id="id_lay5" class="cl_common" style="z-index:10;">Layer 05</div>
+    <input type="button" value="Push Me" onclick="f_zindex()" style="position: absolute; top:180px; left:120px; padding:10px 20px;">
+    <script>
+        var count = 0;
+        function f_zindex() {
+            // - 하이폰이 들어간 경우 하이폰을 빼고 다음글자를 대문자로
+            // 모든 z-index값 초기화
+            if(count==0) {
+                var v_layer = document.getElementsByClassName("cl_common");
+                for(var i=0; i<v_layer.length; i++) {
+                    v_layer[i].style.zIndex = 100;
+                    console.log(i);
+                    
+                }
+                count ++;
+            } else {
+                var v_layer = document.getElementsByClassName("cl_common");
+                for(var i=0; i<v_layer.length; i++) {
+                    v_layer[i].style.zIndex += -i*100;
+                    console.log(i);
+                }
+                count = 0;
+            }
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Textarea Javascript</title>
+</head>
+<body>
+    <input type="button" value="Push me" onclick="f_taVal()" style="padding: 10px 20px;"><br>
+    <textarea name="" id="id_ta" cols="50" rows="5">in here</textarea>
+    <script>
+        function f_taVal() {
+            alert(document.getElementById("id_ta").value); // 읽기
+            document.getElementById("id_ta").value += " Click!";
+        }
+    </script>
+</body>
+</html>

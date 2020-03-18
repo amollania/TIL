@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Div Style</title>
+    <style>
+        /* 스타일에서 산수적인 표현은 꼭 단위를 써주어야 한다. */
+        h1 {
+            margin:0;
+            margin-bottom:5px;
+        }
+
+        #frame {
+            width:100%;
+        }
+
+        #header {
+            border:5px solid rgb(42, 196, 243);
+            padding:10px;
+            position: fixed;
+            width:96.5%;
+            top:0;
+            left:0;
+            margin:0;
+            background:#fff;
+        }
+
+        #content {
+            height: 750px;
+            border: 5px solid #df438c;
+            margin:20px;
+            padding:15px;
+            margin-top:100px;
+        }
+
+        .item {
+            display: inline-block;
+            /*
+            block값은 옆에 누가 오는 것을 허락하지 않음
+            inline-block 옆에 누가 와도 된다.
+            inline 실제 내용이 차지하는 영역만 차지
+            none 실제 페이지에 존재하지만 차지하지 않고 보이지도 않음.
+            */
+            position: static;
+            /* 
+            static는 default 값으로 브라우져가 알아서 만들고, 사용자가 제어할 수 없다.
+            relative는 static로 만들어진 상태 내에서 값을 기준으로 움직인다.
+            fixed 보통 메뉴바 스크롤바 영향 안받게끔 만들 대 사용한다.
+            */
+            left:50px;
+            top: 200px;
+
+
+            margin:5px;
+            padding:10px;
+            width:150px;
+            border: 3px solid #4292f3;
+        }
+        
+        .one-item {
+            margin-left:0px;
+        }
+    </style>
+</head>
+<body>
+    <div id="frame">
+        <div id="container">
+            <div id="header"><h1>Header</h1></div>
+            <div id="content"><h1>Content</h1>
+                <div class="item">Select Menu 1</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 1</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 1</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                <div class="item">Select Menu 2</div>
+                <div class="item">Select Menu 3</div>
+                <div class="item">Select Menu 4</div>
+                
+
+
+            </div>
+            <div>Serve</div>
+            <div>Maintance</div>
+            <div>TextArea</div>
+        </div>
+    </div>
+</body>
+</html>

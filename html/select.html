@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selenct JavaScript</title>
+</head>
+<body>
+    <!-- multiple이 있으면 여러개 선택가능 -->
+    <select name="selectBox" id="id_sel" style="padding:10px;" multiple size=10>
+        <option value="Java">Java</option>
+        <option value="Python">Python</option>
+        <option value="JavaScript">JavaScript</option>
+        <option value="Ruby">Ruby</option>
+        <option value="R">R</option>
+        <option value="Go">Go</option>
+        <option value="0" selected>Please Select your</option>
+    </select>
+    <input type="button" value="Push" style="padding:10px 20px;" onclick="f_selVal()">
+    <script>
+        var v_selbox = document.getElementById("id_sel");
+        function f_selVal() {
+            // console.log(v_selbox.options);
+            /*
+            정상적인 선택 값 확인 방법
+            var v_opts = v_selbox.options;
+            for(var i=0; i<v_opts.length; i++) {
+                if(v_opts[i].selected) {
+                    alert("You selected " + v_opts[i].value); // 선택한 값 결과 알림
+                }
+            }
+            alert(v_selbox.value);
+            */
+
+            var v_opts = v_selbox.options;
+            var v_resultArr = [];
+            for(var i=0; i<v_opts.length; i++) {
+                if(v_opts[i].selected) {
+                    v_resultArr[v_resultArr.length] = v_opts[i].value;
+                }
+            }
+            alert("Selected " + v_resultArr);
+        }
+    </script>
+
+</body>
+</html>

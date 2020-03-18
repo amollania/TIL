@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select JavaScript</title>
+</head>
+<body>
+    <!-- Select 가장 많이 쓰는 이벤트는 Change -->
+    <select name="" id="id_sel" onchange="f_chgVal()" style="padding:10px 20px;">
+        <option value="Java">Java</option>
+        <option value="Python">Python</option>
+        <option value="JavaScript">JavaScript</option>
+        <option value="Ruby">Ruby</option>
+        <option value="R">R</option>
+        <option value="Go">Go</option>
+        <option value="0" selected>Please Select your</option>
+    </select><br>
+    <input type="text" id="id_txt" value="You can't writing here" readonly>
+
+    <script>
+        function f_chgVal() {
+            document.getElementById("id_txt").value = document.getElementById("id_sel").value;
+        }
+    </script>
+</body>
+</html>

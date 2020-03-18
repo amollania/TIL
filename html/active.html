@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Javascript Active</title>
+
+    <style>
+        #id_nemo {
+            width:200px;
+            height:200px;;
+            position: relative;
+            background:#fff000;
+            border:5px solid aqua;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="id_nemo" style="top:0; left:0;"></div>
+    <input type="button" value="Please LEFT TURN!" onclick="f_right()" style="padding:15px; margin-top:10px;">
+    <script>
+        var v_nemo = document.getElementById("id_nemo").style;
+        function f_right() {
+            //Script에서 스타일 제어하기(inline), 내부 스타일 접근법이 다르다.
+            if (parseInt(v_nemo.left) < 150) {
+                v_nemo.left = parseInt(v_nemo.left) + 50 + "px";
+            }
+            else if (parseInt(v_nemo.left) >= 150) {
+                v_nemo.top = parseInt(v_nemo.top) + 50 + "px";
+            }
+
+        }
+    </script>
+</body>
+</html>

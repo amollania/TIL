@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIV JavaScript</title>
+    <style>
+        div {
+            padding:10px; border:1px solid #ceafbc; margin-bottom:5px;
+            background:linear-gradient(45deg, #ff9494, #6babff);
+            color:#fff;
+        }
+        .main.main-serve{
+            background:#fff;
+            padding:20px; border:2px solid #cab4c0; margin-bottom:5px;
+            color:#777;
+        }
+        .main.main-content{
+            background:#fff;
+            padding:20px; border:3px solid #cab4c0; margin-bottom:5px;
+            color:#777;
+        }
+
+        #main {
+            background:#fff;
+        }
+        #main-serve {
+            background:#da4d88;
+        }
+    </style>
+</head>
+<body>
+    <!-- div 태그는 divide 의미로 css(스타일시트)와 함께 쓰면 거의 만능 태그 -->
+    <!-- Container로 이해하기 쉽다. 레이아웃 잡을 때 많이 사용 -->
+    <!-- 태그에 직접 스타일을 기술하는 것을 inline-style이라고 부른다. -->
+    <div class="main"><h3>컨테이너</h3></div>
+    <div class="main main-serve">물량수주</div>
+    <div class="main main-content">무역</div>
+
+    <!-- id는 페이지 내에서 하나만 지정할 것(권고사항) -->
+    <div id="main">
+        <div id="main-serve">소매업</div>
+        <div id="main-content">도매업</div>    
+    </div>
+    <script>
+
+    </script>
+</body>
+</html>

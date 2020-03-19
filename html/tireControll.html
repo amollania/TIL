@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Controll</title>
+
+</head>
+<body>
+    <h2 id="id_h2">시계 만들기</h2>
+    <div id="id_clock"></div>
+    <input type="button" value="Start !!" onclick="f_clock()">
+    <input type="button" value="Stop !!" onclick="f_clockStop()">
+    <script>
+        var v_timeId;
+
+        // 자바스크립트는 자바의 Date 객체를 벤치마킹했다.
+        // 서버 시간이 아니고, 접속자(클라이언트) 시간이어서 별로 중요하게 생각치 않았다.
+        function f_clock() {
+            var v_today = new Date(); // 현재 컴퓨터의 날짜 시간을 읽어옴
+            var v_year = v_today.getFullYear(); // 연도 읽어오기
+            var v_montly = v_today.getMonth(); // 당월 읽어오기
+            var v_day = v_today.getDay(); // 일자 읽어오기
+            var v_hour = v_today.getHours(); // 시간 가져오기
+            var v_min = v_today.getMinutes(); // 분 가져오기
+            var v_sec = v_today.getSeconds(); // 초 가져오기
+        
+            var v_timeStr = v_year + "년 " + v_montly + "월 " + v_day + "일";
+            v_timeStr += "<h1 style='font-size:50pt'>" + v_hour + "시 " + v_min + "분 " + v_sec + "초</h1>";
+        
+            document.getElementById("id_clock").innerHTML = v_timeStr;
+
+            v_timeId = setTimeout(f_clock, 1000); // 타이머 ID를 돌려준다.
+            console.log(v_timeId);
+        }
+
+        function f_clockStop() {
+            clearTimeout(v_timeId); // 실행중인 타이머를 제거하는 함수
+        } 
+
+
+        f_clock();
+
+
+        /*
+        function f_msg() {
+            alert("Hong !");
+            setTimeout(f_msg, 1000);    // 함수 이름만 써줄 것
+            // () 붙이면, 타이머와 상관없이 콜
+        }
+        f_msg();
+        // 1000ms 뒤에 함수 f_msg를 호출한다.
+        */
+
+        /* 아주 중요한 속성 innerHTML, 문자열 더하기와 궁합이 좋다. */
+
+        // alert(document.getElementById("id_h2").innerHTML);
+
+        // function f_change() {
+        //     document.getElementById("id_h2").innerHTML += "시계 맹글기";
+        // }
+
+        // for(var i=0; i<50; i++) {
+        //     setTimeout(f_change, 500)
+        // }
+
+        // setTimeout(f_change, 3000);
+        // alert(document.body.innerHTML);
+    </script>
+
+</body>
+</html>

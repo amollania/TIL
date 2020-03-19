@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random</title>
+    
+    <script>
+        // 랜덤 숫자 발생, Math객체(static)의 random 메소드를 이용한다.
+        // 0 <= Math.random() < 1
+        /*
+        for(var i=1; i<=10; i++) {
+            alert(Math.random());
+        }
+        */
+
+        /* 0~10 사이 랜덤 숫자 발생 */
+        // for(var i=1; i<=20; i++) {
+        //     alert(Math.round(Math.random()*10)); // 0 포함 반올림
+        //     alert(Math.ceil(Math.random()*10)); // 0 미포함, Math.floor()는 버림
+        // }
+
+        /* 55~100 사이 랜덤 숫자 발생 */
+        for(var i=1; i<=20; i++) {
+            // 55 ~ 100, 100-55 = 45, 55+(0~45)
+            alert(Math.ceil(Math.random()*45) +55); // 0 미포함, Math.floor()는 버림
+        }
+
+        // 랜덤은 더미 데이터를 만들거나
+        // 게임 소프트웨어에서 중요한 개체
+    </script>
+
+</head>
+<body>
+    <h2>랜덤 숫자 발생시키기</h2>
+</body>
+</html>

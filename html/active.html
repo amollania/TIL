@@ -12,25 +12,80 @@
             position: relative;
             background:#fff000;
             border:5px solid aqua;
+            border-radius: 100px;
+            background-image: url("./images/d1.jpg");
+            background-size: 250px;
+            /* transform: rotate(30deg); */
+        }
+        body {
+            background:#ddd;
         }
     </style>
 
 </head>
-<body>
-    <div id="id_nemo" style="top:0; left:0;"></div>
-    <input type="button" value="Please LEFT TURN!" onclick="f_right()" style="padding:15px; margin-top:10px;">
+<body id="body" style="background-image: url(./images/d1.jpg);">
+    <div id="id_nemo" style="top:0; left:0; transform: rotate(30deg);"></div>
+    <center>
+        <input type="button" value="Please LEFT TURN!" onclick="f_call()" style="padding:15px; margin-top:10px;">
+        <input type="button" value="Please Change!" onclick="f_change()" style="padding:15px; margin-top:10px;">
+    </center>
     <script>
+        alert(document.getElementById("id_nemo").style.transform);
+
         var v_nemo = document.getElementById("id_nemo").style;
+        var v_called = false; // 초기값은 False
+        
+        function f_call() { // Proxy 패턴(대리인을 시킴)
+            if(!v_called) {
+                f_right();
+                v_called =true; // 호출 표시
+            }
+        }
+
+        var v_gakdo = 0; // 초기 각
+
+        /*
+        if((parseInt(v_nemo.style.left)+100) >= window.innerWidth ||
+        parseInt(v_nemo.style.left) <=0) {
+            v_mvWidth = -v_mvWidth;
+        }
+
+        if((parseInt(v_nemo.style.top)+100)>= window.innerHeight ||
+        parseInt(v_nemo.style.top)<= 0) {
+            v_mvHight = -v_mvHight;
+        }
+        */
+
+
         function f_right() {
             //Script에서 스타일 제어하기(inline), 내부 스타일 접근법이 다르다.
-            if (parseInt(v_nemo.left) < 150) {
-                v_nemo.left = parseInt(v_nemo.left) + 50 + "px";
-            }
-            else if (parseInt(v_nemo.left) >= 150) {
-                v_nemo.top = parseInt(v_nemo.top) + 50 + "px";
+            if (parseInt(v_nemo.left) < window.innerWidth-260 && parseInt(v_nemo.top) == 0) {
+                v_nemo.left = parseInt(v_nemo.left) + 10 + "px";
+                v_gakdo += 10;
+                v_nemo.transform = "rotate(" + v_gakdo + "deg)";
+                document.getElementById("body").style.backgroundImage = 'url("./images/d1.jpg")';
+            } else if (parseInt(v_nemo.left) >= window.innerWidth-260 && parseInt(v_nemo.top) <= window.innerHeight-260) {
+                v_nemo.top = parseInt(v_nemo.top) + 10 + "px";
+                document.getElementById("body").style.backgroundImage = 'url("./images/d3.jpeg")';
+            } else if (parseInt(v_nemo.left) >= 0){
+                v_nemo.left = parseInt(v_nemo.left) - 10 + "px";
+                v_gakdo += 10;
+                v_nemo.transform = "rotate(" + v_gakdo + "deg)";
+                document.getElementById("body").style.backgroundImage = 'url("./images/d2.jpg")';
+            } else if (parseInt(v_nemo.top) >= 0) {
+                v_nemo.top = parseInt(v_nemo.top) - 10 + "px";
+                document.getElementById("body").style.backgroundImage = 'url("./images/6.jpg")';
             }
 
+            setInt = 10;
+            setTimeout(f_right, setInt);
         }
+
+        function f_right2() {
+
+        }
+
+        
     </script>
 </body>
 </html>

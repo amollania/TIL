@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position JavaScript</title>
+    <style>
+        
+        /*
+        Postion Deafult
+        position: static;
+        */
+        /* 실제 많이 사용되는 특별한 케이스 부모 relative, 자식 absolute
+        자식은 부모의 left, top 좌표기준을 0, 0으로 인식하고 움직인다. */
+    
+
+        #id_parent {
+            position: relative;
+            width:200px;
+            height:200px;
+            border:1px solid blue;
+        }
+
+        #id_child {
+            position: absolute;
+            left: 50;
+            width:80px;
+            top:50;
+            border:1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <h1>난 최고의 프로그래머이다.</h1>
+    <div id="id_parent">난 부모
+        <div id="id_child">난 아들</div>
+    </div>
+</body>
+</html>

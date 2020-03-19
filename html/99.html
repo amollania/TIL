@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>99단을 외자</title>
+</head>
+<body>
+
+    <div id="id_disp"></div>
+    <input type="button" value="2단 출력" onclick="f_two()">
+    <input type="button" value="구구단 전체 출력" onclick="f_gugu()">
+    <select name="" id="sel_gugu" onchange="f_selGugu()">
+        <option value="0">택하세요</option>
+        <option value="2">2단</option>
+        <option value="3">3단</option>
+        <option value="4">4단</option>
+        <option value="5">5단</option>
+        <option value="6">6단</option>
+        <option value="7">7단</option>
+        <option value="8">8단</option>
+        <option value="9">9단</option>
+    </select>
+
+    
+
+    <script>
+        function f_selGugu() {
+
+        }
+
+        function f_gugu() {
+
+        }
+
+        
+
+    function f_selGugu(){
+        // 선택된 구구단을 테이블형태로 출력
+        
+    }
+    function f_gugu() {
+        //테이블 형태로 2~9단까지 전체출력
+        alert("action");
+        for(var j=2; j<=9; j++) {
+            var v_reSult = "<table border=2>";
+            v_reSult += "<tr><th>" + j + "단</tr></th>";
+            for(var i=1; i<=9; i++) {
+                v_reSult += "<tr><td>"+ j +" X " + i + " = "+ (j*i) +"</td></tr>";
+            }
+            v_reSult += "</table>";
+            document.getElementById("id_disp").innerHTML += v_reSult;
+        }
+    }
+    
+    function f_two() {
+        var v_reSult = "<table border=2>";
+        v_reSult += "<tr><th>2단</th></tr>";
+        for(var i=1; i<=9; i++){
+            v_reSult += "<tr><td>"+ "2 X "+ i + " = " + (2 * i) +"</td></tr>"; 
+        }
+        v_reSult += "</table>";
+        document.getElementById("id_disp").innerHTML = v_reSult;
+    }
+
+    
+    </script>
+</body>
+</html>

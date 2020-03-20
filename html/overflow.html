@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,26 +8,78 @@
     <style>
         #id_par {
             /* 부모 영역을 벗어난 자식 감추기 */
-            overflow: hidden; /* hidden, scroll, auto */
-            width:220px;
-            height: 300px;
-            border:5px solid blue;
+            /* overflow: hidden; /* hidden, scroll, auto */
+            position: relative;
+            width: 220px;
+            height: 210px;
+            border: 5px solid blue;
         }
-        #id_chi {
-            width:410px;
-            border:5px solid cadetblue;
+
+        #id_chi1 {
+
+        }
+
+        #id_chi2 {
+            left: 800px;
+        }
+        .cl_child {
+            position: absolute;
+            width: 811px;
+            height: 200px;
+            border: 5px solid chartreuse;
         }
     </style>
 </head>
+
 <body>
     <h3>Style Overflow는 자식이 부모영역을 넘어가버리는 경우를 컨트롤</h3>
     <div id="id_par">
-        <div id="id_chi">
+        <div id="id_chi1" class="cl_child">
             <img src="./images/4.jpg" width="200" height="200">
             <img src="./images/a1.jpg" width="200" height="200">
             <img src="./images/a2.jpeg" width="200" height="200">
             <img src="./images/a3.jpg" width="200" height="200">
         </div>
+
+        <div id="id_chi2" class="cl_child">
+            <img src="./images/d1.jpg" width="200" height="200">
+            <img src="./images/d2.jpg" width="200" height="200">
+            <img src="./images/a4.jpg" width="200" height="200">
+            <img src="./images/d3.jpeg" width="200" height="200">
+        </div>
     </div>
+    <hr>
+    <input type="button" value="Push Me!" onclick="f_slide()" style="padding:10px 20px;">
+
+    <script>
+        var v_child1 = document.getElementById("id_chi1");
+        var v_child2 = document.getElementById("id_chi2");
+
+        
+
+        function f_slide() {
+            if(!v_child1.style.left) {
+                v_child1.style.left = "0px"; // 강제 스크립트로 초기화 가능
+                v_child2.style.left = "812px";
+            }
+            v_child1.style.left = parseInt(v_child1.style.left) - 10 + "px";
+            v_child2.style.left = parseInt(v_child2.style.left) - 10 + "px";
+
+            if(parseInt(v_child1.style.left) + 822 < 0) {
+                // v_child1.style.left = parseInt(v_child1.style.left) + 822+"px";
+                console.log(v_child1.children);
+                // 화면 벗어난 순간에 이미지 바꿔치기
+                for(var i=0; i<v_child1.children.length; i++) {
+                    v_child1.children[i].src = "images/6" + ".jpg";
+                }
+                v_child1.style.left = parseInt(v_child1.style.left) + 822+"px";
+            }
+            if(parseInt(v_child2.style.left) + 822 < 0) {
+                v_child2.style.left = parseInt(v_child2.style.left) + 822+"px";
+            }
+            setTimeout(f_slide, 10);
+        }
+    </script>
 </body>
+
 </html>

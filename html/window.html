@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Window</title>
+
+    <style>
+        .container {
+            text-align: center;
+        }
+
+        input[type="button"] {
+            padding: 15px 25px;
+            margin: 10px auto;
+        }
+
+        img {}
+    </style>
+
+</head>
+
+<body>
+    <div id="container">
+        <input id="id_par" type="text" value="아무것도 없다.">
+        <input type="button" value="New Open" onclick="f_new()">
+        <input type="button" value="Send" onclick="f_sendNew()">
+        <input type="button" value="Close" onclick="f_close()">
+    </div>
+
+    <script>
+        // JavaScript에서 윈도우를 가르키는 키워드(예약어) window
+        var v_newWin;
+        function f_new() {
+            v_newWin = window.open("windowNew.html", "hsm", "width=400, height=400, left=100, top=100");
+        }
+
+        // document는 window()에 소속된 개체
+        function f_sendNew() {
+            alert("텍스트 전달");
+            v_newWin.document.getElementById("id_child").value = document.getElementById("id_par").value;
+        }
+
+        function f_close() {
+            v_newWin.close();
+        }
+    </script>
+</body>
+
+</html>

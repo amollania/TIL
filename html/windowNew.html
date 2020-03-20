@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Window</title>
+
+    <style>
+        .container {
+            text-align: center;
+        }
+
+        input[type="button"] {
+            padding: 15px 25px;
+            margin: 10px auto;
+        }
+
+        img {}
+    </style>
+
+</head>
+
+<body>
+    <div id="container">
+        <input id="id_child" type="text" value="열린창 테스트">
+        <input type="button" value="Opener" onclick="f_sendOpener()">
+    </div>
+
+    <script>
+        // 열어둔 창을 의미하는 예약어, 키워드(병따개) Opener
+        function f_sendOpener() {
+            opener.document.getElementById("id_par").value =
+                document.getElementById("id_child").value;
+        }
+    </script>
+</body>
+
+</html>

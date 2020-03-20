@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Write</title>
+
+    <style>
+        input[type="button"] {
+            padding: 15px 25px;
+            display: table;
+            margin: 0 auto;
+        }
+    </style>
+
+</head>
+<body>
+
+    <center>
+        <h1>프로그래멍멍</h1>
+        <h2>프로그래멍멍</h2>
+        <h3>프로그래멍멍</h3>
+        <h4>프로그래멍멍</h4>
+        <h5>프로그래멍멍</h5>
+        <h6>프로그래멍멍</h6>
+        <h5>프로그래멍멍</h5>
+        <h4>프로그래멍멍</h4>
+        <h3>프로그래멍멍</h3>
+        <h2>프로그래멍멍</h2>
+        <h1>프로그래멍멍</h1>
+    </center>
+
+    <input type="button" value="Push Me" onclick="f_enter()" style="padding:15px 25px;">
+
+    <script>
+        // 권장되지는 않지만 잘쓰면 유용한 document.write(문자열) 메소드
+        document.write("<h2>Is write?</h2>");
+    
+        function f_enter() {
+            document.write("<center>");
+            var v_bang = true; // Flag 변수라고 한다.
+            var i=1;
+            for(;i>=1 && i<=6;) {
+                if(i==6) v_bang = false;    // 상태 변경
+                document.write("<h" + i + ">프로그래멍멍멍</" + i +">\n");
+                if(v_bang) {
+                    i++;    // 증가상황
+                } else {
+                    i--;    // 감소상황
+                }
+            }
+
+            // for(var i=1; i<=6; i++) {
+            //     document.write("<h" + j + ">프래그래멍멍</" + j + ">" +"\n");
+            //     if(i<=6 && j<=6) {
+            //         j += 1;
+            //     }
+            //     if(i>=6 && j>=6) {
+            //         i -= 1;
+            //         j -= 1;
+            //     }
+            // }
+            document.write("</center>");
+        }
+
+    </script>
+</body>
+</html>

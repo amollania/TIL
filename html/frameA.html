@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frame Set</title>
+
+    <style>
+        .container {
+            text-align: center;
+        }
+
+        input[type="button"] {
+            padding: 15px 25px;
+            margin: 10px auto;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <input id="frA_txt" type="text" value="프레임A">
+    <input id="frA_btn" type="button" value="Push Me" onclick="f_btrA()">
+
+    <script>
+        function f_btrA() {
+            // parent가 키워드, parent 대신 top이란 키워드를 많이 쓸, 최상위 윈도우를 의미한다.
+            parent.frames[1].document.getElementById("frB_txt").value =
+            document.getElementById("frA_txt").value;
+
+            top.frames[2].document.getElementById("frC_txt").value =
+            document.getElementById("frA_txt").value;
+        }    
+    </script>
+
+</body>
+
+</html>

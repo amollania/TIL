@@ -1,0 +1,15 @@
+<!--
+    FrameSet, Frame은 피싱사이트에서 정보해킹에
+    악용됨으로써 HTML5에서 지원하지 않기로 했다.
+    상황에 따라 Internet(내부 네트워크)에서 사용하는 것은 괜찮다.
+    
+    제일 바깥쪽 FrameSet만 최상위 부모로 사용하고, 중간에 나오는 frameSet은 무시한다.
+-->
+
+<frameset rows="30%, *">
+    <frame src="frameA.html"></frame>
+    <frameset cols="50%, *">
+        <frame src="frameB.html"></frame>
+        <frame src="frameC.html"></frame>
+    </frameset>
+</frameset>

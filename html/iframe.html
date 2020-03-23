@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iframe Document</title>
+
+    <style>
+        .container {
+            text-align: center;
+        }
+
+        input[type="button"] {
+            padding: 15px 25px;
+            margin: 10px auto;
+        }
+        input {
+            padding: 15px 25px;
+            margin: 10px auto; 
+        }
+    </style>
+
+</head>
+<body style="height:100%">
+    <!-- inline frame 마이크로소프트가 만든 이후 표준으로 자리잡은 명령문 -->
+    <iframe id="id_iframe1" src="https://news.naver.com/" width="100%" height="50%" frameborder="0"></iframe>
+    <iframe id="id_iframe2" src="./frameWindow.html" width="100%" height="20%;" frameborder="2"></iframe>
+    
+    <input id="id_ifrm" type="text" value="iFRME">
+    <input id="new_btn" type="button" value="Naver Dir" onclick="f_clk()">
+    
+    <script>
+        function f_clk() {
+            document.getElementById("id_iframe1").src="https://dict.naver.com/";
+            // iframe 속 새창.html에 접근하기
+            var v_ifrWin = document.getElementById("id_iframe2").contentWindow;
+            v_ifrWin.document.getElementById("new_txt").value =
+            document.getElementById("id_ifrm").value;
+
+            v_ifrmDoc = document.getElementById("id_ifrm").contentDocument;
+            v_ifrmDoc.document.getElementById("new_txt").value = "Push Me";
+        }
+    </script>
+</body>
+</html>

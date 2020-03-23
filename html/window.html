@@ -30,11 +30,6 @@
     </div>
 
     <script>
-        // JavaScript에서 윈도우를 가르키는 키워드(예약어) window
-        var v_newWin;
-        function f_new() {
-            v_newWin = window.open("windowNew.html", "hsm", "width=400, height=400, left=100, top=100");
-        }
 
         // document는 window()에 소속된 개체
         function f_sendNew() {
@@ -42,8 +37,19 @@
             v_newWin.document.getElementById("id_child").value = document.getElementById("id_par").value;
         }
 
+        // JavaScript에서 윈도우를 가르키는 키워드(예약어) window
+        var v_newWin;
+        function f_new() {
+            v_newWin = window.open("windowNew.html", "hsm", "width=400, height=400, left=100, top=100");
+        }
+
         function f_close() {
-            v_newWin.close();
+            if(!v_newWin) {
+                alert("열린창이 업성");
+            } else {
+                v_newWin.close();
+                v_newWin = null;
+            }
         }
     </script>
 </body>

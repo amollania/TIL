@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube</title>
+</head>
+<body>
+    <iframe id="id_youtube" width="889" height="500"
+    src="https://www.youtube.com/embed/wxnRIGzSQNE"
+    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe>
+
+    <input type="button" value="Pushed Me" onclick="f_sel()">
+    <script>
+        var v_videos = "a7qyW1G350g"
+        var v_ytbStr = "https://www.youtube.com/embed/";
+        function f_sel() {
+            document.getElementById("id_youtube").src= v_ytbStr + v_videos;
+
+        }
+    </script>
+</body>
+</html>

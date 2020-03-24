@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEST RESIZE</title>
+</head>
+
+<body>
+    <div id="id_dv">
+        <img src="./images/4.jpg" width="300" height="300" alt="">
+    </div>
+
+    
+
+    <script>
+        
+
+        alert(document.getElementById("id_dv").style.display);
+        // alert(window.innerWidth, window.innerHeight);
+        
+        window.onresize = function () {
+            // 사이즈가 변경될 때
+            // 이미지가 화면 중앙에 오도록
+            document.getElementById("id_dv").style.display += "table";
+            document.getElementById("id_dv").style.margin += "0 auto";
+        }
+
+        window.addEventListener("load", function () {
+            // 페이지 로딩이 끝나면
+            // 이미지가 화명 중앙에 오도록
+            document.getElementById("id_dv").style.display += "table";
+            document.getElementById("id_dv").style.margin += "0 auto";
+        });
+    </script>
+</body>
+
+</html>

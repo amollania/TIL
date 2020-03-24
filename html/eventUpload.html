@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Upload</title>
+</head>
+
+<body>
+    <!--
+        태그에 직접 이벤트와 이벤트 핸들러를 기술하는 법
+        직관적이어서 디버깅에 유리하지만, html 소스가 있어 보이질 않음.
+    -->
+    <input id="id_btn1" type="button" value="Push1" onclick="f_click()">
+    <input id="id_btn2" type="button" value="Push2">
+    <input id="id_btn3" type="button" value="Push3">
+    <select name="" id="id_sel">
+        <option value="python">Python</option>
+        <option value="java">Java</option>
+        <option value="javascript">JavaScript</option>
+    </select>
+
+    <script>
+
+        // 첫번째 이벤트 연결법
+        function f_click() {
+            alert("D!!");
+        }
+
+        // 두번째 이벤트 연결법
+        document.getElementById("id_btn2").onclick = function () {
+            alert("F!!");
+        }
+
+        // 세번째 이벤트 연결법 (추천방법, 최신버전)
+        document.getElementById("id_btn3").addEventListener("click", function() {
+            alert("Z!!");
+        });
+
+
+        // 첫번째 이벤트 연결법
+        document.getElementById("id_sel").addEventListener("change", function() {
+            alert("선택하신 값은 : " + document.getElementById("id_sel").value);
+        });
+
+        // 두번째 이벤트 연결법
+        document.getElementById("id_sel").onchange=f_call;
+        function f_call() {
+            alert("Call ME");
+        }
+
+
+    </script>
+</body>
+
+</html>

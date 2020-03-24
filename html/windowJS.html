@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Window JS</title>
+</head>
+<body>
+    <div id="content"></div>
+
+    <script>
+        var a = "변수";
+        // window.a 실제로는 속성에 해당
+        // window.alert("Caution");
+
+        var f_function = function() {
+            alert("This is function");
+        }
+
+        // window 객체에 자주 사용되는 이벤트 onload, onresize
+        // onload는 페이지 로딩이 끝나면 자동 발생
+        window.onload = function() {
+            alert("Loading Completed")
+        }
+
+        window.addEventListener("resize", function() {
+            document.getElementById("content").innerHTML += " 리사이즈 변경완료";
+        })
+
+    </script>
+</body>
+</html>

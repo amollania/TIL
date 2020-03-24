@@ -4,24 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test</title>
+
+    <style>
+        input[type="button"] {
+            padding: 15px 25px;
+            margin: 10px auto;
+        }
+    </style>
+
 </head>
 <body>
+
+
+    <input type="button" value="Push Me" onclick="randomStart()" >
+    <div id="id_disp"></div>
+
     <script>
         // 로또번호 생성하기 중복체크로 좋은 사용 예
         var v_nums = [];
+        var v_ranNum = null;
 
         for(var i=1; i<=45; i++){
             v_nums[v_nums.length] = i;
         }
 
-        // alert(v_nums); 확인 끝
-
-        for(var j=1; j<=6; j++) {
-            while(v_ranNum) {
-                var v_ranNum = v_nums[Math.floor(Math.random()*(v_nums.length))];
+        // 중복체크는 사용빈도가 높아서 함수로 사용
+        function ckRepeat(p_arr, p_num) {
+            var v_isRepeat = false;
+            for(var i=0; i< p_arr.length; i++) {
+                if(p_arr[i] == p_num) {
+                    v_isRepeat = true;  // false라는 가정이 틀렸다. 같은게 존재
+                    break;  // 같은 값 1개만 체크
+                }
             }
-            
+            return v_isRepeat;
         }
+
+        function randomStart() {
+            // alert(v_nums); 확인 끝
+            var v_selNums = [];
+            for(;1;) {
+                if(v_selNums.length >= 6) break;
+
+                v_ranNum = v_nums[Math.floor(Math.random()*(v_nums.length))]; // 1~45 랜덤 숫자 선택
+  
+                 // 같은게 없을 때 곧 v_isRepeat이 false인 경우에만
+                if(!ckRepeat(v_selNums, v_ranNum)) {
+                    v_selNums[v_selNums.length] = v_ranNum;
+                }
+            }
+
+            alert("로또번호 결과는"  + v_selNums + "입니다.");
+            document.getElementById("id_disp").innerHTML += " "+ v_selNums + "<br>";
+        }
+
+        
+
     </script>
 </body>
 </html>

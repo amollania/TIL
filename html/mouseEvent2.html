@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Event2</title>
+
+    <link rel="shortcut icon" href="./images/plant.png" type="image/x-icon">
+
+    <style>
+        #wrapper {
+            width: 100vh;
+            height: 100vh;
+            border:1px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <strong>현재 상태</strong>
+    <div id="status">[null]</div>
+
+    <img id="curser" src="./images/d3.jpeg" width=150 height="150" style="position: absolute; border-radius: 75px;" alt="">
+
+    <div id="wrapper" onmousemove="f_mv()">치즈와퍼</div>
+
+    <script>
+        var v_img = document.getElementById("curser");
+        function f_mv() {
+            document.getElementById("status").innerHTML = event.clientX + " " + event.clientY;
+
+            v_img.style.left = event.clientX + "px";
+            v_img.style.top = event.clientY + "px";
+        }
+    </script>
+</body>
+</html>

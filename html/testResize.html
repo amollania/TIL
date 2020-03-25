@@ -9,30 +9,81 @@
 
 <body>
     <div id="id_dv">
-        <img src="./images/4.jpg" width="300" height="300" alt="">
+        <img id="id_img" src="./images/pl.png" width="200" height="200" alt="">
+        <img id="id_img2" src="./images/plant.png" width="300" height="300" alt="">
+        <img id="id_img3" src="./images/mercury.png" width="300" height="300" alt="">
     </div>
 
     
 
     <script>
-        
+        var v_img = document.getElementById("id_img");
+        var v_img2 = document.getElementById("id_img2");
+        var v_img3 = document.getElementById("id_img3");
 
-        alert(document.getElementById("id_dv").style.display);
-        // alert(window.innerWidth, window.innerHeight);
-        
-        window.onresize = function () {
-            // 사이즈가 변경될 때
-            // 이미지가 화면 중앙에 오도록
-            document.getElementById("id_dv").style.display += "table";
-            document.getElementById("id_dv").style.margin += "0 auto";
+        var v_centerX, v_centerY;
+
+        v_img.style.position = "absolute";
+        v_img2.style.position = "absolute";
+        v_img3.style.position = "absolute";
+
+        function f_center() {
+            var v_winWidth = window.innerWidth;
+            var v_winHeight = window.innerHeight;
+            v_centerX = v_winWidth /2; // 화면 중앙 x값
+            v_centerY = v_winHeight /2; // 화면 중앙 y값
+
+            v_img.style.left = (v_winWidth - parseInt(v_img.width))/2 + "px";
+            v_img.style.top = (v_winHeight - parseInt(v_img.height))/2 + "px";
         }
+
+        var v_trans = 0;
+        function f_Rotate() {
+            v_trans = v_trans + 0.5;
+            v_trans = v_trans % 360;
+            v_img.style.transform = "rotateZ(" + v_trans +"deg)";
+            setTimeout(f_Rotate, 10);
+        }
+
+        var v_RadiusG = 200;
+        var v_transG = 0;
+        function f_gRotate() {
+            v_transG = v_transG +0.3;
+            v_transG = v_transG % 360;
+            v_img2.style.transform = "rotateZ(" + v_transG+ "deg)";
+            v_img2.style.left = v_centerX + v_RadiusG*Math.cos(v_transG *Math.PI/180) + (-150) + "px"; 
+            v_img2.style.top = v_centerY + v_RadiusG*Math.sin(v_transG *Math.PI/180) + (-150) + "px";
+
+            setTimeout(f_gRotate, 10);
+        }
+
+        var v_RadiusM = 200;
+        var v_transM = 0;
+        function f_mRotate() {
+            v_transM = v_transM + 0.5;
+            v_transM = v_transM % 360;
+            v_img3.style.transform = "rotateZ(" + v_transM +"deg)";
+            v_img3.style.left = parseInt(v_img2.style.left) + v_RadiusM*Math.cos(v_transM*Math.PI/180) + (-300)  + "px"; 
+            v_img3.style.top = parseInt(v_img2.style.top) + v_RadiusM*Math.sin(v_transM*Math.PI/180) + (-300) + "px";
+
+            setTimeout(f_mRotate, 10);
+        }
+        
 
         window.addEventListener("load", function () {
             // 페이지 로딩이 끝나면
             // 이미지가 화명 중앙에 오도록
-            document.getElementById("id_dv").style.display += "table";
-            document.getElementById("id_dv").style.margin += "0 auto";
+            f_center();
+            f_Rotate();
+            f_gRotate();
+            f_mRotate();
         });
+
+        window.onresize = function () {
+            f_center();
+            
+        }
+
     </script>
 </body>
 

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Event</title>
+
+    <style>
+        #id_box {
+            width:300px;
+            height: 300px;
+            border: 1px solid #ddd;
+
+            font-size: 2em;
+            color:red;
+        }
+
+        #grandMother {
+            width:500px ;
+            height:500px;
+            padding:20px;
+            border:1px solid #000;
+            margin-bottom:50px;
+        }
+
+        #mother {
+            width:300px;
+            height: 300px;
+            padding:20px;
+            border:1px solid red;
+        }
+
+        #me {
+            width:200px;
+            height: 200px;
+            padding:20px;
+            border:1px solid green;
+        }
+
+    </style>
+
+</head>
+<body>
+    <!-- a태그 href에 자바스크립트 이벤트를 걸지 않는다. -->
+    <a href="#" target="_blank" onclick="f_ck2()">누렁이로 바로가기</a>
+
+    <strong>현재 상태</strong>
+    <div id="id_status">[null]</div>
+
+    <div id="grandMother" onmouseover="f_ck(this.id)">
+        할머니
+        <div id="mother" onmouseover="f_ck(this.id)">
+            어머니
+            <div id="me" onmouseover="f_ck(this.id)">아들</div>
+        </div>
+    </div>
+
+    <strong>현재 상태</strong>
+    <div id="id_status2">[null]</div>
+    <div id="id_box" onmouseover="f_mover()" onmouseout="f_out()" onmousedown="f_down()" oncontextmenu="f_context()">섬광탄</div>
+
+    <script>
+        var v_box = document.getElementById("id_box");
+        
+        function f_mover() {
+            v_box.style.backgroundColor="yellow";
+        }
+
+        function f_out() {
+            v_box.style.backgroundColor="black";
+        }
+
+        function f_down() {
+            // 마우스를 눌렀을 때
+            v_box.style.backgroundColor="";
+            alert(event.button); /* 왼쪽에서부터 0, 1, 2 */
+            if (event.button ==1) {
+                document.getElementById("id_status2").innerHTML = "ㅇㅇ";                
+            } else if(event.button ==2) {
+                document.getElementById("id_status2").innerHTML = "어쩔 그건 안돼";
+            }
+        }
+
+        function f_context() {
+            event.preventDefault();
+        }
+
+        function f_ck(p_id) {
+            event.stopPropagation(); // 이벤트 버블링을 막기에 꼭 기억해야 한다.
+            document.getElementById("id_status").innerHTML = p_id;
+            // 이벤트가 전파됨을 확인
+            // 이런경우 이벤트 버블링이라고 부른다. 주의하지 않으면 예상치 않은 오류를 발생
+        }
+
+        function f_ck2() {
+            event.preventDefault(); // 기본동작(built-in) 막기 (a 태그가 비활성화 되어버린다)
+            console.log("뭐하려 했더라");
+            document.getElementById("id_status").innerHTML = "뭐하려고 했지?";
+        }
+
+        function f_ck3() {
+            console.log("이것도 동작함?");
+
+        }
+
+    </script>
+</body>
+</html>

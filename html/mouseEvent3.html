@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Event3</title>
+    <style>
+        #id_nemo {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border: 3px solid blueviolet;
+        }
+
+        #id_nemo2 {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border: 3px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div id="id_nemo" onmousedown="f_mdown()" onmouseup="f_mup()"></div>
+    <div id="id_nemo2" onmousedown="f_mdown2()" onmouseup="f_mup2()"></div>
+   
+    <script>
+        var v_nemo = document.getElementById("id_nemo");
+        var v_isPressed = false;    // 처음엔 안 눌렀으니, false로 초기화
+        var v_initX, v_initY;   // 마우스를 처음 눌렀을 때의 좌표값
+        var v_nemoX, v_nemoY;
+
+        function f_mdown() {
+            if(event.button ==0) { // 왼쪽부터 0, 1, 2
+                v_isPressed = true; // 왼쪽버튼 눌렀음을 표시
+                v_initX = event.clientX;
+                v_initY = event.clientY;
+
+                v_nemoX = parseInt(v_nemo.style.left)
+                v_nemoY = parseInt(v_nemo.style.top)
+            }
+        }
+
+        function f_mup() {
+            v_isPressed = false;
+        }
+
+        document.addEventListener("mousemove", function() {
+            if(v_isPressed) {
+                v_nemo.style.left = v_nemoX + (event.clientX - v_initX) + "px";
+                v_nemo.style.top = v_nemoY + (event.clientY - v_initY) + "px";
+            }
+            
+            // console.log(event.clientX);
+            // console.log(event.clientY);
+        });
+
+
+
+
+        var v_nemo2 = document.getElementById("id_nemo2");
+        var v_isPressed2 = false;    // 처음엔 안 눌렀으니, false로 초기화
+        var v_init2X, v_init2Y;   // 마우스를 처음 눌렀을 때의 좌표값
+        var v_nemo2X, v_nemo2Y;
+
+        function f_mdown2() {
+            if(event.button ==0) { // 왼쪽부터 0, 1, 2
+                v_isPressed2 = true; // 왼쪽버튼 눌렀음을 표시
+                v_init2X = event.clientX;
+                v_init2Y = event.clientY;
+
+                v_nemo2X = v_nemo2.getBoundingClientRect().left;
+                v_nemo2Y = v_nemo2.getBoundingClientRect().top;
+            }
+        }
+
+        function f_mup2() {
+            v_isPressed2 = false;
+            // 움직임 구현할 때 기억하면 좋은 메소드
+            // vlock형 객체의 left(x), top(y), width, height값을 가져온다.
+            console.log("left : ",v_nemo2.getBoundingClientRect().top);
+            console.log("top : ",v_nemo2.getBoundingClientRect().left);
+            console.log("width : ",v_nemo2.getBoundingClientRect().width);
+            console.log("heigth : ",v_nemo2.getBoundingClientRect().height);
+        }
+
+        document.addEventListener("mousemove", function() {
+            if(v_isPressed2) {
+                v_nemo2.style.left = v_nemo2X + (event.clientX - v_init2X) + "px";
+                v_nemo2.style.top = v_nemo2Y + (event.clientY - v_init2Y) + "px";
+            }
+            // console.log(event.clientX);
+            // console.log(event.clientY);
+        });
+        
+    </script>
+</body>
+</html>

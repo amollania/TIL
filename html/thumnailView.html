@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>미리보기</title>
+
+    <style>
+        input[type="file"] {
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--
+        사용자 파일 선택상자, 일반적으로 이미지 파일 선택하는 곳에만 사용한다.
+
+        자바스크립트는 기본적으로 사용자 시스템의 파일을 읽을 수도 없으며,
+        사용자 시스템에 파일을 쓸 수도 있음.
+        허락된 건 사용자가 선택해주는 파일을 읽을 수만 있음.
+
+        구문은 이렇게 밖에 사용하지 않기 때문에 이 내용을 숙지하고 있을 것.
+    -->
+    <input id="id_file" multiple type="file" value="" accept=".jpg, .gif, .png, .jpeg" onchange="f_changeImg()"><br>
+    <div id="id_disp"></div>
+    <!-- <img id="id_img" width="500" height="500" src="" alt="Image"> -->
+    <div id="id_text"></div>
+
+    <script>
+        var v_fileIn = document.getElementById("id_file");
+        var v_img = document.getElementById("id_img");
+        var v_text = document.getElementById("id_text");
+        var v_disp = document.getElementById("id_disp");
+
+        function f_changeImg() {
+            var v_file = v_fileIn.files[0];   // file 속성이 중요하다. file배열로 인식.
+            // 파일 읽기, 파일리더 객체가 필요하다.
+            var v_fileReader = new FileReader();
+        
+            // v_fileReader.readAsText; // 가끔 사용한다고 하네요.
+            v_fileReader.readAsDataURL(v_file); // 이미지 파일 읽을 때에는 readAsDataURL
+
+
+            // 파일리더 객체는 다 읽었으면 onload 이벤트를 발생시킨다.
+            // onload를 쓰는 이유는 다른 스크립트 진행과 동시에 작업을 진행할 수 있기 때문이다. - 비동기 방식
+            // 사용자가 파일을 여러개 선택하면 모두 위치시키기
+            
+            v_fileReader.onload = function() {
+                // alert(v_fileReader.result); // 결과를 result 속성에 담는다.
+                var v_imgStr = "<img src=" + v_fileReader.result + ">";
+                v_disp.innerHTML = v_imgStr;
+
+                v_text.innerHTML += v_disp.clientWidth + " * ";
+                v_text.innerHTML += v_disp.clientHeight;
+            }
+
+        }
+    </script>
+
+</body>
+</html>

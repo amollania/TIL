@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Methods</title>
+
+    <style>
+        div {
+            position: absolute;
+            border: 1px solid black;
+            width: 200px;
+            height: 200px;
+        }
+
+        input, button{
+            padding:5px 15px;
+        }
+
+        #img1{
+            width:200px;
+        }
+
+    </style>
+</head>
+<body>
+    <button id="id_btn">I'am Button</button>
+    <input type="button" value="Move" onclick="f_mv()">
+    <input type="button" value="Remove" onclick="f_remCh()">
+    <div id="id_disp" style="top:100px;"></div>
+    <div id="id_disp2" style="top:320px;"></div>
+    <script>
+        var v_btn = document.getElementById("id_btn");
+        var v_disp = document.getElementById("id_disp");
+        var v_disp2 = document.getElementById("id_disp2");
+
+        function f_remCh() {
+            // appendChild <-> removeChild
+            // for(var i=0; i<v_disp.children.length; i++) {
+            //     v_disp.removeChild(v_disp.children[i]);
+            // }
+            v_disp.innerHTML = ""; // 전체 지우기
+            
+        }
+
+        function f_mv() {
+            var v_img1 = document.getElementById("img1");
+            // 이미 존재하는 객체를 다른 곳에 붙이면 이동해버림
+            v_disp2.appendChild(v_img1);
+        }
+
+        var v_imgs = ["d2.jpg", "d3.jpeg", "a3.jpg", "a4.jpg"];
+        var v_index =0;
+
+        v_btn.onclick=function() {
+            // Tag 객체 생성
+            var v_img = document.createElement("img"); // 메모리 상에 img 객체가 생성된다.
+            var v_imgPath = "./images/";
+            v_img.setAttribute("src", v_imgPath + v_imgs[v_index]);
+            v_img.setAttribute("width", "200");
+            v_img.setAttribute("height", "200");
+            v_img.setAttribute("id", "img" +(v_index+1));
+            v_index++;
+
+            // 이미지 게시 위치
+            v_disp.appendChild(v_img);
+
+            // 이미지 주소 위치 알림
+            // alert(v_img.getAttribute("src"));
+        }
+
+
+    </script>
+</body>
+</html>

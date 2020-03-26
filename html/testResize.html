@@ -5,6 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TEST RESIZE</title>
+
+    <style>
+        input[type="button"] {
+            padding: 15px 25px;
+            margin: 10px auto;
+        }
+    </style>
 </head>
 
 <body>
@@ -63,8 +70,9 @@
             v_transM = v_transM + 0.5;
             v_transM = v_transM % 360;
             v_img3.style.transform = "rotateZ(" + v_transM +"deg)";
-            v_img3.style.left = parseInt(v_img2.style.left) + v_RadiusM*Math.cos(v_transM*Math.PI/180) + (-300)  + "px"; 
-            v_img3.style.top = parseInt(v_img2.style.top) + v_RadiusM*Math.sin(v_transM*Math.PI/180) + (-300) + "px";
+
+            v_img3.style.left = (v_centerX - parseInt(v_img2.style.left)/2) + v_RadiusM*Math.cos(v_transM*Math.PI/180) + pareseInt() "px"; 
+            v_img3.style.top = (v_centerY - parseInt(v_img2.style.top)/2) + v_RadiusM*Math.sin(v_transM*Math.PI/180) + (-300) + "px";
 
             setTimeout(f_mRotate, 10);
         }

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5 NEW TAG</title>
+    <style>
+        #id_disp {
+            width: 200px;
+            height: 200px;
+            border: 1px solid darkgoldenrod;
+            font-size: 2.2em;
+        }
+
+        input, input[type="file"] {
+            font-size: 20px;
+            height: 35px;
+        }
+        
+
+    </style>
+</head>
+<body>
+
+    <input id="id_color" type="color" value="Color" onchange="f_chColor()">
+    <input id="id_btn" type="button" value="색깔 바꾸기">
+    <input id="id_btn2" type="button" value="1초마다 랜덤 바꾸기">
+    <input id="id_origin" type="button" value="Origin" onclick="f_origin()">
+    <div id="id_disp">Hello !!</div>
+    <div id="id_text"></div>
+    <!-- html에 추가된 태그 중 쓸모있는 태그 -->
+    <!-- 색상 선택 상자 -->
+
+    <script>
+        var v_disp = document.getElementById("id_disp");
+        var v_colorBox = document.getElementById("id_color");
+        var v_btn =document.getElementById("id_btn");
+        var v_btn2 = document.getElementById("id_btn2");
+        var v_text = document.getElementById("id_text");
+        var v_hexa = [];
+        var stopThis = false;
+
+        for(var i=1; i<=9; i++) {
+            v_hexa[i] =i;
+        }
+        v_hexa[v_hexa.length] = "a";
+        v_hexa[v_hexa.length] = "b";
+        v_hexa[v_hexa.length] = "c";
+        v_hexa[v_hexa.length] = "d";
+        v_hexa[v_hexa.length] = "e";
+        v_hexa[v_hexa.length] = "f";
+
+        function f_ranHexa() {
+            var v_colorStr = "#";
+            for(var i=1; i<=6; i++) {
+                var v_ranHexa = v_hexa[Math.floor(Math.random()*v_hexa.length)];
+                v_colorStr += v_ranHexa;
+            }
+            return v_colorStr;
+        }
+
+        function f_bgRan() {
+            if(!stopThis) {
+                v_disp.style.backgroundColor = f_ranHexa();
+                setTimeout(f_bgRan, 50);
+            } 
+        }
+
+        v_btn2.onclick=f_bgRan;
+
+        v_btn.addEventListener("click", function() {
+            // 색을 주는 1번째 방법
+            // v_disp.style.backgroundColor = "black";
+            // v_disp.style.color = "yello";
+
+            // 색을 주는 2번째 방법
+            // v_disp.style.backgroundColor = "rgb(255, 0, 0)";
+            // v_disp.style.color = "rgba(255, 255, 255, 1)";
+            // v_disp.style.opacity = "0.5"; // 반투명
+
+            // 색을 주는 3번째 방법
+            v_disp.style.backgroundColor = "#ff0000";
+            v_disp.style.color = "#000000";
+            stopThis = false;
+        })
+
+        function f_chColor() {
+            v_disp.style.backgroundColor = v_colorBox.value;
+            v_text.innerHTML = v_disp.style.backgroundColor;
+        }
+
+        function f_origin() {
+            stopThis = true;
+            v_disp.style.backgroundColor = "#ffffff";
+            v_text.innerHTML = v_disp.style.backgroundColor;
+        }
+    </script>
+</body>
+</html>

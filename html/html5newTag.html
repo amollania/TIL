@@ -21,13 +21,29 @@
     </style>
 </head>
 <body>
-
+    <!--
+        추가 태그들은 사용시 꼭 브라우저 지원 여부를 확인해야 한다.
+        특히 IE브라우저에서 모양이 다르게 보일 경우 사용을 권장하지 않음
+    -->
+    <div id="id_date"><h2>Color Change</h2></div>
     <input id="id_color" type="color" value="Color" onchange="f_chColor()">
     <input id="id_btn" type="button" value="색깔 바꾸기">
     <input id="id_btn2" type="button" value="1초마다 랜덤 바꾸기">
     <input id="id_origin" type="button" value="Origin" onclick="f_origin()">
     <div id="id_disp">Hello !!</div>
     <div id="id_text"></div>
+    <hr>
+    <div id="id_date"><h2>Date Time</h2></div>
+    <input type="number" value="" min="10" max="2000" step="3"><br>
+    <input type="range" value="" min="10" max="20"><br>
+    <meter value="15" min="10" max="20"></meter><br>
+    <input type="datetime-local" value="" onchange="f_ckVal(this)"><br>
+    <input type="date" value=""><br>
+    <input type="month" value=""><br>
+    <input type="week" value=""><br>
+    <input type="time" value=""><br>
+
+
     <!-- html에 추가된 태그 중 쓸모있는 태그 -->
     <!-- 색상 선택 상자 -->
 
@@ -94,6 +110,12 @@
             v_disp.style.backgroundColor = "#ffffff";
             v_text.innerHTML = v_disp.style.backgroundColor;
         }
+
+
+        function f_ckVal(p_this) {
+            alert(p_this.value.split("t")[0]);
+        }
+
     </script>
 </body>
 </html>

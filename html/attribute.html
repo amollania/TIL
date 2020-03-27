@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체 속성 읽을 때 사용</title>
+</head>
+<body>
+    <script>
+        // 특별한 방복문 for, in 객체 속성 읽을 때 사용
+        // 윈도우 객체의 속성을 확인, 자바스크립트 객체는 배열식 접근법도 허용
+        // document.객체.style.backgroundColor =
+        // document.객체.style["background-color"] = 
+        
+        // 배열도 확인해봅시다.
+        var v_arr = ["Hong", "Chi", "Pup"];
+        for(var p_arr in v_arr) {
+            document.write(p_arr+ " : " + v_arr[p_arr] + "<br>");
+        }
+
+        var v_json = {
+            "2020-05-06" : "신은숙회원가입",
+            "2020-02-18" : "이정재회원가입",
+            "2019-04-03" : "김두환회원가입",
+            "2020-11-20" : "쌍칼회원가입",
+            "2020-05-08" : "구마적회원가입",
+            "2019-08-15" : "바밤바회원가입"
+        }
+
+        // 객체의 속성값만 뽑아내고 싶을 때 in을 사용
+        // 배열과 JSON 객체는 속성값이 자동으로 주어지느냐 안주어지느냐의 차이
+        for(var p_date in v_json) {
+            document.write(p_date + "<br>");
+        }
+
+        /*
+        for(var p_attr in window) {
+            document.write(p_attr + " : " + window[p_attr] + "<br>");
+        }
+        */
+    </script>
+</body>
+</html>

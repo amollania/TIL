@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This HTML</title>
+</head>
+<body>
+    <!--
+        this의 사용
+        this를 컨트롤할 수 있는 3개의 메소드가 있다.
+        call, apply, bind 특별한 상황에서 중요하다. 보통 때는 별로 필요없음.
+    -->
+    <input type="button" id="id_btn" value="Push Me">
+
+    <script>
+        // bind는 꼭 필요한 상황에서 사용
+        // 새로운 함수를 만들어서, 그 함수명(FP:Function Pointer)을 리턴해준다.
+        var v_btn = document.getElementById("id_btn");
+        v_btn.onclick = f_clk.bind(location, "Mssage~");
+        // null자리는 This를 가르킨다. 두번째 인자 자리부터 매개변수로 넘어간다.
+
+        function f_clk(p_msg) {
+            alert(p_msg);
+            alert(this.href);
+        }
+        
+        // 일반적인 상황, 속성이나 메소드를 가지고 있는 대체를 가르킨다.        
+        // document.write(this); // window를 가르킨다.
+        function f_this(p_msg, p_msg2) {
+            // document.write("함수 안에서 this는 " + this.a_name + " : " + this.a_age);
+            document.write("함수 안에서 this는 " + this.href + p_msg);
+        }
+        // f_this.call(document);
+        // f_this.call(new Saram("탕수육", 55));
+        // f_this.call(location, "중화반점");
+        // f_this.apply(location, ["Hong", "2StVariable"])
+        // f_this.apply(window.location);
+        
+        // 함수 안에 this가 사용되었을 때
+        function Saram(p_name, p_age) {
+            this.a_name = p_name;
+            this.a_age = p_age;
+
+            // 메소드 추가
+            this.print = function() {
+                console.log(this); // this 확인하기
+            }
+        }
+
+        /* 함수 호출로 사용되었을 때
+        Saram("조조", 30);
+        document.write(a_name + " - " + a_age);
+        */
+
+        // New를 붙이면 Function 키워드가 Class 키워드처럼 생성자로 동작한다.
+        // var  v_yuji = new Saram("김유지", 25);
+        // document.write(v_yuji.a_name + " : " + v_yuji.a_age);
+        // window.v_yuji.print();
+
+        // 특별한 상황, this가 가르키는 객체를 바꾸고 싶다면
+
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video HTML</title>
+</head>
+<body>
+    <!--
+        html5 멀티미디어 태그 audio/video 태그
+        브라우저 호환성 문제가 많았으나, 지금은 안정화
+    -->
+
+    <!--
+        구글이 동영상 자동재생을 막은 상태
+        단 소리를 꺼놓으면 자동 재생이 가능하다.
+    -->
+    <input id="id_btn1" type="button" value="Stop" style="padding:10px 5px;">
+    <input id="id_btn2" type="button" value="Speed UP" style="padding:10px 5px;">
+    <div id="id_list"></div><br>
+    <video id="id_vdo" src="movies/dogs.mp4" controls muted autoplay controlslist="nodownload" width="720" height="450"></video>
+
+    <script>
+        var v_vdolist = ["You", "sorim", "blackswan", "boywithluv", "programmer1", "programmer2", "roze"]
+        var v_vdo = document.getElementById("id_vdo");
+        var v_btn1 = document.getElementById("id_btn1");
+        var v_btn2 = document.getElementById("id_btn2");
+        var v_list = document.getElementById("id_list");
+        var v_curIndex = 0;
+
+        // Select Box 만들기
+        var v_sel = document.createElement("select");
+        v_sel.setAttribute("id", "id_sel");
+        for(var i=0; i<v_vdolist.length; i++) {
+            var v_opt = document.createElement("option");
+            v_opt.setAttribute("value", v_vdolist[i]);
+            v_opt.innerHTML = v_vdolist[i];
+            v_sel.appendChild(v_opt);
+        }
+
+        // 다만든 Select 결과물 화면에 출력
+        v_list.append(v_sel);
+        var v_path = "./movies/"
+
+        v_sel.addEventListener("change", function(){
+            v_curIndex = v_sel.selectedIndex;
+            v_vdo.src = v_path + v_sel.value + ".mp4";
+            v_vdo.muted = false;
+            v_vdo.controls = true;
+        });
+
+        // 다 만든 select
+        v_list.append(v_sel);
+
+        v_btn1.onclick=function() {
+            if(!v_vdo.paused){ //실행 중이라면
+                v_vdo.pause(); // 멈춘다.
+                v_btn1.value = "Start";
+            } else { // 멈추어 있다면,
+                v_vdo.play(); // 실행
+                v_btn1.value = "Stop";
+            }
+        }
+
+        // 빠르게 실행
+        v_btn2.onclick=function() {
+            v_vdo.playbackRate *=2;
+            if(v_vdo.playbackRate >= 16) {
+                v_vdo.playbackRate = 1;
+            }
+            v_btn2.value = v_vdo.playbackRate + "* Speed";
+        }
+
+        // 비디오가 끝났을 때 자동으로 다음 영상 넘기기
+        v_vdo.addEventListener("ended", function(){
+            v_curIndex += 1;
+            v_vdo.src = v_path + v_vdolist[v_curIndex] + ".mp4";
+        });
+    </script>
+
+</body>
+</html>

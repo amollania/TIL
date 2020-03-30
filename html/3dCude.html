@@ -1,0 +1,138 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* transform  회전하기 rotate  이동하기 translate
+           css 3D는 apple에서 맨처음 제안.. 현재 진행중, 향후 많이 사용될 것으로 보임
+        */
+        #scene {
+            width:600px;
+            height:400px;
+            border:2px solid black;
+            perspective: 1000px;   /* 1200px 떨어진곳에서 바라보기 */          
+            perspective-origin:  top left;  /* 바라보는 각도*/
+        }
+        #obj3d {
+            position: relative;
+            left:125px;
+            top:125px;
+            width:250px;
+            height:250px;
+            transform-style: preserve-3d;   /* 3d로 표현하겠다는 의미 */
+            transform-origin: 125px 125px 0px;  /* x, y, z */ 
+        }
+        .common {
+            position: absolute;
+            width:250px;
+            height:250px;
+            border:1px solid black;
+            font-size:6em;
+            text-align: center;
+            line-height: 200px;   /* 글자 수직 가운데 정렬*/
+            opacity: 0.5;
+        }
+        .cs_front {
+            background-color: rgba(255,0,0,1);
+            transform: rotateY(0deg) translateZ(125px); /* 회전 없이 앞쪽으로 */
+        }
+        .cs_right {
+            background-color: rgba(0,255,0,1);
+            transform: rotateY(90deg) translateZ(125px);
+        }
+        .cs_back {
+            background-color: rgba(0,0,255,1);
+            transform: rotateY(180deg) translateZ(125px);
+        }
+        .cs_left {
+            background-color: rgb(18, 68, 18);
+            transform: rotateY(-90deg) translateZ(125px);
+        }
+        .cs_top {
+            background-color: rgb(255, 251, 0);
+            transform: rotateX(90deg) translateZ(125px);
+        }
+        .cs_bottom {
+            background-color: rgb(255, 0, 221);
+            transform: rotateX(-90deg) translateZ(125px);
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="return" onclick="f_rot3d()">
+    <div id="scene">
+        <div id="obj3d">
+            <div class="common cs_front"><img src="images/1.jpg" width="250" height="250" alt=""></div>
+            <div class="common cs_right"><img src="images/2.jpg" width="250" height="250" alt=""></div>
+            <div class="common cs_back"><img src="images/3.jpg" width="250" height="250" alt=""></div>
+           
+            <div class="common cs_left"><img src="images/4.jpg" width="250" height="250" alt=""></div>
+            <div class="common cs_top"><img src="images/5.jpg" width="250" height="250" alt=""></div>
+            <div class="common cs_bottom"><img src="images/6.jpg" width="250" height="250" alt=""></div>
+
+        </div>
+    </div>
+
+
+    <script>
+        var v_obj3d = document.getElementById("obj3d");
+        var v_gak = 0;
+        var v_state = 1;
+        var v_cnt = 100;
+
+        // 모든 태그에 해당 함수를 제작
+        var v_timerID = null;
+        var v_imgs = document.getElementsByTagName("img");
+
+        for(var i=0; i<v_imgs.length; i++) {
+            v_imgs[i].addEventListener("mouseover", function(){
+                clearTimeout(v_timerID); // setTime 함수를 폭파시키는 함수
+            });
+            v_imgs[i].addEventListener("mouseout", function() {
+                f_rot3d();
+            });
+        }
+
+        function f_rot3d() {
+            v_gak += 2;
+
+            if(v_state ==1) {
+                v_obj3d.style.transform = "rotateX("+v_gak+"deg)";
+                v_cnt++;
+                if(v_cnt >= 200) {
+                    v_state = 2;
+                    v_cnt =0;
+                }
+            }
+
+            if(v_state ==2) {
+                v_obj3d.style.transform = "rotateY("+v_gak+"deg)";
+                v_cnt++;
+                if(v_cnt >= 200) {
+                    v_state = 3;
+                    v_cnt =0;
+                }
+            }
+
+            if(v_state ==3) {
+                v_obj3d.style.transform = "rotateX("+v_gak+"deg) rotateY("+v_gak+"deg)";
+                v_cnt++;
+                if(v_cnt >= 200) {
+                    v_state = 4;
+                    v_cnt =0;
+                }
+            }
+
+            if(v_state ==4) {
+                v_obj3d.style.transform = "rotateY("+v_gak+"deg) rotateX("+v_gak+"deg)";
+                v_cnt++;
+                if(v_cnt >= 200) {
+                    v_state = 1;
+                    v_cnt =0;
+                }
+            }
+            v_timerID = setTimeout(f_rot3d,10);
+        }
+    </script>
+
+</body></html>

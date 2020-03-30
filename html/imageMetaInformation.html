@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Meta</title>
+</head>
+<body>
+    <img src="images/4.jpg" alt="" id="id_img">
+    <script>
+        // 스크립트 유행어 tricky, fricky (한마디로 x같다는 거)
+        var v_img = document.getElementById("id_img");
+        window.onload = function() {
+            var v_oWidth = v_img.clientWidth;
+            var v_oHeight = v_img.clientHeight;
+
+            v_img.width = "300";
+            v_img.height = parseInt(v_img.width) * v_img.clientHeight / v_img.clientWidth;
+        }
+
+    </script>
+</body>
+</html>

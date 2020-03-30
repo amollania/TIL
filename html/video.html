@@ -4,6 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video HTML</title>
+
+    <style>     
+        input {
+            padding:10px 5px;
+        }
+
+        video::cue {
+            font-size: 25px;
+            color:red;
+            background-color:yellow;
+            opacity: 0.5;  /* 0은 완전 투명, 1은 완전 안투명  */
+            line-height: 30px; /*텍스트를 담은 상자의 높이 */
+        }
+
+    </style>
+    
 </head>
 <body>
     <!--
@@ -15,10 +31,14 @@
         구글이 동영상 자동재생을 막은 상태
         단 소리를 꺼놓으면 자동 재생이 가능하다.
     -->
-    <input id="id_btn1" type="button" value="Stop" style="padding:10px 5px;">
-    <input id="id_btn2" type="button" value="Speed UP" style="padding:10px 5px;">
+    <input id="id_btn1" type="button" value="Stop">
+    <input id="id_btn2" type="button" value="Speed UP">
+    <input id="id_full" type="button" value="Full Screen" onclick="f_full()">
     <div id="id_list"></div><br>
-    <video id="id_vdo" src="movies/dogs.mp4" controls muted autoplay controlslist="nodownload" width="720" height="450"></video>
+    <video id="id_vdo" src="movies/dogs.mp4" muted autoplay controls controlslist="nodownload" width="720" height="450">
+    <track src="track/sample-en.vtt" kind="subtitles" srclang="en" label="English"></track>
+    <track src="track/sample-ko.vtt" kind="subtitles" srclang="ko" label="한국어" default></track>
+    </video>
 
     <script>
         var v_vdolist = ["You", "sorim", "blackswan", "boywithluv", "programmer1", "programmer2", "roze"]
@@ -76,6 +96,32 @@
             v_curIndex += 1;
             v_vdo.src = v_path + v_vdolist[v_curIndex] + ".mp4";
         });
+
+        function f_broserError() {
+            alert("Error *2");
+        }
+
+        // 비디오 전체화면
+        function f_full() {
+
+            if(window.f_broserError) {
+                alert("No Support");
+            } else {
+                window.f_broserError();
+            }
+            if(v_vdo.requestFullscreen) {
+                window.f_broserError();
+            }
+        }
+
+        // 비디오 메타 정보(width, height, duration) 읽기
+        v_vdo.addEventListener("loadedmetadata", function(){
+            // alert("비디오 넓이"+ v_vdo.videoWidth);
+            // alert("비디오 높이"+ v_vdo.videoHeight);
+            // alert("비디오 실행시간"+ v_vdo.videolist);
+        });
+
+
     </script>
 
 </body>

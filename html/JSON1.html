@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON</title>
+</head>
+<body>
+
+    <script>
+
+
+        var v_json = {};
+        var v_json1 = {"name" : "자장"};
+        var v_json2 = {
+            "name" : "곰탕",
+            "print" : function(p_msg) {
+                alert(p_msg);
+                return this;
+            },
+            "print1":function(p_msg) {
+                return this;
+            }
+        }
+        v_json2.print("Hong").print("Chi").print("Pick");   // 멋진 말로 메소드 체이닝
+        
+        // 잘 쓰는 방법, 초기화를 {} 안에 하지 않고 밖으로 빼서 많이 씀
+        v_json.name = "허무";
+        v_json.print = function(p_msg) {
+            alert(p_msg);
+        }
+        v_json.getName = function() {
+            alert()
+        }
+
+        alert(v_json.name);
+        // v_json.setName("Mang").getName();
+
+        var System={};
+        System.out = {};
+        System.out.print = function(p_msg) {
+            console.log(p_msg);
+        }
+        System.out.print("잘 돼?");
+        // console.log()를 
+
+        function f_ranNum(p_maxNum) {
+            return Math.floor(Math.random()*p_maxNum);
+        }
+
+        var MyUtil = {};
+        MyUtil.ranNumber = function (p_maxNum) {
+            return Math.floor(Math.random()*p_maxNum);
+        }
+        alert(MyUtil.ranNumber(100));
+        // JSON은 함수를 분류해서 패키지화 시키는데 사용하도 아주 좋음
+
+        // 보통 전역 변수는 global에 다모음
+        var global = {};
+        global.name = "넥스트";
+        global.year = "2020";
+        
+    </script>
+</body>
+</html>

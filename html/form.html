@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <!--
+        서버에 전달되는 값은 꼭 Form 태그로 묶어주어야 한다.
+        서버 전달되는 태그는 꼭 name 속성이 있어야 넘어간다.
+
+        ?nextId=43636&passNum=4363 쿼리스트링이라고 부른다.(서버쪽에 넘기는 문자열)
+
+        전송방식 :
+        GET - 넘어가는 값이 주소 표시줄에 값이 보인다. 넘어가는 용량 제한도 있음.
+        POST - 넘어가는 값이 주소 표시줄에 보이지 않는다. (GET보다 보안이 좋다)
+        이론적으로 넘기는 값이 용량 제한이 없다.
+    -->
+
+    <form method="GET" action="test.php">
+        아이디 <input type="text" name="nextId"><br>
+        암호 <input type="password" name="passNum"><br>
+        <input type="submit" value="전송한다">
+        <input type="reset" value="다시 써">
+    </form>
+
+    <form action="">
+        아이디 <input type="text" name="nextId2"><br>
+        암호 <input type="password" name="passNum2"><br>
+        <input type="submit" value="전송한다">
+        <input type="reset" value="다시 써">
+    </form>
+
+</body>
+</html>

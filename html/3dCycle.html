@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회전목마</title>
+
+    <style>
+        #scene {
+            width: 400px;
+            height: 400px;
+            border:2px solid black;
+            perspective: 1500px; /* 장면에서 얼마나 떨어져 있는지 */
+            perspective-origin: center center; /* 바라보는 위치, 기본값 center */
+
+        }
+        #obj3d {
+            position: relative;
+            left:200px;
+            top:100px;;
+            
+            width: 200px;
+            height: 200px;
+            transform-style: preserve-3d;
+            transform-origin: 100px 0 0; /* 회전이나 움직일 때 기준점 */
+        }
+
+        .common {
+            width:200px;
+            height: 200px;
+            position: absolute;
+            border: 1px solid black;
+            padding-left: 0px;
+            opacity: 0.5;
+            background-color: rgb(124, 124, 124);
+        }
+
+        .cl_img1 {
+            transform:  rotateY(0deg) translateX(75px);
+        }
+
+        .cl_img2 {
+            transform:  rotateY(-72deg) translateX(75px);
+        }
+
+        .cl_img3 {
+            transform:  rotateY(-144deg) translateX(75px);
+        }
+
+        .cl_img4 {
+            transform:  rotateY(-216deg) translateX(75px);
+        }
+
+        .cl_img5 {
+            transform:  rotateY(-288deg) translateX(75px);
+        }
+
+    </style>
+
+</head>
+<body>
+    <input type="button" value="Y축으로 돌리기" onclick="f_rotY()" style="padding: 10px 15px; margin-bottom:10px">
+    <div id="scene">
+        <div id="obj3d">
+            <img src="./images/a3.jpg" class="common cl_img1"  onmouseover="f_disp(this)">
+            <img src="./images/3.jpg" class="common cl_img2"  onmouseover="f_disp(this)">
+            <img src="./images/a4.jpg" class="common cl_img3"  onmouseover="f_disp(this)">
+            <img src="./images/d2.jpg" class="common cl_img4"  onmouseover="f_disp(this)">
+            <img src="./images/d1.jpg" class="common cl_img5"  onmouseover="f_disp(this)">
+        </div>
+    </div>
+    <div id="id_disp" onclick="f_clk(this)"></div>
+
+    
+
+
+    <script>
+        function f_clk(p_this) {
+            p_this.innerHTML = "";
+        }
+
+        var v_obj3d = document.getElementById("obj3d");
+        var v_disp = document.getElementById("id_disp");
+        var v_state=0;
+
+        var v_see1 = ["top", "center", "bottom"];
+        var v_see2 = ["left", "center", "right"];
+
+        function f_rotY(){
+            v_state += 1;
+            v_state = v_state % 360;
+            v_obj3d.style.transform = "rotateY(" + v_state + "deg)";
+            var v_updown = v_see1[Math.floor(Math.random()*v_see1.length)];
+            var v_leftright = v_see2[Math.floor(Math.random()*v_see2.length)];
+            document.getElementById("scene").style.perspectiveOrigin = v_updown + " " + v_leftright; 
+            setTimeout(f_rotY, 10);
+        }
+
+        function f_disp(p_this) {
+            v_disp.innerHTML =""; // 기존 개체 지우기
+            var v_img = document.createElement("img");
+            v_img.setAttribute("src", p_this.src);
+            v_img.setAttribute("width", "50");
+            v_img.setAttribute("height", "50");
+            v_disp.appendChild(v_img);    
+        }
+    </script>
+
+</body>
+</html>

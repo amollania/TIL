@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주소 읽어오기</title>
+
+    <script src="js/myscript.js"></script>
+</head>
+<body>
+    <script>
+        alert("넘겨온 아이디 : " + request.getParameter("nm_id"));
+        alert("넘겨온 암호 : " + request.getParameter("nm_pw"));
+
+        alert("기타 : " + request.getParameterValues());
+        // var v_address = location.href.split("?")[1];
+        // alert("인코딩된 상태 : " + v_address);
+        // alert("디코딩된 상태 : " + decodeURIComponent(v_address));
+        // v_address = decodeURIComponent(v_address);
+
+        /* Encoding Function */
+        // escape
+        // encodeURI
+        // encodeURIComponent
+
+        /* Decoding Function */
+        // unescape
+        // decodeURI
+        // decodeURIComponent
+
+    </script>
+</body>
+</html>

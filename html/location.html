@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location 객체</title>
+</head>
+<body>
+    가고 싶은 곳 URL
+    <input type="text" id="id_url" value=""><br>
+    <input type="button" value="이동" onclick="f_move()">
+    <script>        
+        // 주소줄을 의미하는 location객체, 중요도가 매우 높다.
+        // 속성 href, 메소드 replace(매개변수 URL)가 중요
+        function f_move() {
+            alert(location.href);
+            // location.href = "test.php?nm_id=마법사"
+            // href 속성은 이전에 불러왔던 페이지를 불러올 수도 있다. (캐쉬된 페이지)
+            // 잘못 사용된 경우, 사용자에게 새로고침을 눌러야하는 불편함을 초래할 수 있다.
+            // 캐쉬되어도 상관없는 페이지에 사용할 것.
+            location.replace("test.php?nm_id=바밤바");
+            // replace 메소드는 새로 불러온다.
+            // DB의 업데이트된 내용을 불러와야 한다던지 하는 캐쉬 안된 페이지가 필요한 경우가 있음.
+        }
+
+        // location.reload();
+        // 브라우져의 새로고침 버튼을 누르는 효과
+        // reload 메소드를 사용했다는 것은 일반적으로 로직이 좋지 않다는 얘기
+        // reload 메소드는 필요하지 않도록 프로그래밍할 것.
+    </script>
+</body>
+</html>

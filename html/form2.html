@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="fm_id1" name="nm_fm1" action="address.html">
+        <table border="1">
+            <tr>
+                <td>아이디</td>
+                <td><input id="nm_id" name="nm_id" type="text" required></td>            
+            </tr>
+            <tr>
+                <td>암호</td>
+                <td><input id="nm_pw" name="nm_pw" type="password" required></td>            
+            </tr>
+            <tr>
+                <td>취미</td>
+                <td>
+                Reading<input type="checkbox" name="nm_hobby" value="reading">
+                Movie<input type="checkbox" name="nm_hobby" value="movie">
+                Music<input type="checkbox" name="nm_hobby" value="music">
+                Hacking<input type="checkbox" name="nm_hobby" value="backing">
+                </td>
+            </tr>
+            <tr>
+                <td colspan=2 style="text-align:center;"><input type="submit" value="서버 전송">
+                <input type="reset" value="다시쓰기"></td>
+            </tr>
+        </table>
+    </form>
+    <script>
+        // 폼 접근법1 - 옛날 방식 - 혹 이런 소스가 남아 있을 수도 있음
+        console.log(document.forms[0]); // 배열식 접근
+        console.log(fm_id1); // 이 방식으로 쓰는 것은 금물
+        console.log(document.forms["nm_fm1"]);
+        console.log(document.forms["nm_fm1"].nm_id.value);
+        console.log(document.forms["nm_fm1"].nm_hobby[3].value);
+
+        var v_form = document.getElementById("fm_id1");
+        var v_id = document.getElementById("nm_id");
+        var v_pw = document.getElementById("nm_pw");
+        var v_hobbies = document.getElementsByName("nm_hobby");
+
+        // v_form.action = "test.php";
+        
+        
+
+
+        /*
+        v_form.addEventListener("submit", function() {
+
+            // 아이디를 안 썼다면
+            if(v_id.value.trim() =="" || v_id.value.trim().length < 5) {
+                alert("Chack you Typing to your ID");
+                event.preventDefault();
+                return;
+            }
+            
+            // 암호를 안 썼다면
+            if(v_pw.value.trim() =="" || v_pw.value.trim().length < 5) {
+                alert("Chack you Typeing to your Password")
+                event.preventDefault();
+                return;
+            }
+
+            // 취미를 1개도 선택하지 않았다면
+            var v_isChecked = false; // 현재 체크박스가 체크되지 않은 상태
+            for(var i=0; i<v_hobbies.length; i++) {
+                if(v_hobbies[i].checked) {
+                    v_isChecked = true;
+                    break;
+                }
+            }
+            if(!v_isChecked) {
+                alert("Why don't you just pushed hobby?");
+                return;
+            }
+
+            return true; // 필요없지만 전송을 명시적으로 표현
+
+            // event.preventDefault(); // 기본 장착기능 막기
+            // event.stopPropagation(); // 이벤트 버블링 막기
+        });
+        */
+    </script>
+</body>
+</html>

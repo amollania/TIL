@@ -18,12 +18,21 @@
         이론적으로 넘기는 값이 용량 제한이 없다.
     -->
 
-    <form method="GET" action="test.php">
-        아이디 <input type="text" name="nextId"><br>
-        암호 <input type="password" name="passNum"><br>
+    <form method="GET" action="test.php" onsubmit="return f_submit()">
+        아이디 <input type="text" name="nextId" value=""><br>
+        암호 <input type="password" name="passNum" value=""><br>
         <input type="submit" value="전송한다">
         <input type="reset" value="다시 써">
     </form>
+
+    <script>
+        function f_submit() {
+            return true;
+            return false;
+            // 처음 자바스크립트가 나온 이유, 서버 부하를 줄이기 위해
+        }
+    </script>
+
 
     <form action="">
         아이디 <input type="text" name="nextId2"><br>

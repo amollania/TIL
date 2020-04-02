@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit 버튼 만들기</title>
+</head>
+<body>
+    <!-- 
+        Form에서 전송하기 위해 action 키워드로 php파일에 전달
+    -->
+    <form action="test.php" id="id_fm">
+        ID <input type="text" name="nm_id" value=""><br>
+        PW <input type="password" name="nm_pw" value=""><br>
+        <!-- 
+            FORM 내부에서 BUTTON 태그 사용시 자동으로 변환
+        -->
+        <button>POST!!</button> 
+        <input type="button" value="POST" onclick="f_submit()">
+        <input type="button" value="RESET" onclick="f_reset()">
+    </form>
+    <button>LIE PUSH!!</button>
+    <script>
+        function f_submit() {
+            // form 객체에 submit() 메소드가 존재한다.
+            // onsubmit 이벤트를 발생시키지 않음 - 주의할 것.
+            document.getElementById("id_fm").submit();
+        }
+
+        function f_reset() {
+            document.getElementsByName("nm_id")[0].value="";
+            document.getElementsByName("nm_pw")[0].value="";
+        }
+    </script>
+</body>
+</html>

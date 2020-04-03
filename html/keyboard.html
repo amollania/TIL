@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key Board Event</title>
+</head>
+<body>
+    <!-- 
+        키보드 이벤트 대표적인 함수 :
+        keypress keydown, keyup은 잘 사용하지 않는다.
+    -->
+    <input type="text" tabindex="1" id="id_txt1" value="" onkeypress="f_keypress()"><br>
+    <input type="text" tabindex="3" id="id_txt2" value="" onkeydown="f_keydown()">
+    <input type="text" tabindex="5" value="Hong"><br>
+    <input type="text" tabindex="6" value="Yo"><br>
+    <input type="text" tabindex="4" value="Pang"><br>
+    <input type="text" tabindex="2" value="Fuk"><br>
+
+    <script>
+        // keypress와 keydown의 차이를 인식합시다.
+        // 어떤걸 써야할지 잘 모르겠으면 keydown이 유리하다. (특수키까지 커버 가능)
+        function f_keypress() {
+            // alert(event.keyCode);
+            // 제일 많이 활용되는 키는 엔터키(CODE 13)
+            // alert(event.altKey); // alt 키를 눌렀을 때
+            // alert(event.ctrlKey); // ctrl 키를 눌렀을 때
+            // alert(event.shiftKey); // shift 키를 눌렀을 때
+            if (event.keyCode ==13) {
+                // 커서를 주는 메소드 focus() 많이 사용한다.
+                document.getElementById("id_txt2").focus();
+            }
+        }
+
+        function f_keydown() {
+            // alert(event.keyCode);
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fileDrag2</title>
+
+    <style>
+        .cl_upper {
+            display: inline-block;
+            width: 200px; height: 200px;
+            border: 2px solid darkorchid;
+        }
+        #id_dv1 {
+            background-image: url("./images/4.jpg");
+            background-repeat: round;
+        }
+        #id_dv2 {
+            background-image: url("./images/6.jpg");
+            background-repeat: round;
+        }
+        #id_dv3 {
+            background-image: url("./images/5.jpg");
+            background-repeat: round;
+        }
+        #id_dv4 {
+            background-image: url("./images/d3.jpeg");
+            background-repeat: round;
+        }
+        #id_dv5 {
+            background-image: url("./images/d1.jpg");
+            background-repeat: round;
+        }
+        #id_dv6 {
+            background-image: url("./images/a3.jpg");
+            background-repeat: round;
+        }
+        #id_disp{
+            width: 612px;
+            height: 410px;
+            border: 2px solid coral;
+        }
+    </style>
+
+</head>
+<body>
+    
+    <div id="id_dv1" class="cl_upper" draggable="true" ondragstart="f_dragStart()"></div>
+    <div id="id_dv2" class="cl_upper" draggable="true" ondragstart="f_dragStart()"></div>
+    <div id="id_dv3" class="cl_upper" draggable="true" ondragstart="f_dragStart()"></div>
+    <div id="id_dv4" class="cl_upper" draggable="true" ondragstart="f_dragStart()"></div>
+    <div id="id_dv5" class="cl_upper" draggable="true" ondragstart="f_dragStart()"></div>
+    <div id="id_dv6" class="cl_upper" draggable="true" ondragstart="f_dragStart()"></div>
+    <div id="id_disp" ondragover="f_dragover()" ondrop="f_drop()"></div>
+
+    <script>
+        var v_disp = document.getElementById("id_disp");
+        function f_dragStart() {
+            // event.target - 이벤트를 발생시킨 객체를 가르킨다.
+            // event.dataTransfer의 setData(키, 값) 메소드를 이용하여 필요한 값을 저장
+            event.dataTransfer.setData("Hong", event.target.id);
+            // console.log(event.target.id);
+            
+        }
+
+        function f_dragover() {
+            event.preventDefault(); // 기본동작막기
+        }
+
+        function f_drop() {
+            event.preventDefault();
+            console.log(event.dataTransfer.getData("Hong"));
+            var v_id = event.dataTransfer.getData("Hong");
+            // 끌고 온 id 객체를 id_disp에 붙일 것
+            v_disp.appendChild(document.getElementById(v_id));
+            // console.log(event.target.id);
+        }
+    </script>
+
+</body>
+</html>

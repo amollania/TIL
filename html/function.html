@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수에 대해서</title>
+</head>
+<body>
+    <script>
+
+        // callback함수, 매개변수로 넘어가는 함수
+        var f_arrloop = function(p_arr, f_callback) {
+            for(var i=0; i<p_arr.length; i++) {
+                f_callback(i, p_arr[i]);
+            }
+        }
+
+        var v_arr =[1, 2, 3, 4, 5, 6];
+        f_arrloop(v_arr, function(p_index, p_value) {
+            v_arr[p_index] = p_value * p_value;
+        });
+
+        f_arrloop(v_arr, function(p_index, p_value) {
+            v_arr[p_index] = p_value + 1;
+        });
+
+        alert(v_arr);
+
+        // 즉각 실행 함수
+        // 극단적인 상황에서 사용되고 있다
+        var v_a = 3;
+        var v_b = 5;
+        var v_c = v_a + v_b;
+
+        // 위 코드보다 아래식으로 사용하면 메모리가 절약된다.
+        // 가독성을 위해 즉각 실행함수 표현으로 코드의 경계를 표현하는 경우도 있다.
+        // 보통 전체 프로그램 플로우상 딱 한번만 실행할 필요가 있는 코드를 즉각 실행함수로 묶음
+        var v_d = (function (p_msg) {
+            var v_a = 3;
+            var v_b = 5;
+            return v_a + v_b;
+        })("Hong Cha Pa");
+
+
+
+        // var v_fp = function() {
+        //     alert("아이엠그루트");
+        // }
+        // var v_f2 = v_fp;
+        // v_f2();
+
+        // this 제어메소드, call, apply, bind
+        var myPrint = document.write.bind(document); // this -> document
+        myPrint("<h1> 잘되시죠????</h1>");
+
+
+        var v_fp3 = function() {
+            return function(p_arg1) {
+                alert(p_arg1);
+            }
+        }
+        v_fp3()("HongHongHong");
+
+
+        // out.print를 document.write를 이용해서 만든다면?
+        var out = {};
+        out.print = function(p_msg) {
+            document.write(p_msg);
+        }
+        out.println = function(p_msg) {
+            document.write(p_msg+"<br>");
+        }
+
+        // 테스트
+        out.print("<h1>잘 되십니가?</h1>");
+        out.println("<h1>잘 안되시는지요?</h1>");
+        out.print("<h1>네?</h1>");
+    </script>
+</body>
+</html>

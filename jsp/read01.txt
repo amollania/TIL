@@ -1,0 +1,79 @@
+	프로토콜(protocol) : 컴퓨터간에 정보를 주고받을 때의 통신방법에 대한 규칙과 약속. 대표적으로 tcp/ip 
+	
+	클라이언트-서버 : 고객/소비자 - 제공자  :: 네트워크를 통하여여 서비스를 요청
+	
+	어플리케이션 서버 - 분산 네트워크 내의 컴퓨터 내에서 응용프로그램에 비지니스 로직을 제공하는 서버 프로그램
+	웹 어플리케이션과 서버환경을 운영하기 위해 생성되는 시설 // 소프트웨어 프레임워크
+	
+	미들웨어 - 분산 컴퓨터 환경에서 서로 다른 기종의 하드웨어나 프로토콜, 통신환경을 연결 원만하게 해줌
+	
+	웹 어플리케이션 서버 : WEB + AS
+	
+	WebServer : Apache WebServer 
+	WAS : Apache Tomcat /WebSphere /Oracle Web Logic/ Redhat JBOSS / Caucho Resin / 
+	      Tmax jeus - 국내기업 TmaxSoft사에서 만든 한국산 웹 애플리케이션 서버
+	
+	
+	웹 서버 - 클라이언트가 서버에 페이지 요청을 하면 요청을 받아 정적 컨텐츠를 제공하는 서버
+	
+	WAS - 동적 컨텐츠를 제공하기 위해 만들어진 어플리케이션 서버(DB조회, 로직 처리)
+	
+	ftp : Flie Transfer Protocol
+	http : Hyper Text Transfer Protocol
+	telnet : Tele network
+	
+	port : 운영체제의 종단점/ 네트워크 서비스나 특정 프로세스를 식별하는 논리단위
+	       20 FTP(data) 21 FTP(제어) 22 SSH 23 telnet 53 DNS 80 HTTP(월드 와이드 웹)
+	          1521,21 : Oracle 리스터 // 3306 mysql/maria // 1433,4 ms-sql
+	             큐브리드 티베로
+	
+	------------------------------------------------------------------------
+	WWW : 89년 3월  팀 버너스리 경 제안
+	HTTP :
+	
+	---------------------
+	CGI 역사 용어
+	 서버 프로그램에서 다른 프로그램을 불러내고, 
+	 그 처리 결과를 클라이언트에 송신하는 방법이 고안되었다. 
+	 이를 실현하기 위한 서버 프로그램과 외부 프로그램과의 연계법을 정한 것이 CGI이다.
+	 
+	 client <-> Web Server <-> Web AppicationServer
+	----------------------
+	이클립스 최적화
+	eclipse.ini 에 메모리 설정
+	
+	
+	window > java > editor > folding
+	소스파일에서 블록단위로 폴딩 되는 효과를 제거
+	
+	코드 자동완성기능 해체 
+	window java eidtor contentAssist
+	Spelling 체크 설정 해제
+	=> Preferences > General > Editors > Text Editors
+	 > Spelling : ‘Enable spell checking’ 체크해제
+	
+	불필요한 Validation (컴파일시 유효성체크) 설정 해제
+	(dtd,xml, xsl, jsp) 
+	=> Preferences > Validation
+	
+	작업중이지 않은 프로젝트 닫기
+	=> Project > Close Project
+
+------------------------------ 
+자동완성 :ctrl + space
+우분트 이클립스 : Alt+/ -> ctrk+space 변경  key
+메뉴 windows webBrowser 를 내장 브라우저 말고 다른것으로
+
+
+
+
+
+
+
+
+
+
+
+
+
+

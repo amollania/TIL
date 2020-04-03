@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>파일 끌어다 놓기</title>
+
+    <style>
+        #id_sajin {
+            width: 200px;
+            height: 200px;
+            border: 1px solid blueviolet;
+            line-height: 190px;
+            text-align: center;
+            overflow: scroll;
+        }
+    </style>
+
+</head>
+<body>
+   
+    <div id="id_sajin" ondragover="f_dragOver()" ondrop="f_drop()">
+        Drop Picture in Here
+    </div>
+
+    <script>
+        // drag drop하려면 dragover 이벤트와 drop이벤트에 대한 기본 기능을 다 막아야 한다.
+        var v_sajin = document.getElementById("id_sajin");
+        function f_dragOver() {
+            event.preventDefault();
+            
+        }
+
+        function f_readOnedrop(p_file) {
+            // console.log(event.dataTransfer.files);
+            var v_fileReader = new FileReader(); // 파일 읽어주는 생성자
+            v_fileReader.readAsDataURL(p_file);
+            v_fileReader.onload = function() { // 다 읽었다면
+                var v_img = document.createElement("img"); // 읽은 내용은 result 속성에 담고있다.
+                v_img.setAttribute("src", v_fileReader.result);
+                v_img.setAttribute("width", "200");
+                v_img.setAttribute("height", "200");
+                v_sajin.appendChild(v_img); // 페이지에 넣기
+            }
+        }
+
+        function f_drop() {
+            event.preventDefault();
+            // console.log(event.dataTransfer.files);
+            v_sajin.innerHTML = "";
+            var v_file = event.dataTransfer.files;
+            for(var i=0; i<v_file.length; i++) {
+                f_readOnedrop(v_file[i]);
+            }
+        }
+
+        // 브라우져의 drag drop 기능 막기
+        window.ondragover = function() {
+            event.preventDefault();
+        }
+        window.addEventListener("drop", function() {
+            event.preventDefault();
+        });
+    </script>
+</body>
+</html>

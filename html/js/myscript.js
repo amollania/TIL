@@ -23,27 +23,6 @@ request.getParameter = function getParame(p_name) {
     }
 }
 
-
-
-
-// var v_map = v_address.split("&");
-//         var v_hobbies = []; // 취미를 담을 빈배열
-//         for(var i=0; i<v_map.length; i++) {
-//             var v_couple = v_map[i];    // name=value 형식
-//             if(v_couple.split("=")[0]== "nm_hobby") {
-//                 v_hobbies.push(v_couple.split("=")[1]);
-//             }
-//         }
-//         if(!v_hobbies.length){
-//             alert("취미가 없다.");
-
-//         } else {
-//             alert("당신의 취미는 : " + v_hobbies);
-//         }
-
-
-
-
 request.getParameterValues = function getParameterValues() {
     var v_address = location.href;
     var v_map = v_address.split("&");

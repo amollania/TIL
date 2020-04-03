@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
@@ -7,85 +8,128 @@
 
     <style>
         #id_nemo {
-            width:200px;
-            height:200px;;
+            width: 200px;
+            height: 200px;
+            ;
             position: relative;
-            background:#fff000;
-            border:5px solid aqua;
+            background: #fff000;
+            border: 5px solid aqua;
             border-radius: 100px;
             background-image: url("./images/d1.jpg");
             background-size: 250px;
             /* transform: rotate(30deg); */
         }
+
+        #wrapper {
+            width:90vw;
+            height:90vh;
+            background-image: url("./images/majinga03.jpg");
+            background-repeat: no-repeat;   /* 이미지 반복 거부 */
+            background-size: 1000px 800px;
+        }
+
+        #id_bar {
+            width:200px;
+            height:25px;
+            position:relative;
+            left:30px;
+            top: 300px;
+            background-color: pink;
+        }
+
         body {
-            background:#ddd;
+            background: #ddd;
         }
     </style>
 
 </head>
+
 <body id="body" style="background-image: url(./images/d1.jpg);">
+
+    <div id="wrapper" tabindex="0" onkeydown="f_lrMove()">
     <div id="id_nemo" style="top:0; left:0; transform: rotate(30deg);"></div>
     <center>
-        <input type="button" value="Please LEFT TURN!" onclick="f_call()" style="padding:15px; margin-top:10px;">
-        <input type="button" value="Please Change!" onclick="f_change()" style="padding:15px; margin-top:10px;">
+        <input type="button" value="Please LEFT TURN!" onclick="f_right()" style="padding:15px; margin-top:10px;">
+        <input type="button" value="Please Change!" onclick="f_chgBack()" style="padding:15px; margin-top:10px;">
     </center>
-    <script>
-        alert(document.getElementById("id_nemo").style.transform);
+    <div id="id_bar"></div>
+    </div>
 
-        var v_nemo = document.getElementById("id_nemo").style;
+
+    <script>
+        var v_bar = document.getElementById("id_bar");
+        function f_lrMove() {
+
+            // 초기값이 인라인 스타일로 지정되어 있지 않은 경우
+            if(!v_bar.style.left) {
+                v_bar.style.left = "100px";
+            }
+
+            // 왼쪽 화살표
+            if (event.keyCode == 37) {
+                v_bar.style.left = parseInt(v_bar.style.left) - 10 + "px";
+            }
+
+            // 오른쪽 화살표
+            if(event.keyCode == 39) {
+                v_bar.style.left = parseInt(v_bar.style.left) + 10 + "px";
+            }
+        }
+
+        function f_chgBack() {
+            document.getElementById("wrapper").style.backgroundImage =
+                'url("./images/d1.jpg")';
+        }
+
+        var v_nemo = document.getElementById("id_nemo");
+        var v_mvWidth = 10;
+        var v_mvHeight = 10;
+
         var v_called = false; // 초기값은 False
-        
+
         function f_call() { // Proxy 패턴(대리인을 시킴)
-            if(!v_called) {
+            if (!v_called) {
                 f_right();
-                v_called =true; // 호출 표시
+                v_called = true; // 호출 표시
             }
         }
 
         var v_gakdo = 0; // 초기 각
-
-        /*
-        if((parseInt(v_nemo.style.left)+100) >= window.innerWidth ||
-        parseInt(v_nemo.style.left) <=0) {
-            v_mvWidth = -v_mvWidth;
-        }
-
-        if((parseInt(v_nemo.style.top)+100)>= window.innerHeight ||
-        parseInt(v_nemo.style.top)<= 0) {
-            v_mvHight = -v_mvHight;
-        }
-        */
-
-
         function f_right() {
-            //Script에서 스타일 제어하기(inline), 내부 스타일 접근법이 다르다.
-            if (parseInt(v_nemo.left) < window.innerWidth-260 && parseInt(v_nemo.top) == 0) {
-                v_nemo.left = parseInt(v_nemo.left) + 10 + "px";
-                v_gakdo += 10;
-                v_nemo.transform = "rotate(" + v_gakdo + "deg)";
-                document.getElementById("body").style.backgroundImage = 'url("./images/d1.jpg")';
-            } else if (parseInt(v_nemo.left) >= window.innerWidth-260 && parseInt(v_nemo.top) <= window.innerHeight-260) {
-                v_nemo.top = parseInt(v_nemo.top) + 10 + "px";
-                document.getElementById("body").style.backgroundImage = 'url("./images/d3.jpeg")';
-            } else if (parseInt(v_nemo.left) >= 0){
-                v_nemo.left = parseInt(v_nemo.left) - 10 + "px";
-                v_gakdo += 10;
-                v_nemo.transform = "rotate(" + v_gakdo + "deg)";
-                document.getElementById("body").style.backgroundImage = 'url("./images/d2.jpg")';
-            } else if (parseInt(v_nemo.top) >= 0) {
-                v_nemo.top = parseInt(v_nemo.top) - 10 + "px";
-                document.getElementById("body").style.backgroundImage = 'url("./images/6.jpg")';
+            //스크립트에서 스타일접근하기(inline), 내부스타일접근법은 다름
+            //alert(parseInt(v_nemo.style.left));
+            // 사용자 화면 넓이 window.innerWidth, 높이 window.innerHeight
+            v_nemo.style.left = parseInt(v_nemo.style.left) + v_mvWidth + "px";
+            v_nemo.style.top = parseInt(v_nemo.style.top) + v_mvHeight + "px";
+
+            v_gakdo = v_gakdo + 10;
+            v_gakdo = (v_gakdo % 360);     // 360 넘어간 값은 의미가 없으니 나머지만 취득
+            v_nemo.style.transform = "rotate(" + v_gakdo + "deg)";
+            //console.log("브라우져넓이:"+window.innerWidth);
+            //console.log("브라우져높이:"+window.innerHeight);
+            // 오른쪽에 닿았을 때 왼쪽으로 가게 하기
+            if ((parseInt(v_nemo.style.left) + 100) >= window.innerWidth ||
+                parseInt(v_nemo.style.left) <= 0) {
+                v_mvWidth = -v_mvWidth;           // 부호 바꾸기
+            }
+            // 아래 위 닿았을 때 ppp
+            if ((parseInt(v_nemo.style.top) + 100) >= window.innerHeight ||
+                parseInt(v_nemo.style.top) <= 0) {
+                v_mvHeight = -v_mvHeight;           // 부호 바꾸기
             }
 
-            setInt = 10;
-            setTimeout(f_right, setInt);
+            // 왼쪽에 닿았을 때 방향바꾸기
+            /*
+            if(parseInt(v_nemo.style.left) <= 0){
+                v_mvWidth = -v_mvWidth;          // 부호 바꾸기
+            }
+            */
+            setTimeout(f_right, 10);
         }
 
-        function f_right2() {
 
-        }
 
-        
     </script>
 </body>
+
 </html>

@@ -1,0 +1,74 @@
+DNS : (Domain Name System)
+	놀리적인 이름의 서버이름 (www.daum.net, new.daum.net..)
+	실제 서버 주소를 구한다.
+	그 전에 hosts 파일을 먼저 검색한다.
+
+	unix : /etc/hosts
+	win : c:/windows/system32/drivers/etc/hosts
+
+	
+HTTP Status code :
+	100번 대
+	200번 대
+	300번 대
+	400번 대 : 클라이언트가 서버에 잘못된 요청을 시도
+	500번 대 : 서버 스크립트의 오류이거나 서버가 폭주하여 일시 중단된 상태
+
+
+MIME type :
+	Multipurpose Internet Mail Extensions의 약자.
+	파일 변환을 위한 포맷이며, 이름에서 알 수 있듯 이메일에 첨부된 파일을
+	텍스트 문자 형태로 변환해서 이메일과 함께 전송하기 위해 개발된 포맷
+	
+	test/html;charset=utf-8
+	분류 / 서브 카테고리 ; 인코딩 지정(옵션)
+
+서블릿 기본언어 :
+	영어(서유럽어 : iso-8859-i)
+	한글 : 초기에 표준 : 조합형/완성형I -> euc-kr/ksc-5601
+	8bit -> 1byte(영어 대소문자 26*2 +10 + 특수 30)
+	한글 2byte : 약 65,000 표현 가능
+	2 4 6 16 32 64 128 256
+	90년대 중후반 인터넷 활성화
+	unicode, 4byte, 8byte표현 가능
+	a : 1byte -> 4byte
+	
+	utf-8
+	영어 + 숫자 + 특수문자 : 1byte표현
+	나머지 : 3byte
+
+운영서버 : 실제 민간인에게 서비스를 제공하는 서버
+개발서버 : 개발할 때 사용하는 서버
+도메인을 사용해서 기술...
+
+
+CGI : java 서블릿
+	.class
+	개발자가 서플릿으로 간단한 화면 만들기가 버겁다.
+	사용자가 별로
+	php, perl에서 사용한 방식을 차용
+	jsp : java로 변경, 컴파일, 실행(jsp 컨테이너)
+
+	1부터 100까지 짝수의 합 : jsp, 서블릿
+
+
+서블릿 : java 웹 개발을 위한 표준 스펙
+	3가지 중요한 객체
+	서블릿 : 요청을 처리하기 위한 객체(HttpServlet을 상속해서 구현)
+	필터 : 요청 전/후에 공통적인 기능을 제공(Filter implement 구현)
+	리스터 : WAS 기동/ 초기화 관련 리스너
+		요청에 대한 리스너
+		사용자 세션에 대한 리스너
+
+com.study.servlet SumServlet 작성 : HttpServlet을 상속
+	service
+		doGet
+		doPost
+		doPut
+		doTrace
+		doDelete
+	http method 종류
+		service : get/post 구분없이 모두 처리
+		doGet : get 방식으로 요청한 경우 처리
+		실제 요청하는 url하고 서블릿 매핑작업
+		

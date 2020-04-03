@@ -27,11 +27,25 @@
             </tr>
             <tr>
                 <td colspan=2 style="text-align:center;"><input type="submit" value="서버 전송">
-                <input type="reset" value="다시쓰기"></td>
+                <input type="reset" value="다시쓰기">
+                <input type="button" value="액션" onclick="f_action()">
+                </td>
             </tr>
         </table>
     </form>
     <script>
+    
+        function f_action() {
+            // console.log(v_form.elements); // Elements는 잘 사용하지 않는다.
+
+            var v_queryStr = "";
+            var v_idStr = v_id.name + " = " + v_id.value;
+            var v_pwStr = v_pw.name + " = " + v_pw.value;
+
+            v_queryStr = v_idStr + "& " + v_pwStr;
+            location.replace("address.html?" + v_queryStr); // 이것이 action의 동작
+        }
+
         // 폼 접근법1 - 옛날 방식 - 혹 이런 소스가 남아 있을 수도 있음
         console.log(document.forms[0]); // 배열식 접근
         console.log(fm_id1); // 이 방식으로 쓰는 것은 금물

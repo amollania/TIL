@@ -33,6 +33,7 @@
             {1, } 최소 1번 반복
             {2, 5} 반복 2번에서 5번
             {, 4} 반복 최대 4번
+            () 그룹짓기, 첫번째부터 $1 $2...
         */
 
         var v_regexp2 = /[0-9]{3}-[0-9]{3,4}-[0-9]{4}/; // 이 방식을 많이 선호한다. (좀 더 빠르다)
@@ -43,8 +44,8 @@
 
 
         // 문자열의 replace와 split 메소드는 정규표현식을 사용할 수 있다.
-        var v_str3 = "This this This this This\n this This this This this This";
-        v_str3 = v_str3.replace(/^This/gim, "Hong"); // g 옵션은 global 전부, i 옵션은 대소문자 관계없이 지정, m 옵션은 
+        var v_str3 = "This (this) (This) this This\n this This this This this This";
+        v_str3 = v_str3.replace(/This/gi, "Hong $1, $2 Chi"); // g 옵션은 global 전부, i 옵션은 대소문자 관계없이 지정, m 옵션은 
 
         document.write(v_str3 +"<br>");
 

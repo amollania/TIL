@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>충돌 게임</title>
+
+    <style>
+        #id_ball {
+            position: absolute;
+            width:200px;
+            height:200px;
+            left:50px;
+            top:10px;
+            background-image: url("./images/d1.jpg");
+            background-size: 200px 200px;
+            border-radius: 50%;
+        }
+
+        #id_bar {
+            position: absolute;
+            width: 400px;
+            height: 20px;
+            left: 100px;
+            top: 600px;
+            background-color: darkblue;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="id_ball"></div>
+    <div id="id_bar"></div>
+
+    <script>
+        var v_ball = document.getElementById("id_ball");
+        var v_bar = document.getElementById("id_bar");
+
+        var v_mvWidth = 10; // x축 이동값
+        var v_mvHeight = 10; // y축 이동값
+        
+        function f_init() {
+            // inline 스타일로 초기화되어 있지 않은 경우
+
+            if(!v_ball.style.left) {
+                v_ball.style.left = "50px";
+                v_ball.style.top = "50px";
+                v_bar.style.left = "100px";
+                v_bar.style.top = "700px";
+            }
+
+            // 왼쪽이나 오른쪽에 부딪혔을 때 변환
+            if((parseInt(v_ball.style.left) < 0) ||
+            (parseInt(v_ball.style.left+ 10) >= window.innerWidth)) {
+                v_mvWidth = -v_mvWidth;
+                v_ball.style.transform = "skewX(0deg)";
+            }
+
+            // 위나 아래쪽에 부딪혔을 때 변환
+            if((parseInt(v_ball.style.top) <=0) ||
+            (parseInt(v_ball.style.top+10)>= window.innerHeight))  {
+                v_mvHeight = -v_mvHeight;
+                v_ball.style.transform = "skewX(0deg)";
+            }
+
+            v_ball.style.left = parseInt(v_ball.style.left) + v_mvWidth + "px";
+            v_ball.style.top = parseInt(v_ball.style.top) + v_mvHeight + "px";
+
+            // 충돌 구현
+            var v_vcond = (parseInt(v_ball.style.top)+ 10) >= parseInt(v_bar.style.top);
+            var v_hcond1 = (parseInt(v_ball.style.left)+ 400) >= parseInt(v_bar.style.left);
+            var v_hcond2 = parseInt(v_ball.style.left) <= parseInt(v_bar.style.left)+400;
+
+            // 3가지 조건이 만족해야만 충돌
+            if(v_vcond && (v_hcond1&&v_hcond2)) {
+                
+                if(v_mvWidth > 0) {
+                    v_ball.style.transform = "skewX(-45deg) scale(0.5)"; // skew 비틀다, 뒤틀리다
+                } else {
+                    v_ball.style.transform = "skewX(45deg) scale(0.5)"; // skew 비틀다, 뒤틀리다
+                }
+                v_mvHeight = -v_mvHeight;
+            }
+
+            setTimeout(f_init, 300/60); // 모니터 주사율에 맞춰서 표현
+        }
+
+        // 키보드 좌우
+        var KEYVALUE = {};
+        KEYVALUE.ArrowLeft = "ArrowLeft";
+        KEYVALUE.ArrowRight = "ArrowRight"; 
+
+        var v_barMVWidth = 1;
+
+        function f_keyDown() {
+            // MDN 내용 조사 결과 keyCode는 deprecated 되었다고 사용하지 않아야 한다고 주장.
+            if(event.key == KEYVALUE.ArrowLeft) {
+                if(parseInt(v_bar.style.left) > 0) {
+                    v_bar.style.left = parseInt(v_bar.style.left) - v_barMVWidth + "px";
+                }
+            }
+
+            if(event.key == KEYVALUE.ArrowRight) {
+                if(parseInt(v_bar.style.left) +200 < window.innerWidth) {
+                    v_bar.style.left = parseInt(v_bar.style.left) + v_barMVWidth + "px";
+                }
+            }
+        }
+
+        window.onload = f_init;
+        window.onkeydown = f_keyDown;
+    </script>
+
+</body>
+</html>

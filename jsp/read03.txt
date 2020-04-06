@@ -1,0 +1,20 @@
+JSP 컨톄이너
+
+사용자가 해당 JSP를 호출할 시
+JSP -> 서블릿(JAVA) 파일로 변경, -> 컴파일 -> 메모리에 적재 -> 해당객체 호출
+
+
+메서드 및 변수 선언부 <%! ~~ %>
+
+
+String VS StringBuffer(StringBuilder)의 차이점?
+
+String
+매시간 새로운 경우를 만들기 때문에 느리며, 더 많은 메모리를 소비.
+
+StringBuffer
+고정된 공간에 고정된 주소를 가지며, String에 비해 빠르고, 더 적은 메모리를 소비한다.
+
+----------
+request 객체 : 클라언트 정보
+remoteAddr, requestURI, contextPath

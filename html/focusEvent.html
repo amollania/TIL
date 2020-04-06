@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>포커스 블러 이벤트</title>
+</head>
+<body>
+    <img id="id_img" src="https://via.placeholder.com/150/00ffff/ff0000/?text=WhatThe%20f" alt=""><br>
+    아이디<input id="id_id" type="text" value=""><br>
+    <input type="button" value="아바타 이미지 생성" onclick="f_avatar()"><br>
+
+    <script>
+        var v_id = document.getElementById("id_id");
+        var v_img = document.getElementById("id_img");
+
+        function f_avatar() {
+            var v_baseURL = "https://api.adorable.io/avatars/285/";
+            var v_url = v_baseURL + v_id.value + ".png";
+            v_img.src = v_url;
+        }
+    </script>
+
+
+    암호<input id="id_pw1" type="password" value="" onfocus="f_focus1()"><br>
+    암호확인<input id="id_pw2" type="password" value="" onfocus="f_focus2()" onblur="f_blur()"><br>
+    <input type="submit" value="전송해">
+    <div style="margin-bottom:20px"></div>
+
+    <div id="id_msg" style="display: none; color:blue">암호가 정확하지 않아</div>
+
+
+    <!-- Open API 활용 -->
+    <!-- * 카카오맵 - 지도퍼가기 -->
+    <div id="daumRoughmapContainer1586156544287" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+    <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+    <script charset="UTF-8">
+        new daum.roughmap.Lander({
+            "timestamp" : "1586156544287",
+            "key" : "xt2d",
+            "mapWidth" : "340",
+            "mapHeight" : "240"
+        }).render();
+    </script>
+
+    <!-- * 네이버맵 지도 -->
+    <iframe src="http://naver.me/F72djikR" frameborder="0" width="500" height="300"></iframe>
+
+    <!-- 브라우져에서 해당 URL의 데이터를 받아 적용 -->
+
+    <script>
+        var dipmsg = document.getElementById("id_msg");
+
+        function f_focus1() {
+            console.log("커서가 1에게 왔어요");
+        }
+
+        function f_focus2() {
+            console.log("커서가 2에게 왔어요");
+        }
+
+        function f_blur() {
+            var v_pw1val = document.getElementById("id_pw1").value;
+            var v_pw2val = document.getElementById("id_pw2").value;
+
+            if(v_pw1val != v_pw2val) {
+                dipmsg.style.display = "block";
+                document.getElementById("id_pw1").focus();
+            } else {
+                dipmsg.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>

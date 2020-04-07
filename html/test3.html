@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문제소수</title>
+</head>
+
+<body>
+
+    <script>
+        // Prime Number(소수) 구하기 문제
+        // Prime Number란 1과 그 자신 이외의 숫자로는 나누어 떨어지지 않는 숫자
+        // 1은 제외, 예를 들면 7은 1과 7로만 나누어 떨어지므로, 소수
+
+
+        function f_ckPrime(p_num) {
+            for (var i = 1; i <= p_num; i++) {
+                if (p_num % i == 0) {
+                    arry.push(i);
+                }
+            }
+            if (arry.length == 2) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        
+
+        while ([] == ![]) {
+            var arry = [];
+            var v_userInput = prompt("숫자를 입력해주십시오.", "10");
+
+            if(f_ckPrime(v_userInput)) {
+                alert(v_userInput + " 이 숫자는 소수이로다.");
+                break;
+            } else {
+                alert("다시 입력하도록 해라");
+            }
+            
+            if (v_userInput == "0") {
+                alert("종료");
+                break;
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

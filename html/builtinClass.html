@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>빌트인 클래스</title>
+</head>
+<body>
+    <script>
+        //Wrapper class : Number, String, Boolean
+        var v_arr = [];
+        alert(v_arr);
+
+        if("" == 0) {
+            
+        }
+        
+        if([] == ![]) {
+            alert("이것은 진실");
+        }
+    /*
+        1. ![]에서 ! 때문에 []이 boolean으로 바뀌게 된다. new Boolean([]) 하면 true;
+        2. ![]은 !true로 false
+        3. []== FALSE는 삐꾜 톄이쁠예써 object == boolean에 해당
+            boolean false가 숫자로 바뀌어 0이 된다.
+        4. object == 숫자 비교는 비교 테이블에서 object가 원시타입으로 바뀌게 된다. 빈 문자열
+        5. "" == 숫자는 문자열이 숫자로 바뀐다. ""은 숫자 0
+        6. 최종적으로 0 == 0 이어서 true 
+    */
+    </script>
+</body>
+</html>

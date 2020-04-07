@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>플렉스 조사 과제</title>
+
+    <style>
+        /* 원래 flexbox였으나, flex로 표준화되었다. */
+        .box-container {
+            display: inline-flex;
+            flex-wrap: wrap-reverse;
+            justify-content: center;
+            background-color: darkcyan;
+            padding-top:50px;
+        }
+
+        .box {
+            background-color: blueviolet;
+            border: 1px solid yellow;
+            width: 150px;
+            height: 200px;
+            margin:20px;
+            flex: auto;
+        }
+
+        .box.b1 {
+            background-color:blue;
+        }
+
+        .box.b2 {
+            background-color:darkorange;
+        }
+
+        .box.b3 {
+            height:300px;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="box-container">
+        <div class="box b1"></div>
+        <div class="box b2"></div>
+        <div class="box b3"></div>
+    </div>
+</body>
+</html>

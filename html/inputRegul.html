@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>입력 검증 정규표현</title>
+</head>
+<body>
+    <form action="tag.html">
+        ID <input type="text" name="nm_id" pattern="^[a-zA-Z]\w{4,}" value="" required><br>
+        암호 <input type="password" name="nm_pw" pattern="^[a-zA-z]\w{4,}" value="" title="여기 잘 입력해"><br>
+        전번 <input type="text" name="nm_tel" value="" pattern="^[a-zA-z]\w{4,}" placeholder=" -없이 입력해라"><br>
+        메일 <input type="text" name="nm_email" value="" pattern="\w+@\w+.\w+" required><br>
+        <input type="submit" value="쩐송">
+    </form>
+</body>
+</html>

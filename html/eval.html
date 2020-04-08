@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVAL</title>
+</head>
+<body>
+    <div id="id_dv">I'am div tag</div>
+    <input type="text" id="id_cal" value="" placeholder="수식을 입력하세요."><br>
+    <input type="button" value="계산" onclick="f_cal()">
+
+    <script>
+        var v_cal = document.getElementById("id_cal");
+        function f_cal() {
+            /*
+                eval함수는 해킹 일부에 사용되고 있는 관계로
+                사용을 자재받고 있음.
+                스크립트 엔진을 구동시킴
+            */
+            v_cal.value = eval("document.getElementById('id_dv').innerHTML");
+        }
+    </script>
+
+</body>
+</html>

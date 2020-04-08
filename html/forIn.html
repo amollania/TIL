@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For In</title>
+</head>
+<body>
+    <script>
+        // // for(변수 int 객체)
+        // var v_arr = ["a", "b", "c", "d"];
+        // for(var p_attr in v_arr) { // 배열에 for in문을 쓰면 index값이 넘어온다.
+        //     alert(p_attr);
+        // }
+
+        // var v_json = {
+        //     "attr1" : "AAA",
+        //     "attr2" : "BBB",
+        //     "attr3" : "ccc",
+        //     "attr4" : "DDD"
+        // }
+
+        // for(var p_attr in v_json) {
+        //     alert(p_attr + "의 값은" + eval("v_json."+p_attr));
+        // }
+
+        // function f_sum(p_maxNum) {
+        //     if(p_maxNum == 1) return 1;
+        //     return p_maxNum + f_sum(p_maxNum-1);
+        // }
+        // alert(f_sum(50));
+
+        // var v_arr = new Array(1, 2, 3); // [1,2,3]과 같음
+        // var v_arr2 = new Array(10); // [10]과 같지 않음
+        // alert(v_arr2.length);
+
+        // function f_text() {
+        //     return;
+        // }
+        // alert(f_text());
+
+        // var v_a = 1;
+        // var v_b = 2;
+        // var v_c = v_a+v_b;
+
+        // // 즉각 실행함수, 메모리가 절약된다. 이는 자원을 아낄 수 있다는 것을 의미
+        // (function(){
+        //     var v_a = 1;
+        //     var v_b = 2;
+        //     return v_a+v_b;
+        // })();
+
+        var v_arr = ["a", "b", "c", "d", "e"];
+        // 배열에서 b를 지우고 싶다
+        // v_arr.splice(1,1); // index 1번부터
+        // alert(v_arr);
+
+        // var v_jsonArr = [
+        //     ["2020-03-05", "AM"],
+        //     ["2019-01-25", "HS"],
+        //     ["2020-04-15", "ED"],
+        //     ["2018-06-13", "WX"],
+        //     ["2019-11-23", "EK"]
+        // ];
+        // // 위 배열을 날짜 순으로 정렬
+        // v_jsonArr.sort(function(a,b){
+        //     return a[0].replace(/-/g,"") - b[0].replace(/-/g,"");
+        // });
+
+        // alert(v_jsonArr);
+
+        /* Array 객체 문제 */
+        // var v_nameArr = [];
+        // while(true) {
+        //     var name = prompt();
+        //     if(name == null || name == "null") {
+        //         break;
+        //     }
+        //     v_nameArr.push(name);
+        // } 
+        // document.write(v_nameArr);        
+
+
+        var v_numArr = [];
+        while(v_numArr.length <= 5-1) {
+            var v_isNot = false;
+            var num = prompt();
+            num = parseInt(num);
+            for(var i=0; i <= v_numArr.length; i++) {
+                if(isNaN(num) || num == null || num == "") {
+                    v_isNot = true; 
+                    alert("잘못된 값 입력");
+                } else if(num == v_numArr[i]) {
+                    v_isNot = true;
+                    alert("중복된 값 존재");
+                }
+            }
+            if(!v_isNot) {
+                v_numArr.push(num);
+                alert(num + " 숫자 들어감");
+            }
+        } document.write(v_numArr);
+
+
+    </script>
+</body>
+</html>

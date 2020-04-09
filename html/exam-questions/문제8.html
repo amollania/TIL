@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제니 형</title>
+</head>
+<body>
+    
+    <input id="count" type="text" value="">
+    <input type="button" onclick="checkMe()" value="Push">
+
+    <script>
+        var countTime = document.getElementById("count");
+        var cnt;
+        var cntNum;
+        var cnt1 = true;
+        var cnt2 = false;
+
+        var cntTime = 0;
+        var result = 0;
+        var disNum = 0;
+        var disInt =0;
+
+        function checkMe() {
+            cnt = countTime.value;
+            // cnt = parseInt(cnt);
+
+            checkCount(cnt);
+            checkTime(result);
+        }
+
+        function checkCount(intNum) {
+            cntNum = parseInt(intNum);
+            if(cnt1 && cntNum > 0) {
+                result += 3;
+                document.write(" |"+ "+" + result +"| ");
+                cnt1 = false; cnt2 = true;
+                cntNum -=1;
+
+            } else if(cnt2 && cntNum > 0) {
+                result -= 2;
+                document.write(" |"+ "-" +result +"| ");
+                cnt1 = true; cnt2 = false;
+                cntNum -=1;
+            }
+
+            if(cntNum > 0) {
+                setTimeout(checkCount(cntNum), 0);
+            } else {
+                document.write(" 로제가 지금까지 간 거리 : " + result + "cm<br>");
+                cnt1 = true;
+                cnt2 = false;
+            }
+        }
+
+        function checkTime(int2) {
+            disInt = parseInt(int2);
+            if(cnt1 && disNum < result) {
+                disNum += 3;
+                cnt1 = false; cnt2 = true;
+                cntTime += 1;
+            } else if(cnt2 && disNum < result) {
+                disNum -= 2;
+                cnt1 = true; cnt2 = false;
+                cntTime += 1;
+            }
+            if(disNum < result) {
+                setTimeout(checkTime(disNum), 0);
+            } else {
+                document.write("<br>" + result + "cm 까지 가는데 총 걸린 시간은? 약 " + (cntTime) + "초");
+            }
+        }
+
+    </script>
+
+</body>
+</html>

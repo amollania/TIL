@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기본 레이아웃</title>
+    <style>
+    /* *은 페이지 전체에 적용되는 선택자 */
+        * {
+            text-align: center;
+            font-size:1.2em;
+        }
+        .container {
+            display: block;
+            margin: 0 auto;
+            max-width: 850px;
+            border:1px solid black;
+            background-color: gray;
+        }
+        .header {
+            /* 추가 */
+            background-color: blue;
+            height: 150px;
+            line-height: 4em;
+        }
+        .nav {
+            float:left;
+            height: 600px;
+            line-height: 5;
+            width: 33.35%;
+            background-color: blueviolet;
+        }
+        .content {
+            float:right;
+            width: 66.65%;
+            line-height: 5;
+            height: 600px;
+            background-color:chartreuse;
+        }
+        .footer {
+            /* 추가 */
+            display: block;
+            float: left;
+            width: 100%;
+            height: 200px;
+            line-height: 5;
+            background-color:darkgreen;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            Header
+        </div>
+        <div class="nav">
+            <a href="#">Menu</a>
+        </div>
+        <div class="content">
+            Content            
+        </div>
+        <div class="footer">
+            footer
+        </div>
+    </div>
+</body>
+</html>

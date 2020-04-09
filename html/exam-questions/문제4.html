@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+먼저 랜덤하게 발생한 숫자(범위는 55~100) 20개를 가진 배열을 만듭니다
+매개변수로 배열을 받아서, 해당 배열속의 최소값과 최대값을 찾아서(Math객체 사용하지 않음)
+JSON형식의 객체에 maxValue, minValue의 속성에 담아서 해당 객체를 리턴해주는 함수를 만들어주십시오
+함수명은 뭐든 상관없습니다.
+위 함수에 만들어놓은 배열을 매개변수로 넘겨 함수가 잘 동작하는지 테스트해봅니다.
+
+<hr>
+
+<script>
+    var arry = [];
+    // 배열 만들기
+    for(var i=1; i<=20; i++) {
+        arry.push(Math.ceil(Math.random()*45)+55);
+    }
+
+    // 함수
+    var test = function() {
+        var maxNumber;
+        var minNumber;
+        var jsonArry = {};
+        for(var i=0; i< arry.length; i++) {
+            if(!maxNumber) {
+                maxNumber = arry[i];
+            }
+            if(maxNumber < arry[i]) {
+                maxNumber = arry[i];
+            }
+        }
+
+        for(var i=0; i< arry.length; i++) {
+            if(!minNumber) {
+                minNumber = arry[i];
+            }
+            if(minNumber > arry[i]) {
+                minNumber = arry[i];
+            }
+        }
+
+        jsonArry = {"maxValue":maxNumber, "minValue":minNumber};    
+
+        
+        return "최대값 : " + jsonArry.maxValue + "   최소값 : " + jsonArry.minValue;
+
+    }
+    document.write(test(arry));
+
+
+    
+
+
+
+
+
+</script>
+
+
+
+</body>
+</html>

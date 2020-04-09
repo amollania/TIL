@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+.chart-element {
+    background: #fff;
+    width: 50px;
+    height: 240px;
+    display: inline-table;
+    margin-left: 25px;
+    vertical-align: bottom;
+}
+
+div#containner {
+    background: #ff5858;
+    padding: 50px;
+}
+</style>
+
+<body>
+    <div id="containner">
+        <div id="chart">
+            
+        </div>
+    </div>
+
+
+    <script>
+        //데이타
+        function add() {
+            
+            var v_datas = [80,100,56,120,180,30,40,120,160];
+        
+            for(var i=0; i < v_datas.length; i++) {
+                v_datas[i];
+
+                var div = document.createElement("div");
+                div.setAttribute("class", "chart-element");
+                div.innerHTML = v_datas[i];
+                div.style.height = v_datas[i] + "px";
+                document.getElementById("chart").appendChild(div);
+            }
+        } 
+        add();
+
+    </script>
+    
+</body>
+</html>

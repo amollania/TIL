@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회싸 인싸 씨쓰톔</title>
+</head>
+<body>
+    <select id="id_sel1" size=4 onchange="f_first()">
+    </select>
+    <select id="id_sel2" size=4 style="width:50px" onchange="f_second()">
+    </select>
+    <select id="id_sel3" size=4 style="width:50px">
+    </select>
+    <script>
+        var v_grp1 = ["영업부","관리부"];
+ 
+        var v_grp12 = [
+            ["국내영업","해외영업","마구영업"],
+            ["인사관리","구매관리","자금관리"]
+        ];
+
+        var v_grp123 = [
+            [
+                ["임나연","유정연","박지효"],
+                ["김다현","손채영","박로제"],
+                ["태리사","김제니","김지수"]
+            ],
+            [
+                ["김남준","김석진"],
+                ["민윤기","정호석","전정국"],
+                ["박지민","김태형"]
+            ]
+        ];
+
+        var v_str="<option>선택하세요</option>";
+        for(var i=0; i < v_grp1.length; i++){
+            v_str += "<option value="+ i + " >"+ v_grp1[i] + "</option>";
+        }
+        document.getElementById("id_sel1").innerHTML = v_str;
+
+        function f_first(){
+            var sel = document.getElementById("id_sel1");
+            var val = sel.options[sel.selectedIndex].value;
+    
+            var v_str2 = "<option>아무것도 아님</option>";
+
+            for(var i=0; i < v_grp12[val].length; i++) {
+                v_str2 += "<option value="+ i + " >"+ v_grp12[val][i] + "</option>";
+            }
+            document.getElementById("id_sel2").innerHTML = v_str2;
+            
+        }
+
+        function f_second(){
+            var sel = document.getElementById("id_sel1");
+            var val = sel.options[sel.selectedIndex].value;
+            var sel2 = document.getElementById("id_sel2");
+            var val2 = sel2.options[sel2.selectedIndex].value;
+
+            var v_str3 = "<option>아무것도 아님</option>";
+            
+            
+            for(var j=0; j< v_grp123[val][val2].length; j++) {
+                v_str3 += "<option value="+ j + " >"+ v_grp123[val][val2][j] + "</option>";
+            }
+            
+            document.getElementById("id_sel3").innerHTML = v_str3;
+        }
+
+
+
+    </script>
+</body>
+</html>
+

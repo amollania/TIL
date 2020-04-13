@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Child Nodes</title>
+</head>
+<body>
+    <div id="id_parent">
+        <div id="id_div1">자식 1</div>
+        <div id="id_div2">자식 2</div>
+        <div>자식 3</div>
+    </div>
+
+    <script>
+        var v_childs = document.getElementById("id_parent").children;
+        // childnode를 사용하면 배열 요소에 추가되는 내용 때문에 복잡도가 올라가므로 사용하지 않는다.
+        console.log(v_childs);
+
+        document.getElementById("id_div1").style.border = "2px solid #ddd"; // 사용 권장됨
+        document.getElementById("id_div2").style["border"] = "2px solid #ff0000"; // 가독성은 좋으나 속도가 별로
+        document.getElementById("id_div2").style["background-color"] = "blue";
+        document.getElementById("id_div2").style["color"] = "#fff";
+
+        
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<jsp:include />
+- 별도의 서블릿(jsp), 본문에서 해당 서블릿을 호출
+호출 받은 서블릿은 제어권을 받아서 결과만 처리
+작업이 끝나면 본문에 다시 제어권을 이전
+
+<%@ include />
+- C의 include 처럼 파일 자체를 본문에 삽입
+
+------------------------------
+이클립스 jsp 파일 생성할 때 next 탭에서 HTML 템플릿을 추가
+
+<%@ page language="java" contentType="text/html; charset=${encoding}"
+    pageEncoding="${encoding}"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="${encoding}">
+<title>Insert title here</title>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/main.css"></link>
+</head>
+<body>
+	${cursor}
+	<!-- 상단 메뉴 -->
+	<jsp:include page="/WEB-INF/inc/top.jsp" />
+	
+	<!-- 왼쪽 메뉴 -->
+	<jsp:include page="/WEB-INF/inc/left.jsp" />
+	
+	<!-- 본문 메뉴 -->
+	<div class="main-menu">
+		
+	</div>
+	
+	<!-- 하단 메뉴 -->
+	<jsp:include page="/WEB-INF/inc/footer.jsp" />
+	
+</body>
+</html>
+
+- - - - - - - - - - - - - - - - - -
+main에서 sub로 제어권 이동
+<jsp:include />
+그 때 필요한 정보를 제공하는 방법
+
+1. <jsp:param /> 파라미터를 생성 : 문자열이 되는 값 = "winner", 10, 2020-02-14
+param의 문제점으로는 객체를 보낼 수 없다. 그래서 나온 해결 방안이 속성 사용
+
+2. 속성을 사용하여 객체를 보낸다. 실습은 포워드에서
+
+
+<jsp:forward />
+- 별도의 서블릿(JSP) 본문에서
+forward를 만나면 제어권을 해당 페이지에 이관
+해당 페이지에서 결과처리를 한다.
+
+
+
+
+
+

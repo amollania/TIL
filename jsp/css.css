@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+body,th,td,input,select,textarea,button{
+	font-size:12px;line-height:1.5;font-family:AppleSDGothicNeo-Regular,'Malgun Gothic','맑은 고딕',dotum,'돋움',sans-serif;color:#222;letter-spacing:-0.5px}
+	
+body {
+	margin:0;
+}
+
+ul {
+	padding:0;
+}
+
+.top-menu {height:150px; width: 100%}
+
+.top-menu ul li {display: inline-block; min-width: 50px; width:25%}

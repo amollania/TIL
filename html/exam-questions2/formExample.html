@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form 문제</title>
+</head>
+<body>
+    <div>
+    <form action="">
+        <label for="">이름</label>
+        <input type="text" name="yournm" value=""><br>
+        
+        <label for="">성별</label>
+        <input type="radio" name="yoursb" value="남">남
+        <input type="radio" name="yoursb" value="여">여<br>
+
+        <label for="">취미</label>
+        여행<input type="checkbox" name="hobbys" value="여행">
+        독서<input type="checkbox" name="hobbys" value="독서">
+        바둑<input type="checkbox" name="hobbys" value="바둑">
+        장기<input type="checkbox" name="hobbys" value="장기">
+        영화<input type="checkbox" name="hobbys" value="영화">
+        등산<input type="checkbox" name="hobbys" value="등산">
+        낚시<input type="checkbox" name="hobbys" value="낚시"><br>
+
+        <input type="button" value="결과출력" onclick="textCheck()" name="" id="buttonBox"><br>
+
+        <textarea name="" id="textBox" cols="30" rows="10"></textarea>
+
+    </form>
+    </div>
+ 
+    <script>
+        var youName = document.getElementsByName("yournm");
+        var youSbs = document.getElementsByName("yoursb");
+        var youHobbys = document.getElementsByName("hobbys");
+        var youButton = document.getElementById("buttonBox");
+        var textBoxSelect = document.getElementById("textBox");
+        
+        function textCheck() {
+            var resultYouName = youName[0].value;
+            var resultYouSb, resultYouHobbys = [];
+            for(var i=0; i < youSbs.length; i++) {
+                if(youSbs[i].checked) {
+                    resultYouSb = youSbs[i].value;
+                    break;
+                }
+            }
+
+            for(var i=0; i < youHobbys.length; i++) {
+                if(youHobbys[i].checked) {
+                    resultYouHobbys.push(youHobbys[i].value);
+                }
+            }
+
+            var totalResult = resultYouName + "씨\n";
+            totalResult += "당신은 " + resultYouSb + "이고\n";
+            totalResult += "취미는 " + resultYouHobbys + "이다.";
+            textBoxSelect.value = totalResult;
+        }
+    </script>
+
+</body>
+</html>

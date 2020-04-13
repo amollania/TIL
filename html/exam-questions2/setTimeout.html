@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SET TIMEOUT</title>
+</head>
+<body>
+
+    <script>
+        function f_check(p_name, p_msg) {
+            alert(p_name + "아" + p_msg);
+        }
+        // setTimeout(f_check.bind(null, "유진", " 어딧니"), 1000);
+        setTimeout(f_check, 1000, "돌쇠님 ", " 거긴 행복해?");
+
+        // this 컨트롤 call, apply, bind
+        // bind만 함수 포인터를 리턴해주고,
+        // call과 apply는 해당 함수를 그저 실행만 하게 된다.
+
+        // alert(screen.colorDepth); // 컬러 개수 24비트 2의 8승 256(RGB)
+        // alert(screen.availWidth); // 화면 넓이
+        alert(navigator.userAgent); // 브라우저를 구분하는데 사용
+
+    </script>
+</body>
+</html>

@@ -77,7 +77,7 @@
         var v_leftAll = v_btns[3];
 
         // 선택된 부분 찾기
-          .onclick = function() {
+          onclick = function() {
             var v_sel1Options = v_box1.option;
             for(var i=0; i<v_sel1Options.length; i++) {
                 if(v_sel1Options[i].selected) {
@@ -91,6 +91,7 @@
             var v_txtValue = v_add.value;
             var v_option =document.createElement("option");
             v_option.innerHTML = v_txtValue;
+            i--;
             v_box1.appendChild(v_option);
         }
     </script>

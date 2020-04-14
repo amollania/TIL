@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로컬스토리지</title>
+</head>
+
+<body>
+    <script>
+        /*
+            setItem("key값", "value값");
+            getItem("key값"); : key값에 해당하는 value값 읽기
+            removeItem("key값"); : key값에 해당하는 item 지우기
+            length; : item이 몇개인지
+            key(index넘버); : 시작은 0번부터, key값을 리턴
+        */
+
+        /*
+        if (!localStorage) {
+            alert("로컬 스토리지를 지원하지 않는 오래된 브라우져입니다.");
+        } else {
+            alert("이것은 최신 브라우져군요.");
+        }
+
+        // 로컬스토리지 모두 없애버리기
+        localStorage.clear();
+
+        // 로컬스토리지에 키값 셋팅
+        localStorage.setItem("키와", "값이지");
+        // 키값 바꾸기
+        localStorage.setItem("키야", "바꾼다");
+        alert(localStorage.getItem("키야"));
+        
+        // 키값 삭제
+        localStorage.removeItem("키야");
+        // null 등장
+        alert(localStorage.getItem("키야"));
+        // 키 길이 출력 (값이 없으면 1)
+        alert(localStorage.length);
+
+        localStorage.setItem("키야", "바꾼다");
+        alert("key1 "+ localStorage.key(1)); // 키야
+        alert("key2 " + localStorage.key(2)); // null
+        */
+
+        localStorage.clear();
+
+        var v_json = {
+            "target" : "GAME",
+            "goal" : "Win",
+            "etc" : "You loser"
+        }
+
+        var v_json2 = '{"target" : "GAME", "goal" : "Win", "etc" : "You loser"}'
+        localStorage.setItem("배열", JSON.stringify(v_json));
+        var strToObj = localStorage.getItem("배열");
+        var v_arry1 = JSON.parse(localStorage.getItem("배열"));
+
+        var v_names = ["이마", "손", "발", "입", "심장", "신장"];
+        var v_ages = [20, 10, 23, 50, 40, 64];
+        var v_alias =
+        [["마빡", "얼굴", "상단"],
+            ["손가락", "10개"],
+            ["발가락", "10개"],
+            ["입술", "주둥이"],
+            ["뜨거운", "두근", "사랑"],
+            ["신체", "중요기관"] 
+        ]
+
+        for(var i=0; i<v_names.length; i++) {
+            var v_jsonEx = { "name" : v_names[i], "age" : v_ages[i], "alias" : v_alias[i] }
+            var strToObj2 = JSON.stringify(v_jsonEx);
+            localStorage.setItem("배열신형"+i, JSON.stringify(v_jsonEx));
+            var v_arrResult = localStorage.getItem("배열신형"+i);
+            document.write(v_arrResult);
+        }
+
+        var v_result = [];
+        var v_saram = {};
+
+        for(var i=0; i<v_ages.length; i++) {
+            var v_saram = {}; // 빈 객체 생성
+            v_saram.name = v_names[i];
+            v_saram.age = v_ages[i];
+            v_saram.alias = v_alias[i];
+            v_result.push(v_saram);
+        }
+        localStorage.setItem("Six Name", JSON.stringify(v_result));
+
+</script>
+</body>
+
+</html>

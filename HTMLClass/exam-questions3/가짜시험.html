@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h3 {
+            margin-top:30px;
+            margin-bottom:10px;
+        }
+    </style>
+
+<script>
+        
+    var v_munjeSu =5;
+    var v_selSu=4;
+    var v_jungDaps=[];
+    
+    for(var j=1; j<=v_munjeSu; j++){
+        document.write("문제"+j+"번<hr>");
+        v_jungDaps.push(Math.ceil(Math.random()*v_selSu));
+        
+        for(var i=1; i<=v_selSu; i++){
+            document.write(i+"<input type=radio name=nm_rdo"+j+ " value="+i+" >");
+        }
+        document.write("<input type=text class=cl_jung name=nm_jung"+j+" >");
+        document.write("<br><br>");
+    }
+    document.write("<input type=button id=id_cha value=채점 ><br>");
+    document.write("당신의 점수는<input type=text id=id_jumsu value=''>");
+    
+    var v_cha = document.getElementById("id_cha");
+    v_cha.onclick = f_cha;
+    var v_jundapTxt = document.getElementsByName("nm_jung");
+    
+    function f_cha(){
+        //사용자 체크 답 가져오기
+        var v_userDaps =[];
+        for(var j=1; j<=v_munjeSu; j++){
+            var v_rdoGrp = document.getElementsByName("nm_rdo"+j);
+            for(var i=0; i<v_selSu; i++){
+                if(v_rdoGrp[i].checked){
+                    v_userDaps.push(v_rdoGrp[i].value);
+                    break;
+                }
+            }
+        }
+    
+        // 맞힌 갯수 체크
+        var v_jungCnt=0;
+        for(var i=0; i<v_jungDaps.length; i++){
+            v_jundapTxt[i].value = v_jungDaps[i]; // 안보이는 텍스트에 정답 미리 써놓기
+            if(v_jungDaps[i] == v_userDaps[i]){
+                v_jungCnt++;
+                v_jundapTxt[i].style.backgroundColor = "blue";
+            } else {
+                v_jundapTxt[i].style.backgroundColor = "red";
+            }
+            v_jundapTxt[i].style.color = "yellow";
+            v_jundapTxt[i].style.display = "inline-block";
+        }
+    
+        var v_jumsu = parseInt(v_jungCnt / v_munjeSu * 100);
+        document.getElementById("id_jumsu").value = v_jumsu;
+    
+    
+    }
+    
+    
+        </script>
+</head>
+
+<body>
+    
+</body>
+
+</html>

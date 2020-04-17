@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    찾고 싶은 이미지가 있으신가요?
+    <input type="text" value="" id="id_sch">
+    <input type="button" value="찾기" name="" id="" onclick="f_imgSch()">
+    <div id="id_disp"></div>
+
+    <script>
+        var v_flickerURL = "https://www.flickr.com/services/feeds/photos_public.gne?tags=";
+        function f_imgSch() {
+            if(document.getElementById("onlyOne")) {
+                document.body.removeChild(document.getElementById("onlyOne"));
+            }
+            document.getElementById("id_disp").innerHTML = "";
+            var v_schword = document.getElementById("id_sch").value;
+            var v_script = document.createElement("script");
+            v_script.src = v_flickerURL + v_schword + "&format=json";
+            document.body.appendChild(v_script);
+        }
+
+        function jsonFlickrFeed(p_data) {
+            var v_items = p_data.items;
+            for(var i=0; i<v_items.length; i++) {
+                var v_img = document.createElement("img");
+                v_img.src = p_data.items[i].media.m;
+                v_img.width = "200";
+                v_img.height = "100";
+                document.getElementById("id_disp").appendChild(v_img);
+            }
+            console.log(p_date.items[0].media.m);
+        }
+    </script>
+
+    <!-- <script src="https://www.flickr.com/services/feeds/photos_public.gne?tags=cat&format=json"></script> -->
+</body>
+</html>

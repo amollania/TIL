@@ -1,3 +1,8 @@
+/* Text setting */
+.text-center {
+    text-align: center;   
+}
+
 #header {
     position: fixed;
 }
@@ -31,5 +36,22 @@ body {
     right: 0;
     position: fixed;
     top: 40%;
+}
+
+#slider-inner {
+    position: fixed;
+    top: 40%;
+    right: 0;
+    left: 0;
+    width: 50%;
+    color: #fff;
+    text-align: center;
+    display: table-cell;
+    margin: 0 auto;
+    z-index: 0;
+}
+
+#content-body {
+    padding: 50px 0;
 }
 

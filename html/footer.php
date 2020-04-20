@@ -7,6 +7,7 @@
 <!-- Botttom Script -->
 <script src="<?php echo $relative_path ?>js/set.js"></script>
 <script src="<?php echo $relative_path ?>js/main.js"></script>
+<script src="<?php echo $relative_path ?>js/scroll.js"></script>
 
 <!-- jQuery -->
 <script src="<?php echo $relative_path ?>js/jquery.js"></script>

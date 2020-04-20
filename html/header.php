@@ -1,5 +1,3 @@
-
-
 <div id="header">
     <div id="logo">
         <a href="#"><img id="logo-img" class="animation-fade" src="./images/logo.png" alt="주택튜브 로고"></a>

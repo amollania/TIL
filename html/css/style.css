@@ -1,4 +1,16 @@
 /* Text setting */
+
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+.content-inner {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
 .text-center {
     text-align: center;   
 }
@@ -40,7 +52,7 @@ body {
 
 #slider-inner {
     position: fixed;
-    top: 40%;
+    top: 35%;
     right: 0;
     left: 0;
     width: 50%;
@@ -49,6 +61,19 @@ body {
     display: table-cell;
     margin: 0 auto;
     z-index: 0;
+}
+
+#slider-back {
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/background.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+#home-slider {
+    height: 100%;
 }
 
 #content-body {

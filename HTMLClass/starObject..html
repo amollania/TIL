@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .vNemo {
+                display:inline-block;
+                width:20px;
+                height:20px;
+                border:1px solid black;
+                text-align: center;
+                font-size: 1.2em;
+            }
+            .aNemo {
+                display:inline-block;
+                width:20px;
+                height:20px;
+                border:1px solid white;
+            }
+        </style>
+    <style type="text/css">/* Copyright 2014-present Evernote Corporation. All rights reserved. */
+    @keyframes caretBlink {
+        from { opacity: 1.0; }
+        to { opacity: 0.0; }
+    }
+    
+    @keyframes rotateSpinner {
+        from {
+            transform:rotate(0deg);
+        }
+        to {
+            transform:rotate(360deg);
+        }
+    }
+    
+    #text-tool-caret {
+        animation-name: caretBlink;  
+        animation-iteration-count: infinite;  
+        animation-timing-function: cubic-bezier(1.0,0,0,1.0);
+        animation-duration: 1s; 
+    }
+    
+    #en-markup-loading-spinner {
+        position: absolute;
+        top: calc(50% - 16px);
+        left: calc(50% - 16px);
+        width: 32px;
+        height: 32px;
+    }
+    
+    #en-markup-loading-spinner img {
+        position: relative;
+        top: 0px;
+        left: 0px;
+        animation-name: rotateSpinner;
+        animation-duration: 0.6s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+    </style><style type="text/css">/* Copyright 2014-present Evernote Corporation. All rights reserved. */
+    .skitchToastBoxContainer {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        top: 30px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        pointer-events: none;
+    }
+    
+    .skitchToastBox {
+        width: 200px;
+        height: 16px;
+        padding: 12px;
+        background-color: rgba(47, 55, 61, 0.95);
+        border-radius: 4px;
+        color: white;
+        cursor: default;
+        font-size: 10pt;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.32);
+        font-family: 'Soleil', Helvetica, Arial, sans-serif;
+        border: 2px rgba(255, 255, 255, 0.38) solid;
+    }
+    
+    .lang-zh-cn .skitchToastBox {
+        font-family: '微软雅黑', 'Microsoft YaHei', SimSun,
+            '&#x30E1;&#x30A4;&#x30EA;&#x30AA;', Meiryo, 'MS PGothic', 'Soleil',
+            Helvetica, Arial, sans-serif;
+    }
+    
+    .lang-ja-jp .skitchToastBox {
+        font-family: '&#x30E1;&#x30A4;&#x30EA;&#x30AA;', Meiryo, 'MS PGothic',
+            '微软雅黑', 'Microsoft YaHei', SimSun, 'Soleil', Helvetica, Arial,
+            sans-serif;
+    }
+    
+    .skitchToast {
+        padding-left: 20px;
+        padding-right: 20px;
+        display: inline-block;
+        height: 10px;
+        color: #f1f5f8;
+        text-align: center;
+    }
+    
+    .skitchVisible {
+        /* Don't remove this class it's a hack used by the Evernote Clipper */
+    }
+    </style><style type="text/css">/* Copyright 2014-present Evernote Corporation. All rights reserved. */
+    
+    #en-markup-disabled {
+        position: fixed;
+        z-index: 9999;
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        left: 0px;
+        cursor: default;
+        -webkit-user-select: none;
+    }
+    
+    #en-markup-alert-container {
+        position: absolute;
+        z-index: 9999;
+        width: 450px;
+        left: calc(50% - 225px);
+        top: calc(50% - 85px);
+        background-color: white;
+        box-shadow: 0 2px 7px 1px rgba(0,0,0,0.35);
+        -webkit-user-select: none;
+    }
+    
+    
+    #en-markup-alert-container .cell-2 {
+        position: relative;
+        float: left;
+        width: 345px;
+        margin-top: 29px;
+        margin-bottom: 20px;
+    }
+    
+    #en-markup-alert-container .cell-2 .cell-2-title {
+        margin-bottom: 5px;
+        padding-right: 30px;
+        font-size: 12pt;
+        font-family: Tahoma, Arial;
+    }
+    
+    #en-markup-alert-container .cell-2 .cell-2-message {
+        padding-right: 30px;
+        font-size: 9.5pt;
+        font-family: Tahoma, Arial;
+    }
+    
+    #en-markup-alert-container .cell-3 {
+        position: relative;
+        width: 450px;
+        height: 60px;
+        float: left;
+        background-color: rgb(240,240,240);
+    }
+    
+    #en-markup-alert-container .cell-3 button {
+        position: absolute;
+        top: 12px;
+        right: 15px;
+        width: 110px;
+        height: 36px;
+    }
+    
+    #en-markup-alert-container .cell-3 button.alt-button {
+        position: absolute;
+        top: 12px;
+        right: 140px;
+        width: 110px;
+        height: 36px;
+    }
+    </style></head>
+
+<body>
+    <div id="id_disp"></div>
+    <input type="button" value="버튼" onclick="f_triMake()">
+    <input type="button" value="클론" onclick="f_clone()">
+    <script>
+        var v_disp = document.getElementById("id_disp");
+
+        function f_clone() {
+            var v_clone = v_disp.cloneNode(true);
+            document.body.appendChild(v_clone);
+        }
+
+        function retColor() {
+            var v_red = Math.round(Math.random()*255);
+            var v_green = Math.round(Math.random()*255);
+            var v_blue = Math.round(Math.random()*255);
+            var v_alpla = "0." + Math.round(Math.random()*9);
+            if(v_alpla == "0.0") v_alpla = "1";
+            return "rgba(" + v_red + "," + v_green + "," +
+            v_blue+","+v_alpla+")";
+        }
+
+        // 반복문 잘 쓰는가?확인하기 위해서 많이 내는 문제
+        var v_disp = document.getElementById("id_disp");
+        function f_triMake() {
+            v_disp.innerHTML = "";
+            function retDiv(p_char){    // 네모난 div를 리턴해주는 함수
+                var v_div = document.createElement("div");
+                if(p_char){
+                    v_div.setAttribute("class","vNemo");
+                    v_div.style.backgroundColor = retColor();
+                    v_div.innerHTML = p_char;
+                }else {
+                    v_div.setAttribute("class","aNemo");
+                }
+                return v_div;
+            }
+            var v_maxLine = 10;
+            for(var i=1; i<=v_maxLine; i++){
+                for(var j=1; j<=v_maxLine-i; j++) {
+                    v_disp.appendChild(retDiv(""));
+                }
+
+                for(var k=1; k<=(i*2)-1; k++) {
+                    v_disp.appendChild(retDiv("*"))
+                }
+                v_disp.innerHTML += "<br>";
+            }
+            setTimeout(f_triMake, 10)
+        }
+
+    </script>
+</body>
+
+</html>

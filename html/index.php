@@ -3,11 +3,12 @@
 <head>
 
     <?php
+    // Cookie save
+    if((include 'cookie.php')==TRUE) {}
+
     // php Source
     $relative_path = preg_replace("`\/[^/]*\.php$`i", "/", $_SERVER['PHP_SELF']);
-    ?>
 
-    <?php
     if((include 'head.php')==TRUE) {}
     ?>
 </head>

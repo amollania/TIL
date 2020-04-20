@@ -26,12 +26,32 @@ for(var i=0; i < menuJson.menu.length; i++) {
     menuOl.appendChild(menuLi);
     menuLi.appendChild(menuA);
     menuA.appendChild(menuText);
-
 }
 
+// Menu Move Animation 해결법 찾아볼 것
 $(document).ready(function(){
     $(menuJson.menu[0].link).click(function(){
         var offset = $(menuJson.menu[0].link+'-content').offset();
+        $('html').animate({scrollTop : offset.top}, 400);
+    });
+
+    $(menuJson.menu[1].link).click(function(){
+        var offset = $(menuJson.menu[1].link+'-content').offset();
+        $('html').animate({scrollTop : offset.top}, 400);
+    });
+
+    $(menuJson.menu[2].link).click(function(){
+        var offset = $(menuJson.menu[2].link+'-content').offset();
+        $('html').animate({scrollTop : offset.top}, 400);
+    });
+
+    $(menuJson.menu[3].link).click(function(){
+        var offset = $(menuJson.menu[3].link+'-content').offset();
+        $('html').animate({scrollTop : offset.top}, 400);
+    });
+
+    $(menuJson.menu[4].link).click(function(){
+        var offset = $(menuJson.menu[4].link+'-content').offset();
         $('html').animate({scrollTop : offset.top}, 400);
     });
 });

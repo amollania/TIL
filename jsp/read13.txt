@@ -1,0 +1,6 @@
+12_prod : 최대한 스크립트릿, 표현식
+prodList.jsp를 ProductList 클래스를 사용해서 변경
+proView.jsp를 넘겨진 파라미터 정보에 맞게 변경
+
+JSTL을 사용해서 다시 15일차 정도에 변경
+

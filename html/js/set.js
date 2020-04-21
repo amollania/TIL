@@ -1,3 +1,4 @@
+/*** Main Menu ***/
 // Menu Setting
 var menu = document.getElementById("menu");
 var menuOl = document.createElement("ol");

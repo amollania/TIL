@@ -5,6 +5,10 @@ html, body {
     height: 100%;
 }
 
+img {
+    max-width: 100%;
+}
+
 .content-inner {
     height: 100%;
     width: 100%;
@@ -79,3 +83,24 @@ body {
     padding: 50px 0;
 }
 
+/* svg image */
+.cricle {
+    top: 0;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    z-index: -10;
+    list-style: none;
+}
+
+/* Free */
+#about-content {
+    position: relative;
+    z-index: -1;
+}
+
+@media (max-width: 767px) {
+    #logo-img {
+        max-width: 20%;
+    }
+  }

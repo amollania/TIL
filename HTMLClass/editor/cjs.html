@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get parameter</title>
+</head>
+<body>
+    <script>
+        var v_queryString = decodeURIComponent(location.href.split("?")[1]);
+        v_quertyString = v_queryString.split("=")[1];
+        alert(v_quertyString.replace(/\+/g, " "));
+    </script>
+</body>
+</html>

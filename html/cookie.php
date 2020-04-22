@@ -16,5 +16,4 @@
     } else {
         // cookie using
     }
-
 </script>

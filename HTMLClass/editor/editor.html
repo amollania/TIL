@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor 사용</title>
+    <script src="ckeditor/ckeditor.js"></script>
+</head>
+<body>
+    <form action="cjs.html">
+    <textarea id="id_cjs" name="nm_cjs" cols="30" rows="10"></textarea>
+
+    <input type="submit" value="보내줄까">
+    </form>
+    <script>
+        CKEDITOR.replace("id_cjs");
+    </script>
+</body>
+</html>

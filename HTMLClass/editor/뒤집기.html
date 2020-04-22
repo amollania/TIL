@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뒤집기</title>
+    <style>
+        
+        #id_par {
+            position: relative;
+            left: 50px;
+            top:50px; 
+            width:410px;
+            height:200px;
+            border:5px solid black;
+        }
+        img {
+            position: absolute;
+            backface-visibility: hidden;
+            background-color:white;  /* 느낌상 바뀐 듯*/
+        }
+        #id_img1 {
+            left:0;
+            top:0;
+            transform: rotateY(180deg);
+        }
+        #id_img2 {
+            left:210px;
+            top:0;
+        }
+    
+    </style>
+</head>
+<body>
+    <input type="button" value="일단 돌려보기" onclick="f_rot()">
+    <div id="id_par" onmouseover="f_msOver()" onmouseout="f_msOut()">
+        <img id="id_img1" src="./images/background.jpg" alt="" width="200" height="200">
+        <img id="id_img2" src="./images/back2.jpg" alt="" width="200" height="200">
+    </div>
+
+<script>
+    var v_gak = 0;
+    var v_img1 = document.getElementById("id_img1");
+    var v_img2 = document.getElementById("id_img2");
+    function f_msOver() {
+        if(v_gak >= 180) {
+            return
+        }
+        v_gak += 5;
+        v_img1.style.transform = "rotateY(" (180 + v_gak) + "deg)";
+        v_img1.style.transform = "rotateY(" + v_gak + "deg)";
+    }
+
+    function f_rot() {
+        v_gak += 5;
+        v_img1.style.transform="rotateY(" + v_gak + "deg)";
+        v_img2.style.transform="rotateY(" + v_gak + "deg)";
+        setTimeout(f_rot, 1000/60);
+    }
+
+    function f_msOut() {
+        
+    }
+
+</script>
+
+</body>
+</html>

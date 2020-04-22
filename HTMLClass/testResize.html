@@ -55,7 +55,7 @@
         var v_RadiusG = 200;
         var v_transG = 0;
         function f_gRotate() {
-            v_transG = v_transG +0.3;
+            v_transG = v_transG + 0.3;
             v_transG = v_transG % 360;
             v_img2.style.transform = "rotateZ(" + v_transG+ "deg)";
             v_img2.style.left = v_centerX + v_RadiusG*Math.cos(v_transG *Math.PI/180) + (-150) + "px"; 

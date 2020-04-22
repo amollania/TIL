@@ -13,6 +13,14 @@
         <div class="row text-center">
             <h4>미디어로 따뜻한 집을 소개하는</h4>
             <h2>주택튜브</h2>
+
+            <!-- 이미지 수정 요구 -->
+            <a href="https://www.youtube.com/channel/UCo7GAOked98iFAWPLr09ROg" target="_blank"><img src="./images/youtube.png" alt="" style="width: 350px;"></a>
+
+            <!-- SVG Action -->
+            <li class="cricle"><img src="./svg/cricle.svg" alt=""></li>
+            <li class="cricle"><img src="./svg/cricle2.svg" alt=""></li>
+            <li class="cricle"><img src="./svg/cricle3.svg" alt=""></li>
         </div>
     </div>
 </div>

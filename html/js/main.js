@@ -24,7 +24,7 @@ function allFadeAnimation() {
 
 
 // Mobile size Function
-var mobileSize = 640;
+var mobileSize = 767;
 var isMobile = false;
 var menus = document.getElementsByClassName("menu-list");
 

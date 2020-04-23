@@ -1,0 +1,14 @@
+
+- 과제 :
+com.study.common.util
+StudyFileUtils 클래스
+ + public static String getFancySize(long size)
+ 1024보다 작으면 byte
+ 1024 * 1024 보다 작으면 KB
+ 1024 * 1024 * 1024 보다 작으면 MB
+ else GB
+ byte 초과 천 단위 구분, 소수점 첫째자리 표현 (DecimalFormat)
+
+StudyFileUtils.getFanySize(256) -> 256byte
+StudyFileUtils.getFancySize(15210) -> 15.2KB
+StudyFileUtils.getFancySize(12935630) -> 12.9MB

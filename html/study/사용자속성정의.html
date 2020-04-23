@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사용자 속성 정의</title>
+</head>
+<body>
+    <!-- 사용자 정의 속성은 무조건 date-로 시작 -->
+    <div id="id_dv" data-cjs="Function" data-ltg="Funk">
+        사용자가 HTML 엘리먼트에 속성을 정의 할 수 잇음
+    </div>
+    <script>
+        // 사용자 정의 속성에 접근하기
+        // 사용자 정의 속성은 보통 조금 큰 프로젝트에서 사용
+        var v_dv = document.getElementById("id_dv");
+        
+        // v_dv.dataset.Funk;
+        alert(v_dv.dataset["cjs"]);
+        alert(v_dv.dataset.cjs);
+    </script>
+</body>
+</html>

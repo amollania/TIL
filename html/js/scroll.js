@@ -31,7 +31,6 @@ var result = 0;
 looping();
 
 function looping() {
-    
     // scroll size
     crrWin = window.scrollY;
     crrHeight = document.body.clientHeight;
@@ -39,9 +38,6 @@ function looping() {
     if (!result) {
         result = 0;
     }
-
-    // 임시
-    console.log(crrWin + "  스크롤위치 " + crrHeight);
 
     // MenuColor change
     if(result >= 0.5) {
@@ -101,6 +97,9 @@ function looping() {
         aboutBackImg.lastChild.style.display = "none";
         isAboutAccess = true;
     }
+
+    // Mouse move menu
+    pageCnt = Math.floor(result);
 
     // loop
     requestAnimationFrame(looping);

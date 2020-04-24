@@ -1,0 +1,6 @@
+read16.txt
+외부 jar 위치
+ - JDK /ext/ : 해당 JRE전제에서 사용, 시스템 전체에 영향을 미친다.
+ - WAS /lib : 해당 WAS 전체에서 사용
+ - 컨텍스트 내 /WEB-INF/lib : 해당 컨텍스트에서 사용
+ 

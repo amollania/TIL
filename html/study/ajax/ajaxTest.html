@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="main">
+        허허
+    </div>
+    <form id="id_form1" action="">
+    이름 <input type="text" id="nm_name" name="" value="체크용" id=""><br>
+    나이 <input type="text" id="nm_age" name="" value="" id=""><br>
+    별명 <input type="text" id="nm_hobby" name="" value="" id=""><br>
+    <input type="button" value="buttttton" onclick="ajaxAction()">
+    </form>
+
+    <script>
+        // Form안에 input type이 많이 있기에 하나하나 쓰기 번거롭다면?
+        var v_form = document.getElementById("id_form1");
+        alert(v_form.elements[0].value);
+        function f_serialize() {
+            var v_queryString = "";
+            for(var i=0; i< v_form.elements.length; i++) {
+                if(v_form.elements[i].type == "button") {
+                    continue;
+                }
+
+                v_queryString += v_form.elements[i].name + "=";
+                if(i== v_form.elements.length -1) {
+                    v_queryString += v_form.elements[i].value;
+                } else {
+                    v_queryString += v_form.elements[i].value + "&";
+                }
+            }
+            return v_queryString;
+        }
+
+        var v_nameTxt = document.getElementById("id_name");
+        function ajaxAction() {
+            
+            // var v_name = v_nameTxt.value;
+            var v_ajax = new XMLHttpRequest();
+            v_ajax.open("get", "test.php?"+f_serialize(v_form), true);
+            v_ajax.send(null);
+
+            v_ajax.onreadystatechange = function() {
+                if(v_ajax.readyState == "4" && v_ajax.status == "200") {
+                    alert("서버로부터 받은 값은"+
+                        v_ajax.responseText);
+                }
+            }
+            
+        }
+    </script>
+</body>
+</html>

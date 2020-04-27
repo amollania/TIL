@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV</title>
+</head>
+<body>
+    <div id="id_disp">출력</div>
+    <input type="button" value="아작내자" id="id_btn">
+
+    <script>
+        
+        var v_btn = document.getElementById("id_btn");
+        v_btn.addEventListener("click",function(){
+            var v_ajax = new XMLHttpRequest();
+            v_ajax.open("get","data.csv",true);
+            v_ajax.send();
+
+            v_ajax.onreadystatechange = function(){
+                if(v_ajax.readyState==4 && v_ajax.status == 200){
+                    var v_lines = v_ajax.responseText.split("\n");
+                    var v_tblStr = "<table border=1>";
+                    for(var i=0; i< v_lines.length; i++){
+                        v_tblStr += "<tr>";
+                        var v_commas = v_lines[i].split(",");
+                        for(var j=0; j< v_commas.length; j++){
+                            v_tblStr += "<td>"+ v_commas[j] + "</td>";
+                        }
+                        v_tblStr += "</tr>";
+                    }
+                    v_tblStr += "</table>";
+                    document.getElementById("id_disp").innerHTML = v_tblStr;
+                }
+            }
+           // alert("값체크"+v_csvLine);  // ? 이게 이해안되면 비동기 이해? 
+        });
+    </script>
+</body>
+</html>

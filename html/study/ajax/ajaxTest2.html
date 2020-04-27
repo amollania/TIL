@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax Test2</title>
+</head>
+<body>
+    <div id="id_disp">출력</div>
+    <input type="button" value="아작내자" id="id_btn">
+
+    <script>
+        
+        var v_btn = document.getElementById("id_btn");
+        v_btn.addEventListener("click",function(){
+            var v_ajax = new XMLHttpRequest();
+            v_ajax.open("get","data.xml",true);
+            v_ajax.send();
+
+            v_ajax.onreadystatechange = function(){
+                if(v_ajax.readyState==4 && v_ajax.status == 200){
+                    document.getElementById("id_disp").innerHTML = "";
+                    var v_xmlDoc = v_ajax.responseXML; // text로 읽지 않고 태그 문서로 읽는다.
+                    var v_snior = v_xmlDoc.getElementsByTagName("snior");
+                    // console.log(v_snior[0]);
+                    // v_snior을 이용해서 nick name
+                    for(var i=0; i<v_snior.length; i++) {
+                        document.getElementById("id_disp").innerHTML +=
+                            v_snior[i].children[2].innerHTML + "<br>";
+                    }
+                }
+            }
+           // alert("값체크"+v_csvLine);  // ? 이게 이해안되면 비동기 이해? 
+        });
+    </script>
+</body>
+</html>

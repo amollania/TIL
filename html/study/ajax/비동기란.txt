@@ -1,0 +1,6 @@
+비동기(Asynchronouse)란?
+순차적, 비순차적, 효율이 좋아진다.
+AJAX -> Asynchronouse Javascript XML의 약자
+
+구글에서 GMAIL, GMAP을 AJAX로 구현하면서 거의 웹 표준으로 자리잡았다.
+

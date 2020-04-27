@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax 범용화</title>
+</head>
+<body>
+    <div id="id_disp">Hello, World!!</div>
+    <input type="button" value="ajaxCOLLLLL" onclick="genAjax('get', 'data.json')">
+    <script>
+
+        function genAjax(selGet, selFile) {
+            var v_ajax = new XMLHttpRequest();
+            v_ajax.open(selGet, selFile, true);
+            v_ajax.send();
+     
+            v_ajax.onreadystatechange = function() {
+                if(v_ajax.readyState == 4 && v_ajax.status==200) {
+                    console.log(v_ajax.responseText);
+                    return v_ajax.responseText;
+                }
+            }
+        }
+
+
+
+        function f_genAjax() {
+            var v_ajax = new XMLHttpRequest();
+            v_ajax.open("get", "data.json", true);
+            v_ajax.send();
+
+            v_ajax.onreadystatechange = function() {
+                if(v_ajax.readyState == 4 && v_ajax.status==200) {
+                    console.log(v_ajax.responseText);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

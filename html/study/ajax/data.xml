@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class>
+    <snior>
+        <name>김자동문</name>
+        <age>25</age>
+        <nick>오픈유얼</nick>
+    </snior>
+    <snior>
+        <name>김도둑</name>
+        <age>21</age>
+        <nick>훔치기</nick>
+    </snior>
+    <snior>
+        <name>김셔틀</name>
+        <age>19</age>
+        <nick>빵셔틀</nick>
+    </snior>
+</class>

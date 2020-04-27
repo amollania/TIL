@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax Test2</title>
+</head>
+<body>
+    <div id="id_disp">출력</div>
+    <input type="button" value="아작내자" id="id_btn">
+
+    <script>
+        
+        var v_btn = document.getElementById("id_btn");
+        v_btn.addEventListener("click",function(){
+            /*
+            Origin 구성요소
+            프로토콜 + 도메인(ip) + 포트번호
+            http://mail3.nextit.or.kr/
+            https://mail3.nextit.ro.kr/
+            http://huk.nextit.or.kr/
+            http://mail3.nextit.or.kr:8080/
+            */
+
+            var v_ajax = new XMLHttpRequest();
+            // v_ajax.open("get","data.json",true);
+            // jsonPHP의 장점 다른 URI를 통해 수집하여 사용가능하기도 하다.
+            v_ajax.open("get","jsonp.php",true);
+            v_ajax.send();
+
+            v_ajax.onreadystatechange = function(){
+                if(v_ajax.readyState==4 && v_ajax.status == 200){
+                    alert(v_ajax.responseText);
+                    // console.log(JSON.parse(v_ajax.responseText).name);
+                }
+            }
+           // alert("값체크"+v_csvLine);  // ? 이게 이해안되면 비동기 이해? 
+        });
+    </script>
+</body>
+</html>

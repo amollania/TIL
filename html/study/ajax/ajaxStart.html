@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax Document</title>
+</head>
+<body>
+    <div id="id_disp">Hello, World!!</div>
+    <input type="button" value="ajaxCOLLLLL" onclick="f_ajax()">
+    <input type="button" value="ajaxCOLLLLL" onclick="dispAccess()">
+    <script>
+
+        function dispAccess() {
+            var v_ajax = new XMLHttpRequest();
+            v_ajax.open("get", "test.php", true);
+            v_ajax.send();
+            
+            v_ajax.onreadystatechange = function() {
+                if(v_ajax.readyState == "4" && v_ajax.status == "200") {
+                    document.getElementById("id_disp").innerHTML =
+                    v_ajax.responseText;
+                }
+            }
+        }
+
+
+        // SPA : Single Page Application
+        // function f_ajax() {
+        //     var v_ajax = new XMLHttpRequest();
+        //     v_ajax.open("get", "test.php", true);
+        //     v_ajax.send();
+        //     v_ajax.onreadystatechange = function() {
+        //         if(v_ajax.readyState == "4" && v_ajax.status == "200") {
+        //             document.getElementById("id_disp").innerHTML =
+        //                 v_ajax.responseText;
+        //         }
+        //     }
+        // }
+
+        // var v_ajax = new XMLHttpRequest(); // 통신객체(뒤로 몰래 작동)
+        // v_ajax.open("get", "imsi.txt", true); // 인수 3개, method, url, 동기/비동기 여부(false를 사용할 경우 브라우저에서 작동하지 않음)
+        // v_ajax.send(); // 서버에 연락
+
+        // // 통신객체는 상태값이 바뀔때 마다 이벤트를 발생시켜 알려준다.
+        // v_ajax.onreadystatechange = function() {
+        //     // 우리가 관심있는 부분은 통신이 잘 끝난 상황만 관심있음
+        //     if(v_ajax.readyState== "4" && v_ajax.status == "200") {
+        //         // alert("통신완료");
+        //         alert(v_ajax.responseText);
+        //     }
+        // }
+    </script>
+</body>
+</html>

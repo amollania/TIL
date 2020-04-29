@@ -1,0 +1,18 @@
+read18.txt
+
+DAO : Persistence Layer : 하나의 메서드에서 하나의 작업만 하도록 작성
+Service : Business Logic Layer : 최소 단위의 업무단위로 구성
+
+IMemberDao <- MemberDaoOracle
+insertXxx
+updateXxx
+deleteXxx
+getXxx      (or findByXxx, selectXxx)
+getXxxList  (or findByXxx, selectXxx)
+
+IMemberService <- MemberServiceImpl
+    registXxx
+    modifyXxx
+    removeXxx
+    getXxx
+    getXxxList

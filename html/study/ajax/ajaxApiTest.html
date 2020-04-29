@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    divc
+
+    <script>
+        // 힌트 : 사용하기 편하게 원하는 값만 뽑아서 JSON으로 배열에 담기
+        var v_original = JSON.parse(localStorage.getItem("Exchg"));
+        var v_gooDateas =[];
+        
+        // key 값만 뽑아내기
+        for(var key in v_original.rates) {
+            var v_myJson = {};
+            v_myJson.date = key.raplace(/-/g, "");
+            v_myJson.yen = v_original.rates[key].JPY;
+            v_myJson.won = v_original.rates[key].KRW;
+            v_goodDatas.push(v_myJson);
+        }
+        console.log(v_goodDatas); // 확인!
+        
+
+    </script>
+</body>
+</html>

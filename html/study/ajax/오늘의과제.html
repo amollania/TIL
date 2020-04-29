@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <title>유럽 중앙의 따끈한 데이터</title>
+</head>
+<body>
+    <!-- 갓 구워낸 유럽중앙 데이터 -->
+    <!-- 달라, 엔, 원화 -->
+
+    <div id="main"></div>
+    <input type="date" id="startDay">
+    <input type="date" id="endDay">
+    <input type="button" id="action" onclick="ajaxAction()" value="BUTTTTTON">
+    <input type="button" id="action" onclick="displayAction()" value="STARTTTTTTTT">
+    <canvas id="myChart" width="650" height="400"></canvas>
+    
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',   // 속성을 간단히 하기 위해서 line 타입으로
+            data: {
+                labels: null,
+                datasets: [{
+                    label: '',
+                    data: null,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)'
+                    ]
+                },
+                {
+                    label: '',
+                    data: null,
+                    backgroundColor: [            
+                    'rgba(153, 102, 255, 0.2)'
+                    ]
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: false
+                        }
+                    }]
+                }
+            }
+        });
+
+        function ajaxAction() {
+            var sDate = document.getElementById("startDay").value;
+            var eDate = document.getElementById("endDay").value;
+            var vMoney = "USD";
+            
+            console.log(sDate);
+            console.log(eDate);
+
+            var vAjax = new XMLHttpRequest();
+            vAjax.open("get", "https://api.exchangeratesapi.io/history?start_at="+
+                sDate + "&end_at=" + eDate + "&base=" + vMoney , true);
+            vAjax.send(null);
+
+
+            // JSON 활용하기
+            vAjax.onreadystatechange = function() {
+                if(vAjax.readyState == 4 && vAjax.status == 200) {
+                    // 힌트 : 사용하기 편하게 원하는 값만 뽑아서 JSON으로 배열에 담기
+                    var v_original = JSON.parse(vAjax.responseText);
+                    var v_goodDatas =[];
+
+                // key값만 뽑아내기
+                for(var key in v_original.rates){
+                    var v_myJson = {};
+                    // v_myJson.date = key.replace(/-/g,"");
+                    v_myJson.date = key;
+                    v_myJson.yen = v_original.rates[key].JPY;
+                    v_myJson.won = v_original.rates[key].KRW;
+                    v_goodDatas.push(v_myJson);
+                }
+                //console.log(v_goodDatas);  // 확인!, 사용하기 편하게 바뀌었음.
+                // 정렬
+                v_goodDatas = v_goodDatas.sort(function(a,b){
+                    return a.date.replace(/-/g,"") - b.date.replace(/-/g,"");
+                });
+
+                console.log(v_goodDatas);
+                // 차트에 데이타 넣기
+                var v_dates = [];
+                var v_yens = [];
+                var v_wons = [];
+                for(var i=0; i< v_goodDatas.length; i++){
+                    v_dates.push(v_goodDatas[i].date);
+                    v_yens.push(v_goodDatas[i].yen * 10); // 원화하고 숫자 레벨 맞추기
+                    v_wons.push(v_goodDatas[i].won);
+                }
+                myChart.data.labels = v_dates;  // 이건 날짜 배열이 필요함
+                myChart.data.datasets[0].label = "엔화변화";
+                myChart.data.datasets[0].data = v_yens;  // 이건 엔화 변화
+                myChart.data.datasets[1].label = "원화변화";
+                myChart.data.datasets[1].data = v_wons;
+                myChart.update();
+                }
+            }
+        }
+
+
+    </script>
+</body>
+</html>

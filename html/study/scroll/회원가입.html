@@ -1,0 +1,64 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="회원가입처리.html" id="id_form">
+        아이디
+        <input type=text name="nm_id" value="Bng" required><br>
+        진짜 이름
+        <input type=text name="nm_name" value="Hong" required>
+        <input type="button" onclick="f_idCheck()" value="중복 체크"><br>
+        이메일
+        <input type=text name="nm_email" value="El" required><br>
+        <br>
+        java<input type="checkbox" name="nm_skill" value="java" checked>
+        js<input type="checkbox" name="nm_skill" value="js">
+        oracle<input type="checkbox" name="nm_skill" value="oracle" checked>
+        jsp<input type="checkbox" name="nm_skill" value="jsp"><br>
+        메모---------
+        <textarea name="nm_etc">잘합니까</textarea><br>
+        <input type="submit" value="가입">
+        <input type="reset" value="다시쓰기">
+    </form>
+
+    <script>
+        var v_idCheck = false;
+        document.getElementById("id_form").addEventListener("submit", function() {
+            event.preventDefault(); // 전송안하기
+        });
+
+        function f_submit() {
+            if(!v_idCheck) {
+                alert("아이디 중복체크 하지 않음");
+                return false;
+            }
+            return true;
+        }
+
+        function f_idCheck() {
+            var v_usrId = document.getElementsByName("nm_id")[0].value.trim();
+            var v_memList = JSON.parse(localStorage.getItem("memberT"));
+            var v_isRepeat = false;
+            for(var i=0; i<v_memList.length; i++) {
+                if(v_usrId == v_memList[i].id) {
+                    v_isRepeat = true;
+                }
+            }
+
+            if (v_isRepeat) {
+                alert("사용할 수 없는 아이디이다");
+            } else {
+                alert("사용가능한 아이디이도다");
+            }
+        }
+    </script>
+
+</body>
+</body>
+</html>

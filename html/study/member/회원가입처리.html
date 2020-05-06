@@ -1,0 +1,53 @@
+<html><head><meta charset="UTF-8">
+    <script src="js/myscript.js"></script>
+    <script>
+        var v_id = request.getParameter("nm_id");
+        var v_name = request.getParameter("nm_name");
+        var v_email = request.getParameter("nm_email");
+        var v_etc = request.getParameter("nm_etc").replace(/\+/g," ");
+        var v_skills = request.getParameterValues("nm_skills");
+       // console.log(v_id, v_name, v_email, v_etc, v_skills);
+       // 로컬스토리지에 저장, 관련정보 묶어서 json으로
+       var v_tblName="memberT";
+       var v_member = {};
+       v_member.id = v_id;
+       v_member.name = v_name;
+       v_member.email = v_email;
+       v_member.etc = v_etc;
+       v_member.skills = v_skills;
+       
+       var v_memList = [];      // 멤버를 담을 빈배열
+       var v_isMemberInCheck = localStorage.getItem(v_tblName); 
+       if(!v_isMemberInCheck){    // 처음 넣는 멤버!
+         v_memList.push(v_member);
+         localStorage.setItem(v_tblName, JSON.stringify(v_memList));
+         alert("감삽니당, 잘 가입되었슴당!");
+         location.href="회원리스트.html"; 
+       }else {
+         v_memList = JSON.parse(localStorage.getItem(v_tblName));
+        // 아이디 중복체크
+        var v_isRepeat = false;   // 중복되지 않았다고 가정
+        for(var i=0; i< v_memList.length; i++){
+            if(v_memList[i].id == v_id){   // 중복된 걸 찾았음!
+                v_isRepeat = true;         // 중복 표시
+                break;
+            }
+        }
+        if(v_isRepeat){
+            alert("아이디가 중복되었슴당,다른 걸 써주세용");
+            location.href="회원가입.html";
+        }else {
+            v_memList.push(v_member);
+            localStorage.setItem(v_tblName, JSON.stringify(v_memList));
+            alert("감삽니당, 잘 가입되었슴당!");
+            location.replace("회원리스트.html"); 
+        }
+       }
+    </script>
+    </head>
+    
+<body>
+
+</body>
+
+</html>

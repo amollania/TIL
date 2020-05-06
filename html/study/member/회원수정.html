@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <body>
+        <form action="회원수정처리.html" id="id_form">
+            아이디<input type="text" name="nm_id" value="" readonly="" required=""><br>
+            진짜이름<input type="text" name="nm_name" value="" required=""><br>
+            이메일<input type="text" name="nm_email" value="" required=""><br>
+            보유스킬<br>
+            JAVA <input type="checkbox" name="nm_skills" value="java">
+            JS <input type="checkbox" name="nm_skills" value="js">
+            Oracle <input type="checkbox" name="nm_skills" value="oracle">
+            JSP <input type="checkbox" name="nm_skills" value="jsp"><br>
+            하고픈말<br>
+            <textarea name="nm_etc"></textarea><br>
+            <input type="submit" value="수정">
+            <input type="reset" valeu="다시쓸거얌">
+        </form>
+        <script src="js/myscript.js"></script>
+        <script>
+            //페이지 로딩후
+            var v_userID = request.getParameter("mem_id");
+            window.onload = function(){
+                var v_memList = JSON.parse(localStorage.getItem("memberT"));
+
+                for(var i=0; i< v_memList.length; i++) {
+                    if(v_memList[i].id == v_userID) {
+                        document.getElementsByName("nm_id")[0].value = v_memList[i].id;
+                        document.getElementsByName("nm_name")[0].value = v_memList[i].name;
+                        document.getElementsByName("nm_email")[0].value = v_memList[i].email;
+                        document.getElementsByName("nm_etc")[0].value = v_memList[i].etc;
+
+                        //
+                        var v_skills = v_memList[i].skills;
+                        var v_ckboxs = document.getElementsByName("nm_skills");
+
+                        for(var j=0; j<v_skills.length; j++) {
+                            for(var k=0; k<v_ckboxs.length; k++) {
+                                if(v_ckboxs[k].value == v_skills[j]) {
+                                    v_ckboxs[k].checked = true; // 강제 체크
+                                    break;
+                                }
+                            }
+                        }
+
+                        break;
+                    }
+                }
+                // 어린이날 맞아서 시간이 많은 분들 여기 해봅니다.
+                // 목적은 localstorage가 아니고 json과 배열을 잘 섞어 쓰는 것입니다.
+            }
+        </script>
+    
+    </body>
+</body>
+</html>

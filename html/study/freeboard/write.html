@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="ckeditor/ckeditor.js"></script>
+    <title>CK Editor</title>
+</head>
+<body>
+    <textarea name="myEditor"></textarea>
+    <script>
+        CKEDITOR.replace( 'myEditor', {
+            height: 400,
+            filebrowserUploadUrl: "/study/study/freeboard/serverPhp.php?type=file",
+            filebrowserImageUploadUrl: "/study/study/freeboard/serverPhp.php?type=image",
+        });
+
+        //ckeditor4 디렉토리 아래  lib/config.js
+        config.removeDialogTabs = 'image:advanced;link:advanced';
+
+        //위에 라인 찾아서 그 아래에 아래 2라인 추가
+        config.extraPlugins = 'filebrowser';
+        config.filebrowserUploadMethod = 'form';
+
+    </script>
+</body>
+</html>

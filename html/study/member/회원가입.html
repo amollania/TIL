@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--onsubmit="return f_submit()" -->
+    <form action="회원가입처리.html" id="id_form">
+        아이디<input type="text" name="nm_id" value="kimpark" required="">
+        <input type="button" value="아이디중복체크" onclick="f_idcheck()"><br>
+        진짜이름<input type="text" name="nm_name" value="바잌" required=""><br>
+        이메일<input type="text" name="nm_email" value="abc@ddf.com" required=""><br>
+        보유스킬<br>
+        JAVA <input type="checkbox" name="nm_skills" value="java" checked="">
+        JS <input type="checkbox" name="nm_skills" value="js">
+        Oracle <input type="checkbox" name="nm_skills" value="oracle" checked="">
+        JSP <input type="checkbox" name="nm_skills" value="jsp"><br>
+        하고픈말<br>
+        <textarea name="nm_etc">BBQ</textarea><br>
+        <input type="submit" value="가입">
+        <input type="reset" valeu="다시쓸거얌">
+    </form>
+    <script>
+        var v_idCheck = false;
+        document.getElementById("id_form").addEventListener("submit",function(){
+            event.preventDefault();  // 전송안하기
+        });
+
+        function f_submit(){
+            if(!v_idCheck){
+                alert("아이디 중복체크를 하지 않으셨엉!");
+                return false;  // 전송 안하기
+            }
+            return true;   // 간단히 그외 전송하기
+        }
+        function f_idcheck(){
+            var v_usrId = document.getElementsByName("nm_id")[0].value.trim();
+            // 보통 요기서 AJAX로 서버와 통신해서 사용자 id 중복여부를 
+            // 서버단에서 체크해서 true/false를 리턴 받음!
+            var v_memList = JSON.parse(localStorage.getItem("memberT"));
+            var v_isRepeat = false;
+            for(var i=0; i< v_memList.length; i++){
+                if(v_usrId == v_memList[i].id){
+                    v_isRepeat = true;
+                }
+            }
+            if(v_isRepeat){
+                alert("사용할 수 없는 아이디 입니당. 쏘리");
+            }else {
+                alert("사용가능한 아이디입니다. 굳!");
+                v_idCheck = true;
+            }
+        }
+    </script>
+
+</body>
+</html>

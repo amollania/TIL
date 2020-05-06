@@ -1,0 +1,35 @@
+<html><head><meta charset="UTF-8">
+    <script src="js/myscript.js"></script>
+    <script>
+        var v_id = request.getParameter("nm_id");
+        var v_name = request.getParameter("nm_name");
+        var v_email = request.getParameter("nm_email");
+        var v_etc = request.getParameter("nm_etc").replace(/\+/g," ");
+        var v_skills = request.getParameterValues("nm_skills");
+        // console.log(v_id, v_name, v_email, v_etc, v_skills);
+        // 로컬스토리지에 저장, 관련정보 묶어서 json으로
+        var v_tblName="memberT";
+        var v_memList = JSON.parse(localStorage.getItem(v_tblName));
+
+        for(var i=0; i<v_memList.length; i++) {
+            if(v_memList[i].id ==v_id) {
+                v_memList[i].name = v_name;
+                v_memList[i].email = v_email;
+                v_memList[i].etc = v_etc;
+                v_memList[i].skills = v_skills;
+
+                // 로컬스토리지에 저장
+                localStorage.setItem(v_tblName, JSON.stringify(v_memList));
+                break;
+            }
+        }
+
+        location.replace("회원리스트.html");
+    </script>
+    </head>
+    
+<body>
+
+</body>
+
+</html>

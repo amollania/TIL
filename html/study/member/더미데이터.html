@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>더미데이터</title>
+</head>
+<body>
+    <div id="id_disp"></div>
+    <input type="button" value="이름생성하기" onclick="f_mk_Name()">
+
+    <script>
+    var v_disp = document.getElementById("id_disp");
+    var v_cnt=0;
+    function f_mkName(){
+       // v_disp.innerHTML += f_familyName() + f_name() + "<br>";
+        v_cnt++;
+        return f_familyName() + f_name();
+    }
+//한국 성씨(복성포함), 나무위키 참조
+var v_korFamilyNames = "김,이,박,최,정,강,조,윤,장,임,한,오,서,신,권,황,안,송,전,홍,류,고,문,량,손," +
+                       "배,조,백,허,유,남,심,로,정,하,곽,성,차,주,우,구,신,임,전,민,유,류,나,진,지," + 
+                       "엄,채,원,천,방,공,강,현,함,변,염,양,변,여,추,노,도,소,신,석,선,설,마,길,주," + 
+                       "연,방,위,표,명,기,반,라,왕,금,옥,육,인,맹,제,모,장,탁,국,여,진,어,은,편," + 
+                       "남궁,독고,황보,제갈,사공,선우,서문,어금,망절,무본,황목,등정,장곡,강전";
+v_korFamilyNames = v_korFamilyNames.split(",");
+
+//이름에 자주 쓰이는 글자들 인터넷 참조
+var v_korNames = "성,영,상,재,종,정,동,용,승,경," +
+                 "호,수,석,철,훈,현,진,영,환,식," +
+                 "미,은,선,혜,지,덕,방,원,우,다," +
+                 "희,숙,자,순,주,솔,별,국,민,일," +
+                 "바,휴,왕,웅,범,대,익,중,낙,택," +
+                 "권,황,율,률,술,걸,탁,백,룡,건," +
+                 "애,난,소,분,아,매,말,녀,름,자," +
+                 "란,임,라,충,슬,준,옥,찬,림,례," +
+                 "필,규,한,예";
+v_korNames = v_korNames.split(",");
+// 랜덤한 성씨
+function f_familyName(){
+    return v_korFamilyNames[Math.floor(Math.random()* v_korFamilyNames.length)];
+}
+//랜덤한 이름
+function f_name(){
+    var v_name = v_korNames[Math.floor(Math.random()*v_korNames.length)];
+    if(v_cnt % 10 != 0){
+        v_name += v_korNames[Math.floor(Math.random()*v_korNames.length)];
+    }
+    return v_name;
+}
+// 페이지 나누기를 위한 더미데이타 넣기
+// id, name, email, etc, skills
+var v_dataCnt = 108;
+var v_dataArr = [];
+for(var i=1; i<=v_dataCnt; i++){
+    var v_member = {};
+    v_member.id = "cjs"+i;
+    v_member.name = f_mkName();
+    v_member.email = v_member.id + "@"+ v_member.name +".com";
+    v_member.etc = "몇번 깨달았어요?"+ i + "번!";
+
+    var v_skillData = ["java","js","oracle","jsp"];
+    var v_ranCnt = Math.ceil(Math.random()*v_skillData.length); // 1~4 발생
+    var v_emptyArr = [];
+    for(var j=1; j<=v_ranCnt; j++){
+        var v_ranIndex = Math.floor(Math.random()*v_skillData.length); 
+        v_emptyArr.push(v_skillData[v_ranIndex]);
+        v_skillData.splice(v_ranIndex,1);     // 선택된 거 지우기
+    } 
+
+    v_member.skills = v_emptyArr; 
+    v_dataArr.push(v_member);  // 만든 객체를 배열에 넣기
+    //로컬스토리지에 더미 데이타 저장
+    localStorage.setItem("memberT", JSON.stringify(v_dataArr));
+}
+
+</script><script>
+    var v_disp = document.getElementById("id_disp");
+    var v_cnt=0;
+    function f_mkName(){
+       // v_disp.innerHTML += f_familyName() + f_name() + "<br>";
+        v_cnt++;
+        return f_familyName() + f_name();
+    }
+//한국 성씨(복성포함), 나무위키 참조
+var v_korFamilyNames = "김,이,박,최,정,강,조,윤,장,임,한,오,서,신,권,황,안,송,전,홍,류,고,문,량,손," +
+                       "배,조,백,허,유,남,심,로,정,하,곽,성,차,주,우,구,신,임,전,민,유,류,나,진,지," + 
+                       "엄,채,원,천,방,공,강,현,함,변,염,양,변,여,추,노,도,소,신,석,선,설,마,길,주," + 
+                       "연,방,위,표,명,기,반,라,왕,금,옥,육,인,맹,제,모,장,탁,국,여,진,어,은,편," + 
+                       "남궁,독고,황보,제갈,사공,선우,서문,어금,망절,무본,황목,등정,장곡,강전";
+v_korFamilyNames = v_korFamilyNames.split(",");
+
+//이름에 자주 쓰이는 글자들 인터넷 참조
+var v_korNames = "성,영,상,재,종,정,동,용,승,경," +
+                 "호,수,석,철,훈,현,진,영,환,식," +
+                 "미,은,선,혜,지,덕,방,원,우,다," +
+                 "희,숙,자,순,주,솔,별,국,민,일," +
+                 "바,휴,왕,웅,범,대,익,중,낙,택," +
+                 "권,황,율,률,술,걸,탁,백,룡,건," +
+                 "애,난,소,분,아,매,말,녀,름,자," +
+                 "란,임,라,충,슬,준,옥,찬,림,례," +
+                 "필,규,한,예";
+v_korNames = v_korNames.split(",");
+// 랜덤한 성씨
+function f_familyName(){
+    return v_korFamilyNames[Math.floor(Math.random()* v_korFamilyNames.length)];
+}
+//랜덤한 이름
+function f_name(){
+    var v_name = v_korNames[Math.floor(Math.random()*v_korNames.length)];
+    if(v_cnt % 10 != 0){
+        v_name += v_korNames[Math.floor(Math.random()*v_korNames.length)];
+    }
+    return v_name;
+}
+// 페이지 나누기를 위한 더미데이타 넣기
+// id, name, email, etc, skills
+var v_dataCnt = 108;
+var v_dataArr = [];
+for(var i=1; i<=v_dataCnt; i++){
+    var v_member = {};
+    v_member.id = "cjs"+i;
+    v_member.name = f_mkName();
+    v_member.email = v_member.id + "@"+ v_member.name +".com";
+    v_member.etc = "몇번 깨달았어요?"+ i + "번!";
+
+    var v_skillData = ["java","js","oracle","jsp"];
+    var v_ranCnt = Math.ceil(Math.random()*v_skillData.length); // 1~4 발생
+    var v_emptyArr = [];
+    for(var j=1; j<=v_ranCnt; j++){
+        var v_ranIndex = Math.floor(Math.random()*v_skillData.length); 
+        v_emptyArr.push(v_skillData[v_ranIndex]);
+        v_skillData.splice(v_ranIndex,1);     // 선택된 거 지우기
+    } 
+
+    v_member.skills = v_emptyArr; 
+    v_dataArr.push(v_member);  // 만든 객체를 배열에 넣기
+    //로컬스토리지에 더미 데이타 저장
+    localStorage.setItem("memberT", JSON.stringify(v_dataArr));
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/myscript.js"></script>
+    <title>Member List</title>
+    <style>
+        .cl_yjy {
+            font-size:1.5em;
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <div id="id_list"><table border="1"><tbody><tr><th>넘버</th><th>아뒤</th><th>이름</th><th>이메일</th><th>비고</th><th>보유스킬</th><th>삭제</th><th>수정</th></tr></tbody></table></div>
+    <!--localstorage 값 읽어와서 table 형식으로 뿌리기-->
+    <script>
+        /*
+        var v_test = {};
+        v_test.aaa = "bbb";
+        console.log(v_test);
+        delete v_test.aaa;
+        console.log(v_test);
+        */
+        var v_list = document.getElementById("id_list");
+        var v_memList = JSON.parse(localStorage.getItem("memberT"));
+        // 페이지 나누기의 핵심! 페이지당 몇개?
+        var v_cntPerPage = 10;
+        var v_totalCnt = v_memList.length;
+        var v_totalPage = Math.ceil(v_totalCnt / v_cntPerPage);
+        var v_curPage = 1;  // 일단 시작페이지라고 가정
+         if(request.getParameter("pg_num")){
+            v_curPage = request.getParameter("pg_num");
+         }
+
+        var v_startNum = (v_curPage -1)* v_cntPerPage;
+        var v_endNum = v_startNum + (v_cntPerPage-1); 
+        if(v_curPage == v_totalPage) {
+            v_endNum = (v_totalCnt -1);
+        }
+        
+        var v_tbl = "<table border=1>";
+        v_tbl += "<tr><th>넘버</th><th>아뒤</th><th>이름</th><th>이메일</th><th>비고</th><th>보유스킬</th><th>삭제</th><th>수정</th></tr>";
+        for(var i=v_startNum; i<=v_endNum; i++){
+            var v_member = v_memList[i];
+            v_tbl +="<tr>";
+            v_tbl += "<td>"+ (i+1) + "</td>";    
+            v_tbl += "<td>"+ v_member.id + "</td>";    
+            v_tbl += "<td>"+ v_member.name + "</td>";    
+            v_tbl += "<td>"+ v_member.email + "</td>";
+            v_tbl += "<td>"+ v_member.etc + "</td>";    
+            v_tbl += "<td>"+ v_member.skills + "</td>";        
+            v_tbl += "<td><input type=button value='삭제' onclick=f_del('"+v_member.id+"')></td>";        
+            v_tbl += "<td><a href=회원수정.html?mem_id="+v_member.id+" >수정</a></td>";        
+            v_tbl += "</tr>";
+        }
+        v_tbl += "</table>";
+
+        // 페이지 링크 맹글어 주깅
+        for(var i=1; i<=v_totalPage ; i++){
+            if(i== v_curPage){
+                v_tbl += "<a href=회원리스트.html?pg_num="+ i + " class=cl_yjy >" + i + "</a>"
+                v_tbl += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+            }else {
+                v_tbl += "<a href=회원리스트.html?pg_num="+ i + " >" + i + "</a>"
+                v_tbl += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+            }
+        }
+        v_tbl += "<br><a href='회원가입.html'>회원가입</a>";
+        
+        document.getElementById("id_list").innerHTML = v_tbl;
+        function f_del(p_id){
+            for(var i=0; i < v_memList.length; i++){
+                if(v_memList[i].id == p_id){
+                    v_memList.splice(i,1);  // 배열요소 지우기, i번째부터 몇개
+                    // 메모리상에서만 지웠기 때문에, 로컬스토리지에도 반영하기
+                    localStorage.setItem("memberT", JSON.stringify(v_memList));
+                    location.href = "회원리스트.html";
+                    break;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -40,7 +40,7 @@ if($type == 'file'){
     if(in_array(strtolower($file_extension),$allowed_extension)){
  
        if(move_uploaded_file($_FILES['upload']['tmp_name'], "uploads/".$_FILES['upload']['name'])){
-          $url = "/study/study/freeboard/uploads/".$_FILES['upload']['name'];       
+          $url = "/study/study/freeboard/uploads/".$_FILES['upload']['name'];
           echo '<script>window.parent.CKEDITOR.tools.callFunction('.$funcNum.', "'.$url.'")</script>';
        }
  

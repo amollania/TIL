@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="ckeditor/ckeditor.js"></script>
+    <style>.cke{visibility:hidden;}</style>
+    <script src="js/myscript2.js"></script>
+</head>
+<body>
+    <form action="modifyaction.html">
+        <input type="hidden" id="id_uniq" name="nm_uniq" value="">
+        제목 <input type="text" id="id_title" name="nm_title" value=""><br>
+        글쓴사람 <input type="text" id="id_writer" name="id_writer" value=""><br>
+        내용<br>
+        <div id="id_content" style="border:1px solid pink"></div>
+        <textarea name="mEditor" id="id_editor" style="visibility: hidden;" cols="30" rows="10"></textarea>
+        <input type="button" onclick="f_modChg()" value="수정하기">
+        <input type="submit" value="등록하기">
+    </form>
+    <script>
+        function f_modChg(p_this){
+            v_content.style.display = "none";
+            document.getElementById("id_editor").value = v_content.innerHTML;
+            CKEDITOR.replace( 'mEditor', {
+                height: 200,
+                filebrowserUploadUrl: "/jsstudy/자융게시판/serverPhp.php?type=file",
+                filebrowserImageUploadUrl: "/jsstudy/자융게시판/serverPhp.php?type=image",
+             });
+             document.getElementById("id_submit").disabled = false;
+             p_this.disabled = true;
+        }
+        var v_uniq = request.getParameter("uniq"); 
+        var v_tblName = "gesiT";
+        var v_hidden = document.getElementById("id_uniq");
+        var v_title = document.getElementById("id_title");
+        var v_writer = document.getElementById("id_writer");
+        var v_content = document.getElementById("id_content");
+        window.onload = function(){
+            var v_datas = JSON.parse(localStorage.getItem(v_tblName));
+            //uniq값으로 해당 글찾기
+            for(var i=0; i < v_datas.length; i++){
+                if(v_datas[i].uniq == v_uniq){
+                    v_hidden.value = v_datas[i].uniq; 
+                    v_title.value = v_datas[i].title;
+                    v_writer.value = v_datas[i].writer;
+                    v_content.innerHTML = v_datas[i].content;
+                    break; 
+                }
+            }
+        }
+    </script>
+</body>
+</html>

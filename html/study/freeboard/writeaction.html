@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writing</title>
+    <script src="js/myscript2.js"></script>
+</head>
+<body>
+    <script>
+        var v_title = request.getParameter("nm_title");
+        var v_writer = request.getParameter("nm_write");
+        var v_content = request.getParameter("myEditor").replace(/\+/gi,"");
+
+        var v_gul = {};
+        v_gul.uniq = 1; // 중복되지 않는 값
+        v_gul.title = v_title;
+        v_gul.writer = v_writer;
+        v_gul.content = v_content;
+        v_gul.date = (new Date()).toLocaleDateString();
+
+        var v_tblName = "gesiT";
+
+        var v_gesiDatas = [];
+        if(!localStorage.getItem(v_tblName)) {
+            v_gesiDatas = JSON.parse(localStorage.getItem(v_tblName));
+            v_gul.uniq = parent(v_gesiDatas[v_gesiDatas.length-1].uniq)+1;
+        }
+        
+        v_gesiDatas.push(v_gul);    // 배열에 글 추가
+        localStorage.setItem(v_tblName, JSON.stringify(v_gesiDatas));
+
+        location.replace("list.html");
+    </script>
+</body>
+</html>

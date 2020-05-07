@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dummydata</title>
+</head>
+<body>
+    <script>
+        var v_dummyCnt = 272;
+        var v_datas = [];
+
+        for(var i=1; i<=v_dummyCnt; i++) {
+            var v_gul = {};
+            v_gul.uniq = i;
+            v_gul.title = "Hong" + (i+1);
+            v_gul.writer = "I am" + i;
+            v_gul.content = "<h1>뭐든지</h1>";
+            v_gul.date = (new Date()).toLocaleString();
+            v_datas.push(v_gul);
+        }
+        localStorage.setItem("gesiT", JSON.stringify(v_datas));
+    </script>
+</body>
+</html>

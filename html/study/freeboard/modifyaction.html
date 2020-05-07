@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/myscript2.js"></script>
+</head>
+<body>
+    <script>
+        var v_uniq = request.getParameter("nm_uniq");
+        var v_title = request.getParameter("nm_title");
+        var v_writer = request.getParameter("nm_write");
+        var v_content = request.getParameter("mEditor").replace(/\+/g," ");
+        var v_tblName = "gesiT";
+        var v_datas = JSON.parse(localStorage.getItem(v_tblName));
+
+        // v_uniq 값을 찾기
+        for(var i=0; i<v_datas.length; i++) {
+            if(v_datas[i].uniq == v_uniq) {
+                v_datas[i].title = v_title;
+                v_datas[i].writer = v_writer;
+                v_datas[i].content = v_content;
+                v_datas[i].date = (new Date()).toLocaleString();
+            }
+        }
+
+        // 로컬스토리지에 저장
+        localStorage.setItem(v_tblName, JSON.stringify(v_datas));
+        location.replace("list.html");
+
+    </script>
+</body>
+</html>

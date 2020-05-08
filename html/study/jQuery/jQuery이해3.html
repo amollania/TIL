@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery 이해하기3</title>
+</head>
+<body>
+
+    <div class="abc">Shin</div>
+    <div>Hana</div>
+    <div class="abc">Kumyong</div>
+    <div id="you">Stand</div>
+    <div class="abc">Dorck</div>
+
+    <script>
+        // new 연산자를 감추기
+        function $(p_selector) {
+            return new getElem(p_selector);
+        }
+
+        // 아주 많이 있어보이게 바꾸기
+        (function(){
+            var $ = function(p_selector) {
+                return new getElem(p_selector);
+            }
+            function getElem(p_selector) {
+                var v_elems = document.querySelectorAll(p_selector);
+                this.length = v_elems.length;
+                for(var i=0; i<v_elems.length; i++) {
+                    this[i] = v_elems[i];
+                }
+                return this;    // 명시적 표현, 없어도 되지만, 객체가 리턴된다는 느낌적인
+            }
+            window.$ = $;
+            $.fn = getElem.prototype;
+        })();
+
+        $.fn.html = function(p_callback) {
+            for(var i=0; i<this.length; i++) {
+                // this[i].innerHTML = p_str + i;
+                p_callback(i, this[i]);
+            }
+        }
+        
+        $.fn.css = function(p_attr, p_val) {
+            for(var i=0; i<this.length; i++) {
+                var v_style = "style=" + p_attr + " : " + p_val + " : ";
+                this[i].setAttribute("style", v_style);
+                // this[i].innerHTML = this[i].innerHTML + i;
+            }
+            return this; // 메소드 체이닝 구현을 위한 return
+        }
+
+        $("div").css("color", "blue").html(function(p_index, p_item) {
+            if(p_index ==2) {
+                p_item.innerHTML = "세번째 것만 바꾸기";
+            }
+        });
+
+        $("div").html(function(p_index, p_item) {
+            if(p_index ==2) {
+                p_item.innerHTML = "3번째 것만 바꾸기";
+            }
+        });
+
+
+        // $("div").html("I'am Here");
+
+        // 메소드 추가, jQuery에선 plugin이라고 부른다.
+        // 누구나 개발해서 추가 사용 할 수가 있다.
+        // getEleam에 메소드가 추가됨
+        // $.fn.HelloWorld = function() {
+        //     alert("Hello World!!");
+        // }
+        /*
+        $("div").HelloWorld();
+        $(".abc").HelloWorld();
+        */
+    </script>
+</body>
+</html>

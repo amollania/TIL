@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ag-Grid 일단 맛보기</title>
+    <script src="https://unpkg.com/ag-grid-community/dist/ag-grid-community.min.noStyle.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-grid.css">
+    <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-theme-balham.css">
+</head>
+
+<body>
+    <input type="button" value="데이터 가져오기" onclick="f_getData()">
+    <input type="button" value="데이터 내보내기" onclick="f_exportData()">
+    <div id="myGrid" style="height: 600px; width:100%;" class="ag-theme-balham"></div>
+
+    <script>
+
+        function f_exportData() {
+            var v_params = {
+                suppressQuotes: "true",   // none, true
+                columnSeparator: ",",   // none, tab, |
+                customHeader: "AAA BBB CCC DDD",  // 헤더명 추가 출력
+                customFooter: "This is Footer"    // 데이타 아래에 footer추가
+            }
+            gridOptions.api.exportDataAsCsv(v_params);
+        }
+
+        function f_getData() {
+
+            var v_ajax = new XMLHttpRequest();
+            v_ajax.open("get", "데이터.json", true);
+            v_ajax.send(null);
+
+            v_ajax.onreadystatechange = function() {
+                if(v_ajax.readyState == 4 && v_ajax.status == 200) {
+                    // gridOptions.api는 API로 부터 제공받은 메소드
+                    gridOptions.api.setRowData(JSON.parse(v_ajax.responseText));
+                }
+            }
+        }
+
+        // 컬럼 헤더와 컬럼명 정의
+        // name, alias, strong, weak
+        var columnDefs = [
+            { headerName: "이름", field: "name", sortable:true, filter:true, checkboxSelection: true },
+            { headerName: "별명", field: "alias", sortable:true, filter:true },
+            { headerName: "장점", field: "strong", sortable:true, filter:true },
+            { headerName: "단점", field: "weak", sortable:true, filter:true }
+        ];
+
+        // 데이타 쪼금 
+        var rowData = [
+            { name: "Toyota", alias: "Celica", strong: 35000, weak:"응" },
+            { name: "Ford", alias: "Mondeo", strong: 32000, weak:"응" },
+            { name: "Porsche", alias: "Boxter", strong: 72000, weak:"응" },
+            { name: "Porsche", alias: "Boxter", strong: 72000, weak:"응" }
+        ];
+
+        // 그리드에게 컬럼정보와 데이타정보를 알려줌
+        var gridOptions = {
+
+            localeText: {
+            // for filter panel
+            page: '페이지',
+            more: '좀 더',
+            to: '까지',
+            of: '중',
+            next: '다음',
+            last: '마지막',
+            first: '첫번째',
+            previous: 'daPreviousen',
+            loadingOoo: 'daLoading...',
+
+            // for set filter
+            selectAll: 'daSelect Allen',
+            searchOoo: 'daSearch...',
+            blanks: 'daBlanc',
+
+            // for number filter and text filter
+            filterOoo: 'daFilter...',
+            equals: 'daEquals',
+            notEqual: 'daNotEqual',
+
+            // for the date filter
+            dateFormatOoo: 'daYyyy-mm-dd',
+
+            // for number filter
+            lessThan: 'daLessThan',
+            greaterThan: 'daGreaterThan',
+            lessThanOrEqual: 'daLessThanOrEqual',
+            greaterThanOrEqual: 'daGreaterThanOrEqual',
+            inRange: 'daInRange',
+            inRangeStart: 'daTo',
+            inRangeEnd: 'daFrom',
+
+            // for text filter
+            contains: '컨테이너',
+            notContains: 'daNotContains',
+            startsWith: 'daStarts dawith',
+            endsWith: 'daEnds dawith',
+
+            // filter conditions
+            andCondition: 'daAND',
+            orCondition: 'daOR',
+
+            // filter buttons
+            applyFilter: 'daApply',
+            resetFilter: 'daReset',
+            clearFilter: 'daClear',
+
+            // the header of the default group column
+            group: 'laGroup',
+
+            // tool panel
+            columns: 'laColumns',
+            filters: 'laFilters',
+            rowGroupColumns: 'laPivot Cols',
+            rowGroupColumnsEmptyMessage: 'la drag cols to group',
+            valueColumns: 'laValue Cols',
+            pivotMode: 'laPivot-Mode',
+            groups: 'laGroups',
+            values: 'laValues',
+            pivots: 'laPivots',
+            valueColumnsEmptyMessage: 'la drag cols to aggregate',
+            pivotColumnsEmptyMessage: 'la drag here to pivot',
+            toolPanelButton: 'la tool panel',
+
+            // other
+            noRowsToShow: 'la no rows',
+            enabled: 'laEnabled',
+
+            // enterprise menu
+            pinColumn: 'laPin Column',
+            valueAggregation: 'laValue Agg',
+            autosizeThiscolumn: 'laAutosize Diz',
+            autosizeAllColumns: 'laAutsoie em All',
+            groupBy: 'laGroup by',
+            ungroupBy: 'laUnGroup by',
+            resetColumns: 'laReset Those Cols',
+            expandAll: 'laOpen-em-up',
+            collapseAll: 'laClose-em-up',
+            toolPanel: 'laTool Panelo',
+            export: 'laExporto',
+            csvExport: 'laCSV Exportp',
+            excelExport: 'laExcel Exporto (.xlsx)',
+            excelXmlExport: 'laExcel Exporto (.xml)',
+
+            // enterprise menu (charts)
+            pivotChartAndPivotMode: 'laPivot Chart & Pivot Mode',
+            pivotChart: 'laPivot Chart',
+            chartRange: 'laChart Range',
+
+            columnChart: 'laColumn',
+            groupedColumn: 'laGrouped',
+            stackedColumn: 'laStacked',
+            normalizedColumn: 'la100% Stacked',
+
+            barChart: 'laBar',
+            groupedBar: 'laGrouped',
+            stackedBar: 'laStacked',
+            normalizedBar: 'la100% Stacked',
+
+            pieChart: 'laPie',
+            pie: 'laPie',
+            doughnut: 'laDoughnut',
+
+            line: 'laLine',
+
+            xyChart: 'laX Y (Scatter)',
+            scatter: 'laScatter',
+            bubble: 'laBubble',
+
+            areaChart: 'laArea',
+            area: 'laArea',
+            stackedArea: 'laStacked',
+            normalizedArea: 'la100% Stacked',
+
+            histogramChart: 'laHistogram',
+
+            // enterprise menu pinning
+            pinLeft: 'laPin <<',
+            pinRight: 'laPin >>',
+            noPin: 'laDontPin <>',
+
+            // enterprise menu aggregation and status bar
+            sum: 'laSum',
+            min: 'laMin',
+            max: 'laMax',
+            none: 'laNone',
+            count: 'laCount',
+            avg: 'laAverage',
+            filteredRows: 'laFiltered',
+            selectedRows: 'laSelected',
+            totalRows: 'laTotal Rows',
+            totalAndFilteredRows: 'laRows',
+
+            // standard menu
+            copy: 'laCopy',
+            copyWithHeaders: 'laCopy With Headers',
+            ctrlC: 'laCtrl n C',
+            paste: 'laPaste',
+            ctrlV: 'laCtrl n V',
+
+            // charts
+            pivotChartTitle: 'laPivot Chart',
+            rangeChartTitle: 'laRange Chart',
+            settings: 'laSettings',
+            data: 'laData',
+            format: 'laFormat',
+            categories: 'laCategories',
+            defaultCategory: '(laNone)',
+            series: 'laSeries',
+            xyValues: 'laX Y Values',
+            paired: 'laPaired Mode',
+            axis: 'laAxis',
+            color: 'laColor',
+            thickness: 'laThickness',
+            xType: 'laX Type',
+            automatic: 'laAutomatic',
+            category: 'laCategory',
+            number: 'laNumber',
+            time: 'laTime',
+            xRotation: 'laX Rotation',
+            yRotation: 'laY Rotation',
+            ticks: 'laTicks',
+            width: 'laWidth',
+            length: 'laLength',
+            padding: 'laPadding',
+            chart: 'laChart',
+            title: 'laTitle',
+            background: 'laBackground',
+            font: 'laFont',
+            top: 'laTop',
+            right: 'laRight',
+            bottom: 'laBottom',
+            left: 'laLeft',
+            labels: 'laLabels',
+            size: 'laSize',
+            minSize: 'laMinimum Size',
+            maxSize: 'laMaximum Size',
+            legend: 'laLegend',
+            position: 'laPosition',
+            markerSize: 'laMarker Size',
+            markerStroke: 'laMarker Stroke',
+            markerPadding: 'laMarker Padding',
+            itemPaddingX: 'laItem Padding X',
+            itemPaddingY: 'laItem Padding Y',
+            strokeWidth: 'laStroke Width',
+            offset: 'laOffset',
+            offsets: 'laOffsets',
+            tooltips: 'laTooltips',
+            callout: 'laCallout',
+            markers: 'laMarkers',
+            shadow: 'laShadow',
+            blur: 'laBlur',
+            xOffset: 'laX Offset',
+            yOffset: 'laY Offset',
+            lineWidth: 'laLine Width',
+            normal: 'laNormal',
+            bold: 'laBold',
+            italic: 'laItalic',
+            boldItalic: 'laBold Italic',
+            predefined: 'laPredefined',
+            fillOpacity: 'laFill Opacity',
+            strokeOpacity: 'laLine Opacity',
+            histogramBinCount: 'laBin Count',
+            columnGroup: 'laColumn',
+            barGroup: 'laBar',
+            pieGroup: 'laPie',
+            lineGroup: 'laLine',
+            scatterGroup: 'laScatter',
+            areaGroup: 'laArea',
+            histogramGroup: 'laHistogram',
+            groupedColumnTooltip: 'laGrouped',
+            stackedColumnTooltip: 'laStacked',
+            normalizedColumnTooltip: 'la100% Stacked',
+            groupedBarTooltip: 'laGrouped',
+            stackedBarTooltip: 'laStacked',
+            normalizedBarTooltip: 'la100% Stacked',
+            pieTooltip: 'laPie',
+            doughnutTooltip: 'laDoughnut',
+            lineTooltip: 'laLine',
+            groupedAreaTooltip: 'laGrouped',
+            stackedAreaTooltip: 'laStacked',
+            normalizedAreaTooltip: 'la100% Stacked',
+            scatterTooltip: 'laScatter',
+            bubbleTooltip: 'laBubble',
+            histogramTooltip: 'laHistogram',
+            noDataToChart: 'laNo data available to be charted.',
+            pivotChartRequiresPivotMode: 'laPivot Chart requires Pivot Mode enabled.'
+        },
+
+            columnDefs: columnDefs,
+            rowData: rowData,
+
+            pagination:true,
+            // paginationAutoPageSize:true,
+            paginationPageSize:5,
+
+            defaultColDef: {
+                flex: 1,
+                minWidth: 110,
+                // editable: true,
+                resizable: true,
+            },
+
+            onRowClicked : function(event){
+            console.log(event.data);
+            }
+        };
+
+        // 그리드 생성
+        var eGridDiv = document.getElementById("myGrid");
+        new agGrid.Grid(eGridDiv, gridOptions);
+
+    </script>
+</body>
+
+</html>

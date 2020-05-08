@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery</title>
+    <script>
+        // jQuery이 만들어진 과정
+        // 생성자
+        function Saram(p_name) {
+            this.name = p_name;
+            /*
+            this.getName = function() {
+                return this.name;
+            }
+            */
+        }
+        Saram.prototype.getName = function() {
+            return this.name;
+        }
+        Saram.prototype.setName = function(p_name) {
+            this.name = p_name;
+        }
+
+        var v_lg = new Saram("오토바이");
+        v_lg.getName("바잌");
+
+        alert(new Saram("킥보드").getName());
+
+        // 아래의 this는 Window 개체를 가르킴
+        // Saram();
+
+        // 아래의 this는 생성자로써 function 키워드가 자바의 class 키워드 처럼 동작
+        var v_siy = new Saram("자전거");
+        var v_aig = new Saram("자동차");
+        alert(v_aig.getName());
+    </script>
+</head>
+<body>
+</body>
+</html>
